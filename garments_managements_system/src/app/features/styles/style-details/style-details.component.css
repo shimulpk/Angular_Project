@@ -1,0 +1,12 @@
+.size-box {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #1e293b;
+    }

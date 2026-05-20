@@ -1,0 +1,43 @@
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th *ngFor="let col of columns">{{ col.label }}</th>
+            <th *ngIf="showActions" class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data">
+            <td *ngFor="let col of columns">
+              <ng-container [ngSwitch]="col.type">
+                <span *ngSwitchCase="'badge'" [class]="'badge ' + (col.badgeClass ? col.badgeClass(row[col.key]) : 'bg-secondary')">
+                  {{ row[col.key] }}
+                </span>
+                <span *ngSwitchCase="'date'">
+                  {{ row[col.key] | date:'mediumDate' }}
+                </span>
+                <span *ngSwitchDefault>{{ row[col.key] }}</span>
+              </ng-container>
+            </td>
+            <td *ngIf="showActions" class="text-end">
+              <button class="btn btn-sm btn-outline-info me-2" (click)="onView.emit(row)">
+                <i class="bi bi-eye"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-primary me-2" (click)="onEdit.emit(row)">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-danger" (click)="onDelete.emit(row)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="data.length === 0">
+            <td [attr.colspan]="columns.length + (showActions ? 1 : 0)" class="text-center py-4 text-muted">
+              No records found.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  

@@ -1,0 +1,73 @@
+
+    <div class="container-fluid py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+              <h5 class="mb-0 fw-bold">Shipment & Export Entry</h5>
+              <button class="btn btn-outline-secondary btn-sm" routerLink="/shipment">Back</button>
+            </div>
+            <div class="card-body p-4">
+              <form [formGroup]="shipmentForm" (ngSubmit)="save()">
+                <div class="row g-3">
+                  <div class="col-md-12">
+                    <label class="form-label fw-bold">Select Production Completed Order</label>
+                    <select class="form-select" formControlName="orderId" (change)="onOrderSelect()">
+                      <option value="">Select Order...</option>
+                      <option *ngFor="let order of readyOrders" [value]="order.id">{{ order.poNumber }}</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Vessel / Flight Name</label>
+                    <input type="text" class="form-control" formControlName="vesselName" placeholder="e.g. MSC AMALFI">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Bill of Lading / AWB #</label>
+                    <input type="text" class="form-control" formControlName="billOfLading">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Container Number</label>
+                    <input type="text" class="form-control" formControlName="containerNo">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Shipment Date</label>
+                    <input type="date" class="form-control" formControlName="shipDate">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Destination Port/City</label>
+                    <input type="text" class="form-control" formControlName="destination">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Shipment Status</label>
+                    <select class="form-select" formControlName="status">
+                      <option value="BOOKED">BOOKED</option>
+                      <option value="SHIPPED">SHIPPED</option>
+                      <option value="ARRIVED">ARRIVED</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Total Cartons</label>
+                    <input type="number" class="form-control" formControlName="totalCartons">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Gross Weight (Kg)</label>
+                    <input type="number" class="form-control" formControlName="grossWeight">
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                  <button type="submit" class="btn btn-primary px-5 shadow-sm" [disabled]="shipmentForm.invalid">
+                    Generate Export Record
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

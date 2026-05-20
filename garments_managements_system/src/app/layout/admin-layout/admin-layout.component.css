@@ -1,0 +1,17 @@
+.menu-section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #475569;
+      padding: 0 1rem 0.5rem;
+      font-weight: 700;
+    }
+    .user-pill { transition: background 0.2s; cursor: pointer; }
+    .user-pill:hover { background: rgba(255,255,255,0.15) !important; }
+    .avatar-sm { width: 32px; height: 32px; font-size: 0.75rem; }
+    .avatar-xs { width: 28px; height: 28px; font-size: 0.7rem; }
+    .x-small { font-size: 0.7rem; }
+    .nav-icon-btn { cursor: pointer; transition: transform 0.2s; }
+    .nav-icon-btn:hover { transform: translateY(-2px); }
+    .hover-bg-light:hover { background-color: #f8fafc; }
+    .dropdown-item:active { background-color: var(--primary-color); }

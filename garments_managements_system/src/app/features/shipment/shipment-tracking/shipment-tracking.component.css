@@ -1,0 +1,8 @@
+.shipment-card { border-top: 4px solid var(--primary-color); }
+    .tracking-timeline { position: relative; padding-left: 20px; }
+    .track-item { position: relative; padding-bottom: 20px; opacity: 0.4; }
+    .track-item.active { opacity: 1; }
+    .track-dot { position: absolute; left: -24px; width: 10px; height: 10px; background: #cbd5e1; border-radius: 50%; top: 5px; }
+    .track-item.active .track-dot { background: #10b981; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2); }
+    .track-item:not(:last-child)::before { content: ''; position: absolute; left: -19px; top: 15px; width: 1px; height: calc(100% - 10px); background: #e2e8f0; }
+    .track-item.active:not(:last-child)::before { background: #10b981; }

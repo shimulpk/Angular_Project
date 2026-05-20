@@ -1,0 +1,2 @@
+.upload-container { border: 2px dashed #dee2e6; transition: border-color 0.3s; }
+    .upload-container:hover { border-color: #1e293b; }

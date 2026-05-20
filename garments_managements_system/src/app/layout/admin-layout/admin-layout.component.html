@@ -1,0 +1,112 @@
+
+    <!-- Sidebar -->
+    <div class="sidebar" [class.show]="isSidebarVisible">
+      <div class="sidebar-header">
+        <i class="bi bi-cpu-fill"></i>
+        <span>ERP PRO</span>
+      </div>
+      
+      <div class="sidebar-menu">
+        <div class="menu-section-label">Main Operations</div>
+        <a routerLink="/dashboard" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-grid-1x2"></i> Dashboard
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER'])" routerLink="/buyers" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-person-badge"></i> Buyer Center
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER'])" routerLink="/styles" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-palette"></i> Style Library
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER'])" routerLink="/orders" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-cart-check"></i> Purchase Orders
+        </a>
+
+        <div *ngIf="hasRole(['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'STOREKEEPER'])" class="menu-section-label mt-4">Supply Chain</div>
+        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER'])" routerLink="/merchandising" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-calculator"></i> Merchandising
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR', 'SUPERVISOR'])" routerLink="/production" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-hammer"></i> Production
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'STOREKEEPER'])" routerLink="/inventory" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-box-seam"></i> Inventory
+        </a>
+
+        <div class="menu-section-label mt-4">Quality & Logistics</div>
+        <a *ngIf="hasRole(['ADMIN', 'QA_OFFICER'])" routerLink="/qa" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-shield-check"></i> Quality Assurance
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/shipment" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-truck"></i> Export & Logistics
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'QA_OFFICER', 'STOREKEEPER', 'VIEWER'])" routerLink="/reports" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-bar-chart-line"></i> Analytics
+        </a>
+
+        <ng-container *ngIf="hasRole(['ADMIN'])">
+          <div class="menu-section-label mt-4">System Administration</div>
+          <a routerLink="/admin" routerLinkActive="active" class="menu-item">
+            <i class="bi bi-shield-lock-fill"></i> User Management
+          </a>
+        </ng-container>
+      </div>
+
+      <div class="sidebar-footer p-3 mt-auto">
+        <div class="user-pill d-flex align-items-center p-2 rounded-3 bg-white bg-opacity-10 mb-3">
+          <div class="avatar-sm bg-primary rounded-circle me-2 d-flex align-items-center justify-content-center text-white fw-bold">
+            {{ authService.currentUserValue?.fullName?.charAt(0) }}
+          </div>
+          <div class="flex-grow-1 overflow-hidden">
+            <div class="small fw-bold text-white text-truncate">{{ authService.currentUserValue?.fullName }}</div>
+            <div class="x-small text-muted">{{ authService.currentUserValue?.role }}</div>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-outline-danger w-100 border-0" (click)="logout()">
+          <i class="bi bi-box-arrow-left me-2"></i> Logout
+        </button>
+      </div>
+    </div>
+
+    <!-- Top Navbar -->
+    <div class="top-navbar">
+      <button class="btn d-lg-none me-3" (click)="toggleSidebar()">
+        <i class="bi bi-list fs-4"></i>
+      </button>
+      
+      <div class="search-bar d-none d-md-flex align-items-center bg-light rounded-pill px-3 py-1" style="width: 300px;">
+        <i class="bi bi-search text-muted me-2"></i>
+        <input type="text" class="form-control border-0 bg-transparent shadow-none" placeholder="Search PO, Style or Buyer...">
+      </div>
+
+      <div class="ms-auto d-flex align-items-center">
+        <div class="nav-icon-btn me-3 position-relative">
+          <i class="bi bi-bell fs-5 text-muted"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">3</span>
+        </div>
+        
+        <div class="dropdown ms-3">
+          <button class="btn border-0 d-flex align-items-center gap-2 p-1 px-2 rounded-pill hover-bg-light" type="button" data-bs-toggle="dropdown">
+            <div class="avatar-xs bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold">
+              {{ authService.currentUserValue?.fullName?.charAt(0) }}
+            </div>
+            <div class="text-start d-none d-sm-block">
+              <div class="x-small fw-bold lh-1">{{ authService.currentUserValue?.fullName }}</div>
+              <div class="x-small text-muted">{{ authService.currentUserValue?.role }}</div>
+            </div>
+            <i class="bi bi-chevron-down small text-muted ms-1"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2 p-2" style="border-radius: 12px;">
+            <li><a class="dropdown-item rounded-3 py-2 small" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 small" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+            <li><hr class="dropdown-divider mx-2"></li>
+            <li><button class="dropdown-item rounded-3 py-2 small text-danger" (click)="logout()"><i class="bi bi-box-arrow-left me-2"></i> Logout</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content animate-fade-in">
+      <router-outlet></router-outlet>
+    </main>
+  

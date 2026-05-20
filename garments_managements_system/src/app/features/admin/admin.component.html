@@ -1,0 +1,410 @@
+<div class="container-fluid p-4">
+  <!-- Gradient Header with Badge -->
+  <div class="admin-header d-flex justify-content-between align-items-center mb-4 p-4 rounded-4 shadow-sm text-white">
+    <div>
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="badge bg-danger text-uppercase fw-bold px-3 py-2 border border-white border-2 animate-pulse shadow-sm">
+          <i class="bi bi-shield-lock-fill me-1"></i> ADMIN ONLY
+        </span>
+        <h2 class="h3 fw-bold mb-0 text-white">System Administration</h2>
+      </div>
+      <p class="mb-0 text-white-50 small">Manage users, assign operational roles, configure production capacity, and monitor audit trails.</p>
+    </div>
+    <div class="d-none d-md-flex align-items-center gap-2">
+      <button *ngIf="activeTab === 'users'" (click)="openAddUser()" class="btn btn-light rounded-pill px-4 py-2 fw-semibold text-primary shadow-sm hover-up">
+        <i class="bi bi-person-plus-fill me-2"></i> Add User
+      </button>
+      <button *ngIf="activeTab === 'lines'" (click)="openAddLine()" class="btn btn-light rounded-pill px-4 py-2 fw-semibold text-primary shadow-sm hover-up">
+        <i class="bi bi-plus-circle-fill me-2"></i> Configure Line
+      </button>
+    </div>
+  </div>
+
+  <!-- Sleek Tab Navigation -->
+  <div class="card border-0 bg-transparent mb-4">
+    <div class="d-flex flex-wrap gap-2 p-2 bg-light rounded-3 shadow-sm" style="max-width: fit-content;">
+      <button (click)="activeTab = 'users'" [class.active]="activeTab === 'users'" class="btn tab-btn px-4 py-2 rounded-3 text-secondary font-semibold transition-all">
+        <i class="bi bi-people-fill me-2"></i> User Directory
+      </button>
+      <button (click)="activeTab = 'lines'" [class.active]="activeTab === 'lines'" class="btn tab-btn px-4 py-2 rounded-3 text-secondary font-semibold transition-all">
+        <i class="bi bi-diagram-3-fill me-2"></i> Production Lines
+      </button>
+      <button (click)="activeTab = 'materials'" [class.active]="activeTab === 'materials'" class="btn tab-btn px-4 py-2 rounded-3 text-secondary font-semibold transition-all">
+        <i class="bi bi-box-seam-fill me-2"></i> Raw Materials & Suppliers
+      </button>
+      <button (click)="activeTab = 'security'" [class.active]="activeTab === 'security'" class="btn tab-btn px-4 py-2 rounded-3 text-secondary font-semibold transition-all">
+        <i class="bi bi-shield-lock-fill me-2"></i> Security & Audit
+      </button>
+    </div>
+  </div>
+
+  <!-- TAB CONTENT -->
+  <div class="row">
+    <div class="col-12 animate-fade-in">
+      
+      <!-- TAB 1: USER MANAGEMENT -->
+      <div *ngIf="activeTab === 'users'" class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="h5 fw-bold mb-0 text-dark">User Directory</h3>
+          <button (click)="openAddUser()" class="btn btn-sm btn-primary rounded-pill d-md-none">
+            <i class="bi bi-plus-lg"></i>
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table align-middle custom-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Assigned Role</th>
+                <th class="text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="avatar-sm bg-light rounded-circle me-3 fw-bold d-flex align-items-center justify-content-center text-primary border border-2 border-primary border-opacity-25" style="width: 38px; height: 38px;">
+                      {{ user.fullName.charAt(0) }}
+                    </div>
+                    <div>
+                      <div class="fw-bold text-dark">{{ user.fullName }}</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-secondary font-monospace">{{ user.username }}</td>
+                <td class="text-secondary">{{ user.email }}</td>
+                <td>
+                  <span class="badge rounded-pill fw-semibold text-uppercase px-3 py-2 font-size-xs"
+                    [ngClass]="{
+                      'bg-danger-subtle text-danger border border-danger': user.role === 'ADMIN',
+                      'bg-primary-subtle text-primary border border-primary': user.role === 'MERCHANDISER',
+                      'bg-success-subtle text-success border border-success': user.role === 'PRODUCTION_MGR',
+                      'bg-warning-subtle text-warning border border-warning': user.role === 'SUPERVISOR',
+                      'bg-info-subtle text-info border border-info': user.role === 'QA_OFFICER',
+                      'bg-dark-subtle text-dark border border-dark': user.role === 'STOREKEEPER',
+                      'bg-light text-secondary border border-secondary': user.role === 'VIEWER'
+                    }">
+                    <i class="bi bi-circle-fill me-1 small animate-pulse" [ngClass]="{
+                      'text-danger': user.role === 'ADMIN',
+                      'text-primary': user.role === 'MERCHANDISER',
+                      'text-success': user.role === 'PRODUCTION_MGR',
+                      'text-warning': user.role === 'SUPERVISOR',
+                      'text-info': user.role === 'QA_OFFICER',
+                      'text-dark': user.role === 'STOREKEEPER',
+                      'text-secondary': user.role === 'VIEWER'
+                    }"></i>
+                    {{ user.role }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  <div class="d-flex justify-content-end gap-2">
+                    <button (click)="openEditUser(user)" class="btn btn-xs btn-outline-primary rounded-pill px-3 shadow-sm hover-up border-0" title="Edit Role Details">
+                      <i class="bi bi-pencil-square"></i> Edit
+                    </button>
+                    <button (click)="deleteUser(user.id)" class="btn btn-xs btn-outline-danger rounded-pill px-3 shadow-sm hover-up border-0" [disabled]="user.role === 'ADMIN' && users.length <= 1" title="Delete User">
+                      <i class="bi bi-trash-fill"></i> Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: PRODUCTION LINES CONFIG -->
+      <div *ngIf="activeTab === 'lines'" class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="h5 fw-bold mb-0 text-dark">Production Lines & Capacity</h3>
+          <button (click)="openAddLine()" class="btn btn-sm btn-primary rounded-pill d-md-none">
+            <i class="bi bi-plus-lg"></i>
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table align-middle custom-table">
+            <thead>
+              <tr>
+                <th>Line Code</th>
+                <th>Line Name</th>
+                <th>Capacity (PCS/Day)</th>
+                <th class="text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let line of productionLines">
+                <td class="fw-bold font-monospace text-primary">{{ line.id }}</td>
+                <td class="text-dark">{{ line.name }}</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="fw-bold font-size-sm text-dark">{{ line.capacity }} pcs</span>
+                    <div class="progress flex-grow-1" style="height: 6px; max-width: 150px; border-radius: 3px;">
+                      <div class="progress-bar bg-success rounded-3" [style.width.%]="(line.capacity / 2000) * 100"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">
+                  <div class="d-flex justify-content-end gap-2">
+                    <button (click)="openEditLine(line)" class="btn btn-xs btn-outline-primary border-0 rounded-pill px-3 shadow-sm hover-up">
+                      <i class="bi bi-pencil-fill"></i> Edit
+                    </button>
+                    <button (click)="deleteProductionLine(line.id)" class="btn btn-xs btn-outline-danger border-0 rounded-pill px-3 shadow-sm hover-up">
+                      <i class="bi bi-trash-fill"></i> Remove
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 3: WAREHOUSE & MATERIALS -->
+      <div *ngIf="activeTab === 'materials'" class="row">
+        
+        <!-- Suppliers Management -->
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <h3 class="h5 fw-bold mb-3 text-dark">Supplier Directory</h3>
+            
+            <div class="input-group mb-3 shadow-sm rounded-pill overflow-hidden bg-light p-1">
+              <input type="text" [(ngModel)]="newSupplier" class="form-control border-0 bg-transparent px-3 shadow-none text-dark" placeholder="Enter supplier name...">
+              <button (click)="addSupplier()" class="btn btn-primary rounded-pill px-4" type="button">
+                <i class="bi bi-plus-lg me-1"></i> Add
+              </button>
+            </div>
+
+            <div class="list-group rounded-3 border-0">
+              <div *ngFor="let s of suppliers; let i = index" class="list-group-item d-flex justify-content-between align-items-center border-0 border-bottom py-3 px-2 bg-transparent">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="avatar-xs bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width:30px; height:30px;">
+                    <i class="bi bi-building"></i>
+                  </div>
+                  <span class="text-dark fw-semibold">{{ s }}</span>
+                </div>
+                <button (click)="removeSupplier(i)" class="btn btn-link text-danger p-0 border-0 shadow-none">
+                  <i class="bi bi-x-circle-fill fs-5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Material Categories -->
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <h3 class="h5 fw-bold mb-3 text-dark">Raw Material Categories</h3>
+            
+            <div class="input-group mb-3 shadow-sm rounded-pill overflow-hidden bg-light p-1">
+              <input type="text" [(ngModel)]="newCategory" class="form-control border-0 bg-transparent px-3 shadow-none text-dark" placeholder="Enter category name...">
+              <button (click)="addCategory()" class="btn btn-primary rounded-pill px-4" type="button">
+                <i class="bi bi-plus-lg me-1"></i> Add
+              </button>
+            </div>
+
+            <div class="list-group rounded-3 border-0">
+              <div *ngFor="let c of categories; let i = index" class="list-group-item d-flex justify-content-between align-items-center border-0 border-bottom py-3 px-2 bg-transparent">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="avatar-xs bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width:30px; height:30px;">
+                    <i class="bi bi-tag-fill"></i>
+                  </div>
+                  <span class="text-dark fw-semibold">{{ c }}</span>
+                </div>
+                <button (click)="removeCategory(i)" class="btn btn-link text-danger p-0 border-0 shadow-none">
+                  <i class="bi bi-x-circle-fill fs-5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: SECURITY & AUDIT LOGS -->
+      <div *ngIf="activeTab === 'security'" class="row animate-fade-in">
+        
+        <!-- Security Configurations -->
+        <div class="col-12 col-lg-5 mb-4">
+          <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <h3 class="h5 fw-bold mb-3 text-dark"><i class="bi bi-shield-check-fill text-success me-2"></i>Security Controls</h3>
+            
+            <div class="mb-4">
+              <label class="form-label text-secondary small fw-bold mb-2">JWT Session Expiry Limit (Hours)</label>
+              <div class="d-flex align-items-center gap-3">
+                <input type="range" min="1" max="24" class="form-range flex-grow-1" [(ngModel)]="securitySettings.tokenExpiry">
+                <span class="badge bg-primary px-3 py-2 fs-6 rounded-pill" style="min-width: 60px;">{{ securitySettings.tokenExpiry }}h</span>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label text-secondary small fw-bold mb-2">Minimum Password Strength Length</label>
+              <div class="d-flex align-items-center gap-3">
+                <input type="range" min="6" max="16" class="form-range flex-grow-1" [(ngModel)]="securitySettings.minPasswordLength">
+                <span class="badge bg-primary px-3 py-2 fs-6 rounded-pill" style="min-width: 60px;">{{ securitySettings.minPasswordLength }} chr</span>
+              </div>
+            </div>
+
+            <div class="form-check form-switch mb-4 p-0 ps-5 border-bottom pb-3">
+              <input class="form-check-input float-start fs-5" type="checkbox" role="switch" id="tfaSwitch" [(ngModel)]="securitySettings.requireTwoFactor">
+              <label class="form-check-label text-dark fw-semibold ms-3" for="tfaSwitch">
+                Enforce Two-Factor Authentication (2FA)
+                <div class="x-small text-muted font-normal mt-1">Requires all high-level users (ADMIN, MERCHANDISER) to authenticate with SMS/Authenticator apps.</div>
+              </label>
+            </div>
+
+            <div class="form-check form-switch mb-4 p-0 ps-5">
+              <input class="form-check-input float-start fs-5" type="checkbox" role="switch" id="ipSwitch" [(ngModel)]="securitySettings.restrictIPs">
+              <label class="form-check-label text-dark fw-semibold ms-3" for="ipSwitch">
+                Restrict External IP Ranges
+                <div class="x-small text-muted font-normal mt-1">Blocks non-office network requests for operational ERP modules (Stock adjustment, Quality checks).</div>
+              </label>
+            </div>
+
+            <button (click)="saveSecuritySettings()" class="btn btn-primary w-100 rounded-pill py-2 mt-3 fw-bold shadow-sm hover-up">
+              <i class="bi bi-check-circle-fill me-2"></i> Save Configurations
+            </button>
+          </div>
+        </div>
+
+        <!-- System Audit Logs -->
+        <div class="col-12 col-lg-7 mb-4">
+          <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+              <h3 class="h5 fw-bold mb-0 text-dark">System Activity & Audit Trails</h3>
+              <span class="badge bg-secondary rounded-pill px-3 py-1 font-size-xs fw-semibold font-monospace">Real-time Stream</span>
+            </div>
+
+            <div class="audit-timeline overflow-auto px-2" style="max-height: 400px;">
+              <div *ngFor="let log of auditLogs" class="d-flex gap-3 mb-4 timeline-item">
+                <div class="timeline-badge p-2 rounded-circle bg-light d-flex align-items-center justify-content-center" style="width:36px; height:36px;">
+                  <i class="bi" 
+                    [ngClass]="{
+                      'bi-person-badge-fill text-danger': log.action.startsWith('USER'),
+                      'bi-box-seam-fill text-dark': log.action.startsWith('STOCK'),
+                      'bi-diagram-3-fill text-success': log.action.startsWith('LINE'),
+                      'bi-check-all text-primary': log.action.startsWith('SAMPLE'),
+                      'bi-shield-check text-warning': log.action.startsWith('SECURITY')
+                    }"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="badge font-size-xs fw-bold font-monospace px-2 py-1 text-uppercase"
+                      [ngClass]="{
+                        'bg-danger-subtle text-danger': log.action.startsWith('USER'),
+                        'bg-dark-subtle text-dark': log.action.startsWith('STOCK'),
+                        'bg-success-subtle text-success': log.action.startsWith('LINE'),
+                        'bg-primary-subtle text-primary': log.action.startsWith('SAMPLE'),
+                        'bg-warning-subtle text-warning': log.action.startsWith('SECURITY')
+                      }">
+                      {{ log.action }}
+                    </span>
+                    <span class="x-small text-muted font-monospace"><i class="bi bi-clock me-1"></i>{{ log.time }}</span>
+                  </div>
+                  <p class="mb-0 text-dark small font-semibold">{{ log.details }}</p>
+                  <div class="x-small text-muted mt-1">Triggered by: <span class="font-monospace fw-bold text-secondary">&#64;{{ log.user }}</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     USER CREATE/EDIT MODAL (GLASSMORPHIC EFFECT)
+     ==================================================== -->
+<div *ngIf="showUserModal" class="modal-backdrop bg-black bg-opacity-50 d-flex align-items-center justify-content-center p-3 animate-fade-in" style="z-index: 1050; position: fixed; top:0; left:0; width:100vw; height:100vh;">
+  <div class="card border-0 shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 500px;">
+    <!-- Modal Header -->
+    <div class="modal-header bg-primary text-white p-4">
+      <h5 class="modal-title fw-bold mb-0 text-white">{{ isEditingUser ? 'Edit User Authorization' : 'Create New User Account' }}</h5>
+      <button type="button" class="btn-close btn-close-white" (click)="closeUserModal()"></button>
+    </div>
+    
+    <!-- Modal Body -->
+    <div class="modal-body p-4 bg-light">
+      <div class="row g-3">
+        <div class="col-12">
+          <label class="form-label small fw-bold text-secondary">Full Representative Name</label>
+          <input type="text" [(ngModel)]="currentUser.fullName" class="form-control rounded-3 border-secondary border-opacity-25 text-dark" placeholder="e.g. Robert Supervisor">
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label small fw-bold text-secondary">System Username</label>
+          <input type="text" [(ngModel)]="currentUser.username" [disabled]="isEditingUser" class="form-control rounded-3 border-secondary border-opacity-25 text-dark" placeholder="e.g. supervisor">
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label small fw-bold text-secondary">Corporate Email</label>
+          <input type="email" [(ngModel)]="currentUser.email" class="form-control rounded-3 border-secondary border-opacity-25 text-dark" placeholder="supervisor@garments.com">
+        </div>
+        <div *ngIf="!isEditingUser" class="col-12">
+          <label class="form-label small fw-bold text-secondary">Access Password</label>
+          <input type="password" [(ngModel)]="currentUser.password" class="form-control rounded-3 border-secondary border-opacity-25 text-dark" placeholder="Enter secure password...">
+        </div>
+        <div class="col-12">
+          <label class="form-label small fw-bold text-secondary">Operational Role Designation</label>
+          <select [(ngModel)]="currentUser.role" class="form-select rounded-3 border-secondary border-opacity-25 text-dark">
+            <option value="ADMIN">ADMIN (Full Access)</option>
+            <option value="MERCHANDISER">MERCHANDISER (Commercial & PO)</option>
+            <option value="PRODUCTION_MGR">PRODUCTION_MGR (Factory & Line Assign)</option>
+            <option value="SUPERVISOR">SUPERVISOR (Line Supervision)</option>
+            <option value="QA_OFFICER">QA_OFFICER (Inspections & DHU)</option>
+            <option value="STOREKEEPER">STOREKEEPER (Inventory Control)</option>
+            <option value="VIEWER">VIEWER (Read-Only dashboards & KPIs)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Footer -->
+    <div class="modal-footer p-3 bg-light border-top d-flex justify-content-end gap-2">
+      <button (click)="closeUserModal()" class="btn btn-outline-secondary rounded-pill px-4">Cancel</button>
+      <button (click)="saveUser()" class="btn btn-primary rounded-pill px-4 fw-bold">
+        <i class="bi bi-save me-1"></i> Save Changes
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     LINE CONFIGURE MODAL
+     ==================================================== -->
+<div *ngIf="showLineModal" class="modal-backdrop bg-black bg-opacity-50 d-flex align-items-center justify-content-center p-3 animate-fade-in" style="z-index: 1050; position: fixed; top:0; left:0; width:100vw; height:100vh;">
+  <div class="card border-0 shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 450px;">
+    <!-- Modal Header -->
+    <div class="modal-header bg-primary text-white p-4">
+      <h5 class="modal-title fw-bold mb-0 text-white">{{ isEditingLine ? 'Edit Production Line Configuration' : 'Configure New Production Line' }}</h5>
+      <button type="button" class="btn-close btn-close-white" (click)="closeLineModal()"></button>
+    </div>
+    
+    <!-- Modal Body -->
+    <div class="modal-body p-4 bg-light">
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <label class="form-label small fw-bold text-secondary">Line Code / ID</label>
+          <input type="text" [(ngModel)]="currentLine.id" [disabled]="isEditingLine" class="form-control rounded-3 border-secondary border-opacity-25 text-dark" placeholder="e.g. L4">
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label small fw-bold text-secondary">Line Name</label>
+          <input type="text" [(ngModel)]="currentLine.name" class="form-control rounded-3 border-secondary border-opacity-25 text-dark" placeholder="e.g. Line 04">
+        </div>
+        <div class="col-12">
+          <label class="form-label small fw-bold text-secondary">Target Daily Capacity (PCS)</label>
+          <input type="number" [(ngModel)]="currentLine.capacity" class="form-control rounded-3 border-secondary border-opacity-25 text-dark" placeholder="e.g. 1200">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Footer -->
+    <div class="modal-footer p-3 bg-light border-top d-flex justify-content-end gap-2">
+      <button (click)="closeLineModal()" class="btn btn-outline-secondary rounded-pill px-4">Cancel</button>
+      <button (click)="saveProductionLine()" class="btn btn-primary rounded-pill px-4 fw-bold">
+        <i class="bi bi-save me-1"></i> Save Configuration
+      </button>
+    </div>
+  </div>
+</div>

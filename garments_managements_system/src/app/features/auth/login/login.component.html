@@ -1,0 +1,77 @@
+
+    <div class="login-page">
+      <div class="login-card shadow-lg overflow-hidden">
+        <div class="row g-0 h-100">
+          <div class="col-lg-6 d-none d-lg-block">
+            <div class="login-visual h-100 d-flex flex-column justify-content-center p-5 text-white">
+              <h1 class="fw-bold display-5 mb-3">Garments ERP Pro</h1>
+              <p class="lead opacity-75">Streamline your manufacturing lifecycle with enterprise-grade intelligence.</p>
+              <div class="mt-5">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="icon-circle bg-white bg-opacity-20 me-3"><i class="bi bi-shield-check"></i></div>
+                  <span>Secure JWT Authentication</span>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <div class="icon-circle bg-white bg-opacity-20 me-3"><i class="bi bi-graph-up-arrow"></i></div>
+                  <span>Real-time Floor Analytics</span>
+                </div>
+                <div class="d-flex align-items-center">
+                  <div class="icon-circle bg-white bg-opacity-20 me-3"><i class="bi bi-globe"></i></div>
+                  <span>Global Supply Chain Tracking</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="login-form-container h-100 d-flex flex-column justify-content-center p-4 p-md-5">
+              <div class="text-center mb-5 d-lg-none">
+                <h3 class="fw-bold text-primary">Garments ERP Pro</h3>
+              </div>
+              <h2 class="fw-bold mb-1">Welcome Back</h2>
+              <p class="text-muted mb-4">Please enter your credentials to access the portal.</p>
+
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label class="form-label small fw-bold">Email Address</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control bg-light border-start-0" formControlName="email" placeholder="admin@garments.com">
+                  </div>
+                  <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']" class="text-danger x-small mt-1" style="font-size: 0.75rem;">
+                    Please enter a valid corporate email address.
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label small fw-bold">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control bg-light border-start-0" formControlName="password" placeholder="••••••••">
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm mb-3" [disabled]="loginForm.invalid || isLoading">
+                  <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+                  Sign In to Dashboard
+                </button>
+
+                <div class="text-center">
+                  <p class="small text-muted mb-0">Trouble logging in? <a href="#" class="text-decoration-none">Contact IT Support</a></p>
+                </div>
+              </form>
+
+              <!-- Quick Login for Demo -->
+              <div class="mt-5 pt-4 border-top">
+                <p class="small text-muted mb-2 fw-bold text-uppercase">Demo Accounts</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <button class="btn btn-sm btn-light border" (click)="quickLogin('admin')">Admin</button>
+                  <button class="btn btn-sm btn-light border" (click)="quickLogin('merch')">Merch</button>
+                  <button class="btn btn-sm btn-light border" (click)="quickLogin('prod')">Production</button>
+                  <button class="btn btn-sm btn-light border" (click)="quickLogin('qa')">QA</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

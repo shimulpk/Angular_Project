@@ -1,0 +1,103 @@
+
+    <div class="container-fluid py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h3 class="fw-bold">Inventory Management</h3>
+          <p class="text-muted">Monitor stock levels, reorder points, and material movements</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm" routerLink="/inventory/transactions"><i class="bi bi-clock-history me-1"></i> Transaction Log</button>
+          <button class="btn btn-primary btn-sm" routerLink="/inventory/new-transaction"><i class="bi bi-arrow-left-right me-1"></i> New Transaction</button>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div *ngIf="lowStockItems.length > 0" class="alert alert-warning border-0 shadow-sm d-flex align-items-center mb-4">
+        <i class="bi bi-exclamation-triangle-fill fs-4 me-3"></i>
+        <div>
+          <h6 class="mb-0 fw-bold">Reorder Alert</h6>
+          <p class="mb-0 small">{{ lowStockItems.length }} items are below their reorder level.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm p-4 h-100 bg-primary text-white">
+            <h6 class="text-white-50 small mb-1">Total Items</h6>
+            <h2 class="fw-bold mb-0">{{ inventory.length }}</h2>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm p-4 h-100">
+            <h6 class="text-muted small mb-1">Total Qty On Hand</h6>
+            <h2 class="fw-bold mb-0">{{ totalStock }}</h2>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm p-4 h-100">
+            <h6 class="text-muted small mb-1">Reserved Qty</h6>
+            <h2 class="fw-bold mb-0 text-info">{{ totalReserved }}</h2>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm p-4 h-100">
+            <h6 class="text-muted small mb-1">Active Alerts</h6>
+            <h2 class="fw-bold mb-0 text-danger">{{ lowStockItems.length }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mt-4">
+        <div class="card-header bg-white border-0 py-3">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="mb-0 fw-bold">Stock Overview</h5>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control border-start-0" placeholder="Search materials..." [(ngModel)]="searchTerm" (input)="filterInventory()">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead class="bg-light">
+                <tr>
+                  <th>Material Name</th>
+                  <th>Category</th>
+                  <th class="text-center">Unit</th>
+                  <th class="text-end">On Hand</th>
+                  <th class="text-end text-info">Reserved</th>
+                  <th class="text-end fw-bold">Available</th>
+                  <th class="text-end">Reorder Lvl</th>
+                  <th class="text-center">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of filteredInventory">
+                  <td>
+                    <div class="fw-bold">{{ item.item }}</div>
+                    <small class="text-muted">#INV-{{ item.id }}</small>
+                  </td>
+                  <td><span class="badge bg-light text-dark border">{{ item.category }}</span></td>
+                  <td class="text-center">{{ item.unit }}</td>
+                  <td class="text-end">{{ item.qtyOnHand }}</td>
+                  <td class="text-end text-info">{{ item.qtyReserved }}</td>
+                  <td class="text-end fw-bold">{{ item.qtyAvailable }}</td>
+                  <td class="text-end">{{ item.reorderLevel }}</td>
+                  <td class="text-center">
+                    <span class="badge rounded-pill" [ngClass]="item.qtyAvailable <= item.reorderLevel ? 'bg-danger' : 'bg-success'">
+                      {{ item.qtyAvailable <= item.reorderLevel ? 'Low Stock' : 'In Stock' }}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  

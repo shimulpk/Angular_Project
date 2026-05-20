@@ -1,0 +1,13 @@
+.stepper { position: relative; }
+    .step { text-align: center; z-index: 2; opacity: 0.5; }
+    .step.active { opacity: 1; }
+    .step-num { 
+      width: 35px; height: 35px; background: white; color: var(--primary-color); 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      font-weight: bold; margin: 0 auto 5px; 
+    }
+    .step-label { font-size: 0.75rem; font-weight: bold; }
+    .step-line { 
+      flex-grow: 1; height: 2px; background: rgba(255,255,255,0.3); 
+      margin-top: 17px; margin-left: -20px; margin-right: -20px;
+    }

@@ -1,0 +1,161 @@
+
+    <div class="container-fluid py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="card border-0 shadow-sm overflow-hidden">
+            <!-- Stepper Header -->
+            <div class="bg-primary p-4 text-white">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold mb-0">{{ isEditMode ? 'Edit Purchase Order' : 'Purchase Order Wizard' }}</h4>
+                <button class="btn btn-outline-light btn-sm" routerLink="/orders">Exit Wizard</button>
+              </div>
+              <div class="stepper d-flex justify-content-between">
+                <div class="step" [class.active]="currentStep >= 1">
+                  <div class="step-num">1</div>
+                  <div class="step-label">Basic Info</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" [class.active]="currentStep >= 2">
+                  <div class="step-num">2</div>
+                  <div class="step-label">Item Matrix</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" [class.active]="currentStep >= 3">
+                  <div class="step-num">3</div>
+                  <div class="step-label">Review</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body p-4">
+              <form [formGroup]="orderForm">
+                <!-- Step 1: Basic Info -->
+                <div *ngIf="currentStep === 1">
+                  <h5 class="fw-bold mb-4">Order Specifications</h5>
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <label class="form-label">PO Number</label>
+                      <input type="text" class="form-control" formControlName="poNumber" placeholder="e.g. PO-2024-001">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Order Date</label>
+                      <input type="date" class="form-control" formControlName="orderDate">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Buyer</label>
+                      <select class="form-select" formControlName="buyerId">
+                        <option value="">Select Buyer</option>
+                        <option *ngFor="let buyer of buyers" [value]="buyer.id">{{ buyer.companyName }}</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Style</label>
+                      <select class="form-select" formControlName="styleId">
+                        <option value="">{{ orderForm.get('buyerId')?.value ? 'Select Style' : 'Please select a Buyer first' }}</option>
+                        <option *ngFor="let style of filteredStyles" [value]="style.id">{{ style.styleCode }} - {{ style.styleName }}</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Target Ship Date</label>
+                      <input type="date" class="form-control" formControlName="shipDate">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 2: Item Matrix -->
+                <div *ngIf="currentStep === 2">
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold mb-0">Color & Size Breakdown</h5>
+                    <button type="button" class="btn btn-sm btn-outline-primary" (click)="addItem()">
+                      <i class="bi bi-plus-lg me-1"></i> Add Line
+                    </button>
+                  </div>
+
+                  <div formArrayName="items" class="table-responsive">
+                    <table class="table table-bordered align-middle">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Color</th>
+                          <th>Size</th>
+                          <th>Quantity</th>
+                          <th>Unit Price ($)</th>
+                          <th>Subtotal</th>
+                          <th width="50"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of items.controls; let i=index" [formGroupName]="i">
+                          <td><input type="text" class="form-control form-control-sm" formControlName="color"></td>
+                          <td>
+                            <select class="form-select form-select-sm" formControlName="size">
+                              <option value="S">S</option>
+                              <option value="M">M</option>
+                              <option value="L">L</option>
+                              <option value="XL">XL</option>
+                              <option value="30">30</option>
+                              <option value="32">32</option>
+                            </select>
+                          </td>
+                          <td><input type="number" class="form-control form-control-sm" formControlName="quantity" (input)="calculateTotals()"></td>
+                          <td><input type="number" class="form-control form-control-sm" formControlName="unitPrice" (input)="calculateTotals()"></td>
+                          <td class="fw-bold text-end">{{ (item.get('quantity')?.value * item.get('unitPrice')?.value) | currency }}</td>
+                          <td>
+                            <button type="button" class="btn btn-link text-danger p-0" (click)="removeItem(i)">
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot class="table-light fw-bold">
+                        <tr>
+                          <td colspan="2" class="text-end">GRAND TOTAL</td>
+                          <td>{{ orderForm.get('totalQuantity')?.value }}</td>
+                          <td></td>
+                          <td class="text-end">{{ orderForm.get('totalAmount')?.value | currency }}</td>
+                          <td></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Step 3: Review -->
+                <div *ngIf="currentStep === 3">
+                  <h5 class="fw-bold mb-4">Order Summary & BOM Explosion</h5>
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <div class="p-3 bg-light rounded">
+                        <p class="text-muted small mb-1">PO NUMBER</p>
+                        <p class="fw-bold fs-5">{{ orderForm.get('poNumber')?.value }}</p>
+                        <p class="text-muted small mb-1">TOTAL QUANTITY</p>
+                        <p class="fw-bold">{{ orderForm.get('totalQuantity')?.value }} Units</p>
+                        <p class="text-muted small mb-1">ORDER VALUE</p>
+                        <p class="fw-bold text-primary">{{ orderForm.get('totalAmount')?.value | currency }}</p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="alert alert-info">
+                        <h6 class="fw-bold"><i class="bi bi-cpu me-2"></i>BOM Explosion Simulation</h6>
+                        <small>Based on the style specifications, this order will require:</small>
+                        <ul class="mt-2 mb-0 small">
+                          <li>1,750 Yards of Cotton Jersey</li>
+                          <li>120 Gross Buttons</li>
+                          <li>5,000 Main Labels</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-5 pt-3 border-top">
+                  <button type="button" class="btn btn-light px-4" [disabled]="currentStep === 1" (click)="currentStep = currentStep - 1">Back</button>
+                  <button *ngIf="currentStep < 3" type="button" class="btn btn-primary px-5" (click)="currentStep = currentStep + 1" [disabled]="!isStepValid()">Continue</button>
+                  <button *ngIf="currentStep === 3" type="button" class="btn btn-success px-5" (click)="submit()">{{ isEditMode ? 'Confirm & Update PO' : 'Confirm & Submit PO' }}</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

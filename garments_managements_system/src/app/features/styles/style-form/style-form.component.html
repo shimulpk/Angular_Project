@@ -1,0 +1,109 @@
+
+    <div class="container-fluid py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-0 py-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4 class="fw-bold mb-0">{{ isEdit ? 'Edit Style' : 'Create New Style' }}</h4>
+                <button class="btn btn-outline-secondary btn-sm" routerLink="/styles">
+                  <i class="bi bi-x-lg me-1"></i> Cancel
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <form [formGroup]="styleForm" (ngSubmit)="save()">
+                <div class="row g-4">
+                  <!-- Left Column: Image Upload Mock -->
+                  <div class="col-md-4">
+                    <div class="upload-container bg-light rounded-4 d-flex flex-column align-items-center justify-content-center border-2 border-dashed p-4" style="height: 300px;">
+                      <i class="bi bi-cloud-arrow-up display-3 text-muted mb-3"></i>
+                      <p class="text-muted small text-center">Drag and drop style image or click to browse</p>
+                      <button type="button" class="btn btn-sm btn-outline-primary mt-2">Choose Image</button>
+                    </div>
+                    <div class="mt-4">
+                      <label class="form-label fw-bold">Tech Pack (PDF/Excel)</label>
+                      <div class="input-group">
+                        <input type="file" class="form-control form-control-sm">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right Column: Form Fields -->
+                  <div class="col-md-8">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label">Style Code</label>
+                        <input type="text" class="form-control" formControlName="styleCode" placeholder="e.g. STY-24-001">
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Style Name</label>
+                        <input type="text" class="form-control" formControlName="styleName" placeholder="e.g. Classic Crewneck">
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Buyer</label>
+                        <select class="form-select" formControlName="buyerId">
+                          <option value="">Select Buyer</option>
+                          <option *ngFor="let buyer of buyers" [value]="buyer.id">{{ buyer.companyName }}</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Season</label>
+                        <select class="form-select" formControlName="season">
+                          <option value="Spring 2024">Spring 2024</option>
+                          <option value="Summer 2024">Summer 2024</option>
+                          <option value="Fall 2024">Fall 2024</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">Garment Type</label>
+                        <select class="form-select" formControlName="garmentType">
+                          <option value="T-Shirt">T-Shirt</option>
+                          <option value="Polo">Polo</option>
+                          <option value="Trousers">Trousers</option>
+                          <option value="Jacket">Jacket</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select" formControlName="gender">
+                          <option value="Men">Men</option>
+                          <option value="Women">Women</option>
+                          <option value="Unisex">Unisex</option>
+                          <option value="Kids">Kids</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" formControlName="approvalStatus">
+                          <option value="Draft">Draft</option>
+                          <option value="Pending">Pending</option>
+                          <option value="Approved">Approved</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="mt-4">
+                      <label class="form-label fw-bold d-block mb-3">Size Configuration</label>
+                      <div class="d-flex flex-wrap gap-3">
+                        <div *ngFor="let size of availableSizes" class="form-check">
+                          <input class="form-check-input" type="checkbox" [id]="'size'+size" (change)="toggleSize(size)" [checked]="isSizeSelected(size)">
+                          <label class="form-check-label" [for]="'size'+size">{{ size }}</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-5">
+                      <button type="submit" class="btn btn-primary px-5 py-2 shadow-sm" [disabled]="styleForm.invalid">
+                        {{ isEdit ? 'Update Style Library' : 'Create Style' }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

@@ -1,0 +1,82 @@
+
+    <div class="container-fluid py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h3 class="fw-bold">Quality Assurance Dashboard</h3>
+          <p class="text-muted">Monitor pass rates, DHU trends, and defect classifications</p>
+        </div>
+        <button class="btn btn-primary" routerLink="/qa/inspect">
+          <i class="bi bi-clipboard-check me-2"></i> New Inspection
+        </button>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm p-3 text-center h-100">
+            <h6 class="text-muted small">Avg. DHU</h6>
+            <h2 class="fw-bold text-danger">{{ avgDHU | number:'1.2-2' }}</h2>
+            <small class="text-muted">Defects per 100 units</small>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm p-3 text-center h-100">
+            <h6 class="text-muted small">Overall Pass Rate</h6>
+            <h2 class="fw-bold text-success">{{ passRate | number:'1.1-1' }}%</h2>
+            <div class="progress mt-2" style="height: 5px;">
+              <div class="progress-bar bg-success" [style.width]="passRate + '%'"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm p-3 h-100">
+            <h6 class="fw-bold mb-3">Defect Distribution</h6>
+            <div style="height: 150px;">
+              <canvas baseChart
+                [data]="pieChartData"
+                [options]="pieChartOptions"
+                [type]="pieChartType">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-0 py-3">
+          <h5 class="mb-0 fw-bold">Recent Inspections</h5>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead class="bg-light">
+                <tr>
+                  <th>PO Number</th>
+                  <th>Type</th>
+                  <th>Line</th>
+                  <th class="text-center">Check Qty</th>
+                  <th class="text-center text-success">Pass</th>
+                  <th class="text-center text-danger">Fail</th>
+                  <th class="text-center">DHU</th>
+                  <th>Inspector</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let insp of inspections">
+                  <td class="fw-bold text-primary">{{ insp.poNumber }}</td>
+                  <td><span class="badge bg-light text-dark border">{{ insp.inspectionType }}</span></td>
+                  <td>{{ insp.lineId }}</td>
+                  <td class="text-center">{{ insp.checkQty }}</td>
+                  <td class="text-center">{{ insp.passQty }}</td>
+                  <td class="text-center">{{ insp.failQty }}</td>
+                  <td class="text-center fw-bold" [class.text-danger]="insp.dhu > 5">{{ insp.dhu | number:'1.2-2' }}</td>
+                  <td>{{ insp.inspector }}</td>
+                  <td>{{ insp.date | date:'shortDate' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  

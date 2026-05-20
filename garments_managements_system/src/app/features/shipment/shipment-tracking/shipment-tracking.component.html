@@ -1,0 +1,72 @@
+
+    <div class="container-fluid py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h3 class="fw-bold">Export Tracking</h3>
+          <p class="text-muted">Monitor global shipment status and vessel movements</p>
+        </div>
+        <button class="btn btn-primary" routerLink="/shipment/new">
+          <i class="bi bi-plus-lg me-2"></i> New Shipment
+        </button>
+      </div>
+
+      <div class="row g-4">
+        <div *ngFor="let ship of shipments" class="col-md-6 col-xl-4">
+          <div class="card border-0 shadow-sm shipment-card">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <h6 class="fw-bold text-primary mb-1">{{ ship.poNumber }}</h6>
+                  <small class="text-muted"><i class="bi bi-geo-alt me-1"></i> {{ ship.destination }}</small>
+                </div>
+                <span class="badge" [ngClass]="getStatusClass(ship.status)">{{ ship.status }}</span>
+              </div>
+
+              <div class="p-3 bg-light rounded-3 mb-3">
+                <div class="row g-2">
+                  <div class="col-6">
+                    <small class="text-muted d-block">Vessel</small>
+                    <span class="fw-bold small">{{ ship.vesselName }}</span>
+                  </div>
+                  <div class="col-6">
+                    <small class="text-muted d-block">Container</small>
+                    <span class="fw-bold small text-truncate d-block">{{ ship.containerNo }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tracking Timeline -->
+              <div class="tracking-timeline mt-4">
+                <div class="track-item" [class.active]="true">
+                  <div class="track-dot"></div>
+                  <div class="track-info">
+                    <p class="mb-0 fw-bold small">Booking Confirmed</p>
+                    <small class="text-muted">{{ ship.shipDate | date:'mediumDate' }}</small>
+                  </div>
+                </div>
+                <div class="track-item" [class.active]="ship.status !== 'BOOKED'">
+                  <div class="track-dot"></div>
+                  <div class="track-info">
+                    <p class="mb-0 fw-bold small">Shipped / On-board</p>
+                    <small class="text-muted" *ngIf="ship.status !== 'BOOKED'">In Transit</small>
+                    <small class="text-muted" *ngIf="ship.status === 'BOOKED'">Pending</small>
+                  </div>
+                </div>
+                <div class="track-item" [class.active]="ship.status === 'DELIVERED'">
+                  <div class="track-dot"></div>
+                  <div class="track-info">
+                    <p class="mb-0 fw-bold small">Delivered</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
+                <button class="btn btn-sm btn-outline-primary" [routerLink]="['/shipment/packing-list', ship.id]">Packing List</button>
+                <button class="btn btn-sm btn-link text-decoration-none">Update Status</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

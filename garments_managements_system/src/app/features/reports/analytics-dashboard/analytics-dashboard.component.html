@@ -1,0 +1,132 @@
+
+    <div class="container-fluid py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h3 class="fw-bold">Business Intelligence & Analytics</h3>
+          <p class="text-muted">Enterprise-wide performance metrics and trend analysis</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary"><i class="bi bi-download me-2"></i>Export PDF</button>
+          <button class="btn btn-primary"><i class="bi bi-calendar3 me-2"></i>Date Range</button>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div *ngFor="let kpi of kpis" class="col-md-3">
+          <div class="card border-0 shadow-sm p-4 h-100">
+            <h6 class="text-muted small text-uppercase fw-bold mb-2">{{ kpi.label }}</h6>
+            <h3 class="fw-bold mb-0" [ngClass]="kpi.color">{{ kpi.value }}</h3>
+            <div class="mt-2 small" [ngClass]="kpi.trend > 0 ? 'text-success' : 'text-danger'">
+              <i class="bi" [ngClass]="kpi.trend > 0 ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+              {{ kpi.trend }}% vs last month
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-0 py-3">
+              <h5 class="mb-0 fw-bold">Order Value vs Production Output</h5>
+            </div>
+            <div class="card-body">
+              <div style="height: 350px;">
+                <canvas baseChart
+                  [data]="lineChartData"
+                  [options]="lineChartOptions"
+                  [type]="lineChartType">
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-white border-0 py-3">
+              <h5 class="mb-0 fw-bold">Inventory Valuation</h5>
+            </div>
+            <div class="card-body">
+              <div style="height: 250px;">
+                <canvas baseChart
+                  [data]="doughnutChartData"
+                  [options]="doughnutChartOptions"
+                  [type]="doughnutChartType">
+                </canvas>
+              </div>
+              <div class="mt-4">
+                <div class="d-flex justify-content-between mb-2 small">
+                  <span>Fabric</span>
+                  <span class="fw-bold">$45,200</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 small">
+                  <span>Trims</span>
+                  <span class="fw-bold">$12,800</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 small">
+                  <span>Packaging</span>
+                  <span class="fw-bold">$5,400</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+              <h6 class="fw-bold mb-3">Efficiency by Line</h6>
+              <div class="table-responsive">
+                <table class="table table-sm align-middle mb-0">
+                  <thead class="text-muted small">
+                    <tr>
+                      <th>Line</th>
+                      <th>Efficiency</th>
+                      <th width="150">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Line 01</td>
+                      <td>92%</td>
+                      <td><div class="progress" style="height: 4px;"><div class="progress-bar bg-success" style="width: 92%"></div></div></td>
+                    </tr>
+                    <tr>
+                      <td>Line 02</td>
+                      <td>85%</td>
+                      <td><div class="progress" style="height: 4px;"><div class="progress-bar bg-warning" style="width: 85%"></div></div></td>
+                    </tr>
+                    <tr>
+                      <td>Line 03</td>
+                      <td>78%</td>
+                      <td><div class="progress" style="height: 4px;"><div class="progress-bar bg-danger" style="width: 78%"></div></div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+              <h6 class="fw-bold mb-3">QA Rejection Reasons</h6>
+              <div class="d-flex align-items-center mb-3" *ngFor="let reason of ['Broken Stitch', 'Oil Stain', 'Measurement', 'Color Shade']">
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between mb-1 small">
+                    <span>{{ reason }}</span>
+                    <span class="fw-bold">24%</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-primary" [style.width]="'24%'"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

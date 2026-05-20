@@ -1,0 +1,564 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "password123",
+      "fullName": "System Administrator",
+      "role": "ADMIN",
+      "email": "admin@garments.com"
+    },
+    {
+      "id": "2",
+      "username": "merch",
+      "password": "password123",
+      "fullName": "Alex Merch",
+      "role": "MERCHANDISER",
+      "email": "merch@garments.com"
+    },
+    {
+      "id": "3",
+      "username": "prod",
+      "password": "password123",
+      "fullName": "John Prod",
+      "role": "PRODUCTION_MGR",
+      "email": "prod@garments.com"
+    },
+    {
+      "id": "4",
+      "username": "qa",
+      "password": "password123",
+      "fullName": "Sarah QA",
+      "role": "QA_OFFICER",
+      "email": "qa@garments.com"
+    },
+    {
+      "id": "5",
+      "username": "store",
+      "password": "password123",
+      "fullName": "Mike Store",
+      "role": "STOREKEEPER",
+      "email": "store@garments.com"
+    },
+    {
+      "id": "6",
+      "username": "supervisor",
+      "password": "password123",
+      "fullName": "Robert Supervisor",
+      "role": "SUPERVISOR",
+      "email": "supervisor@garments.com"
+    },
+    {
+      "id": "7",
+      "username": "viewer",
+      "password": "password123",
+      "fullName": "Vanessa Viewer",
+      "role": "VIEWER",
+      "email": "viewer@garments.com"
+    }
+  ],
+  "buyers": [
+    {
+      "buyerCode": "ZARA-01",
+      "companyName": "Inditex (Zara)",
+      "country": "Spain",
+      "currency": "EUR",
+      "paymentTerms": "LC at Sight",
+      "status": "Active",
+      "contacts": [
+        {
+          "name": "Badrul Amin",
+          "email": "b@zara.com",
+          "phone": " 91 123 4567",
+          "designation": "Merchandising Manager"
+        }
+      ],
+      "id": "1"
+    },
+    {
+      "buyerCode": "C&A",
+      "companyName": "Hamim group",
+      "country": "Bangladesh",
+      "currency": "USD",
+      "paymentTerms": "60 days",
+      "status": "Active",
+      "contacts": [
+        {
+          "name": "Syed Sajin Ahmed",
+          "email": "s@gmail.com",
+          "phone": "12345",
+          "designation": "Marchandiser"
+        }
+      ],
+      "id": "kmc20oh0tuI"
+    },
+    {
+      "buyerCode": "H&A02",
+      "companyName": "Nakano International Ltd",
+      "country": "Japan",
+      "currency": "USD",
+      "paymentTerms": "Lc",
+      "status": "Active",
+      "contacts": [
+        {
+          "name": "Badrul Amin",
+          "email": "b@gmail.com",
+          "phone": "123456",
+          "designation": "Marchandiser"
+        }
+      ],
+      "id": "z4hcXZOoC1E"
+    },
+    {
+      "buyerCode": "TH03",
+      "companyName": "Vintage Denim Studio Ltd",
+      "country": "Zarmany",
+      "currency": "EUR",
+      "paymentTerms": "Lc",
+      "status": "Active",
+      "contacts": [
+        {
+          "name": "Sajin Ahmed",
+          "email": "s@gmail.com",
+          "phone": "123456",
+          "designation": "Marchandiser"
+        }
+      ],
+      "id": "sFXWdOLVCYo"
+    }
+  ],
+  "styles": [
+    {
+      "styleCode": "TS-2024-B1",
+      "styleName": "Basic Cotton Tee",
+      "buyerId": "1",
+      "season": "Summer 2024",
+      "garmentType": "T-Shirt",
+      "gender": "Men",
+      "approvalStatus": "Approved",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "styleCode": "CH-2024-C2",
+      "styleName": "Chino Slim Fit",
+      "buyerId": null,
+      "season": "Fall 2024",
+      "garmentType": "Trousers",
+      "gender": "Women",
+      "approvalStatus": "Pending",
+      "sizeSet": [
+        "28",
+        "30",
+        "32",
+        "34"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1473966968600-fa804b86862b?w=300"
+    },
+    {
+      "styleCode": "Denim Jeans",
+      "styleName": "Slim Fit Stretch Denim",
+      "buyerId": "kmc20oh0tuI",
+      "season": "Spring 2024",
+      "garmentType": "Trousers",
+      "gender": "Unisex",
+      "approvalStatus": "Approved",
+      "sizeSet": [
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200&auto=format&fit=crop",
+      "id": "hINxyS8UzfA"
+    },
+    {
+      "styleCode": "JK8801",
+      "styleName": "Jaket",
+      "buyerId": "1",
+      "season": "Fall 2024",
+      "garmentType": "Jacket",
+      "gender": "Men",
+      "approvalStatus": "Approved",
+      "sizeSet": [
+        "M",
+        "S",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200&auto=format&fit=crop",
+      "id": "zC_ozO0ISB0"
+    },
+    {
+      "styleCode": "Dt004",
+      "styleName": "Vintage Denim",
+      "buyerId": "z4hcXZOoC1E",
+      "season": "Summer 2024",
+      "garmentType": "Trousers",
+      "gender": "Unisex",
+      "approvalStatus": "Pending",
+      "sizeSet": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "30"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200&auto=format&fit=crop",
+      "id": "FmKt649Bz_c"
+    }
+  ],
+  "purchaseOrders": [
+    {
+      "id": "1",
+      "poNumber": "PO-99201",
+      "buyerId": "1",
+      "styleId": "1",
+      "orderDate": "2024-05-01",
+      "shipDate": "2024-06-30",
+      "status": "IN_PRODUCTION",
+      "totalQuantity": 10000,
+      "totalAmount": 25000,
+      "items": [
+        {
+          "color": "Navy",
+          "size": "M",
+          "quantity": 5000,
+          "unitPrice": 2.5
+        },
+        {
+          "color": "Black",
+          "size": "L",
+          "quantity": 5000,
+          "unitPrice": 2.5
+        }
+      ]
+    },
+    {
+      "poNumber": "po-ss256",
+      "buyerId": "1",
+      "styleId": "zC_ozO0ISB0",
+      "orderDate": "2026-05-17",
+      "shipDate": "2026-06-06",
+      "status": "DRAFT",
+      "totalQuantity": 500,
+      "totalAmount": 1000000,
+      "items": [
+        {
+          "color": "navy",
+          "size": "M",
+          "quantity": 500,
+          "unitPrice": 2000
+        }
+      ],
+      "id": "mRBQzOVoxXE"
+    },
+    {
+      "poNumber": "po404",
+      "buyerId": "kmc20oh0tuI",
+      "styleId": "hINxyS8UzfA",
+      "orderDate": "2026-05-19",
+      "shipDate": "2026-06-25",
+      "status": "DRAFT",
+      "totalQuantity": 1400,
+      "totalAmount": 1640000,
+      "items": [
+        {
+          "color": "navy",
+          "size": "S",
+          "quantity": 100,
+          "unitPrice": 1000
+        },
+        {
+          "color": "blue",
+          "size": "M",
+          "quantity": 500,
+          "unitPrice": 1200
+        },
+        {
+          "color": "white",
+          "size": "L",
+          "quantity": 400,
+          "unitPrice": 1200
+        },
+        {
+          "color": "antiqe navi",
+          "size": "XL",
+          "quantity": 300,
+          "unitPrice": 1200
+        },
+        {
+          "color": "black",
+          "size": "S",
+          "quantity": 100,
+          "unitPrice": 1000
+        }
+      ],
+      "id": "UmNY9LoY2Bs"
+    },
+    {
+      "poNumber": "po405",
+      "buyerId": "sFXWdOLVCYo",
+      "styleId": "FmKt649Bz_c",
+      "orderDate": "2026-05-20",
+      "shipDate": "2026-06-05",
+      "status": "DRAFT",
+      "totalQuantity": 1500,
+      "totalAmount": 1250000,
+      "items": [
+        {
+          "color": "blue",
+          "size": "M",
+          "quantity": 1000,
+          "unitPrice": 500
+        },
+        {
+          "color": "navy",
+          "size": "L",
+          "quantity": 500,
+          "unitPrice": 1500
+        }
+      ],
+      "id": "kFx9H_a-T70"
+    }
+  ],
+  "bomHeaders": [
+    {
+      "id": "1",
+      "styleId": "1",
+      "version": "V1.0",
+      "status": "Final",
+      "createdAt": "2024-05-05"
+    },
+    {
+      "styleId": "zC_ozO0ISB0",
+      "version": "V1.0",
+      "status": "Final",
+      "items": [
+        {
+          "materialName": "fabric",
+          "category": "Fabric",
+          "unit": "Meters",
+          "consumption": 1.5,
+          "wastagePercent": 8,
+          "supplier": "Tanvir",
+          "totalRequirement": 1.62
+        },
+        {
+          "materialName": "Zipper",
+          "category": "Accessories",
+          "unit": "Pcs",
+          "consumption": 500,
+          "wastagePercent": 8,
+          "supplier": "tanvir",
+          "totalRequirement": 540
+        },
+        {
+          "materialName": "Drawstring",
+          "category": "Accessories",
+          "unit": "Meters",
+          "consumption": 1000,
+          "wastagePercent": 5,
+          "supplier": "",
+          "totalRequirement": 1050
+        }
+      ],
+      "createdAt": "2026-05-17",
+      "id": "2NsvPDNmd0A"
+    }
+  ],
+  "bomItems": [
+    {
+      "id": "1",
+      "bomId": "1",
+      "materialName": "Cotton Jersey 160 GSM",
+      "category": "Fabric",
+      "unit": "Kg",
+      "consumption": 0.22,
+      "wastagePercent": 5,
+      "supplier": "TextileMills",
+      "totalRequirement": 0.231
+    },
+    {
+      "id": "2",
+      "bomId": "1",
+      "materialName": "Polyester Thread",
+      "category": "Trims",
+      "unit": "Cone",
+      "consumption": 0.05,
+      "wastagePercent": 2,
+      "supplier": "ThreadCo",
+      "totalRequirement": 0.051
+    }
+  ],
+  "productionOrders": [
+    {
+      "id": "1",
+      "orderId": "1",
+      "poNumber": "PO-99201",
+      "lineId": "L1",
+      "stage": "SEWING",
+      "targetQty": 10000,
+      "actualQty": 4500,
+      "startDate": "2024-06-01",
+      "status": "In Progress"
+    },
+    {
+      "orderId": "mRBQzOVoxXE",
+      "poNumber": "po-ss256",
+      "lineId": "L1",
+      "stage": "CUTTING",
+      "targetQty": 1200,
+      "actualQty": 0,
+      "startDate": "2026-05-17",
+      "status": "In Progress",
+      "id": "yFbr_pROW9Y"
+    },
+    {
+      "orderId": "kFx9H_a-T70",
+      "poNumber": "po405",
+      "lineId": "L2",
+      "stage": "CUTTING",
+      "targetQty": 1200,
+      "actualQty": 0,
+      "startDate": "2026-05-20",
+      "status": "In Progress",
+      "id": "vcGsENQ3U6o"
+    }
+  ],
+  "qaInspections": [
+    {
+      "id": "1",
+      "orderId": "1",
+      "poNumber": "PO-99201",
+      "lineId": "L1",
+      "inspectionType": "Inline",
+      "checkQty": 500,
+      "passQty": 485,
+      "failQty": 15,
+      "defects": [
+        {
+          "type": "Broken Stitch",
+          "count": 10
+        },
+        {
+          "type": "Oil Stain",
+          "count": 5
+        }
+      ],
+      "dhu": 3,
+      "inspector": "Sarah QA",
+      "date": "2024-06-10"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "1",
+      "item": "Cotton Jersey 160 GSM",
+      "unit": "Kg",
+      "qtyOnHand": 5000,
+      "qtyReserved": 2310,
+      "qtyAvailable": 2690,
+      "reorderLevel": 1000,
+      "category": "Fabric"
+    },
+    {
+      "id": "2",
+      "item": "Polyester Thread",
+      "unit": "Cone",
+      "qtyOnHand": 100,
+      "qtyReserved": 51,
+      "qtyAvailable": 49,
+      "reorderLevel": 20,
+      "category": "Trims"
+    }
+  ],
+  "inventoryTransactions": [
+    {
+      "id": "1",
+      "itemId": "1",
+      "itemName": "Cotton Jersey 160 GSM",
+      "type": "RECEIPT",
+      "quantity": 5000,
+      "referenceNo": "GRN-001",
+      "date": "2024-05-15",
+      "remarks": "Opening Stock"
+    }
+  ],
+  "shipments": [
+    {
+      "id": "1",
+      "orderId": "1",
+      "poNumber": "PO-99201",
+      "vesselName": "MSC VALENCIA",
+      "billOfLading": "BL-77210",
+      "containerNo": "MSCU-123456-0",
+      "shipDate": "2024-07-05",
+      "destination": "Hamburg, DE",
+      "status": "BOOKED",
+      "totalCartons": 250,
+      "grossWeight": 3500
+    }
+  ],
+  "productionLines": [
+    {
+      "id": "L1",
+      "name": "Line 01",
+      "capacity": 1200
+    },
+    {
+      "id": "L2",
+      "name": "Line 02",
+      "capacity": 1200
+    },
+    {
+      "id": "L3",
+      "name": "Line 03",
+      "capacity": 1000
+    }
+  ],
+  "dashboardStats": {
+    "totalOrders": 128,
+    "activeProduction": 45,
+    "shipmentsDue": 8,
+    "lowStockItems": 3,
+    "efficiency": [
+      82,
+      85,
+      84,
+      88,
+      86,
+      90,
+      89
+    ],
+    "efficiencyLabels": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ]
+  },
+  "activities": [
+    {
+      "id": "1",
+      "type": "ORDER",
+      "title": "New Order Confirmed",
+      "description": "Zara - 10000 Units (Basic Tee)",
+      "time": "1 hour ago",
+      "color": "primary"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

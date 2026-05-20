@@ -1,0 +1,96 @@
+
+    <div class="container py-5" *ngIf="shipment">
+      <div class="d-print-none mb-4 d-flex justify-content-between">
+        <button class="btn btn-outline-secondary" routerLink="/shipment"><i class="bi bi-arrow-left"></i> Back</button>
+        <button class="btn btn-primary" (click)="print()"><i class="bi bi-printer me-2"></i> Print Packing List</button>
+      </div>
+
+      <div class="card border-0 shadow-lg packing-list-doc">
+        <div class="card-body p-5">
+          <!-- Header -->
+          <div class="d-flex justify-content-between mb-5">
+            <div>
+              <h2 class="fw-bold mb-0">PACKING LIST</h2>
+              <p class="text-muted">Export Documentation #{{ shipment.id }}</p>
+            </div>
+            <div class="text-end">
+              <h4 class="fw-bold text-primary">Garments ERP Pro</h4>
+              <p class="text-muted small">Industrial Zone, Dhaka, Bangladesh<br>Contact: +880 2 9882731</p>
+            </div>
+          </div>
+
+          <!-- Info Grid -->
+          <div class="row g-4 mb-5 p-4 bg-light rounded-3">
+            <div class="col-md-6">
+              <h6 class="fw-bold text-muted small text-uppercase">Ship To:</h6>
+              <p class="mb-0 fw-bold">{{ shipment.destination }}</p>
+              <p class="text-muted small">International Logistics Terminal</p>
+            </div>
+            <div class="col-md-3">
+              <h6 class="fw-bold text-muted small text-uppercase">Vessel / Voyage:</h6>
+              <p class="mb-0 fw-bold">{{ shipment.vesselName }}</p>
+            </div>
+            <div class="col-md-3">
+              <h6 class="fw-bold text-muted small text-uppercase">Ship Date:</h6>
+              <p class="mb-0 fw-bold">{{ shipment.shipDate | date }}</p>
+            </div>
+          </div>
+
+          <div class="row g-4 mb-5 border-bottom pb-4">
+            <div class="col-md-4">
+              <h6 class="fw-bold text-muted small text-uppercase">Bill of Lading:</h6>
+              <p class="mb-0 fw-bold">{{ shipment.billOfLading }}</p>
+            </div>
+            <div class="col-md-4">
+              <h6 class="fw-bold text-muted small text-uppercase">Container #:</h6>
+              <p class="mb-0 fw-bold">{{ shipment.containerNo }}</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+              <h6 class="fw-bold text-muted small text-uppercase">PO Number:</h6>
+              <p class="mb-0 fw-bold text-primary">{{ shipment.poNumber }}</p>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <table class="table table-bordered align-middle mt-4">
+            <thead class="table-light">
+              <tr>
+                <th>Carton #</th>
+                <th>Description</th>
+                <th class="text-center">Qty (Pcs)</th>
+                <th class="text-end">Net Weight (Kg)</th>
+                <th class="text-end">Gross Weight (Kg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>C001 - C120</td>
+                <td>Assorted Garments (Cotton Tee)</td>
+                <td class="text-center">5,000</td>
+                <td class="text-end">2,200.00</td>
+                <td class="text-end">{{ shipment.grossWeight | number:'1.2-2' }}</td>
+              </tr>
+            </tbody>
+            <tfoot class="fw-bold">
+              <tr>
+                <td colspan="2" class="text-end">GRAND TOTAL</td>
+                <td class="text-center">5,000</td>
+                <td class="text-end">2,200.00</td>
+                <td class="text-end">{{ shipment.grossWeight | number:'1.2-2' }}</td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <!-- Footer Signatures -->
+          <div class="row mt-5 pt-5">
+            <div class="col-4">
+              <div class="border-top pt-2 text-center small text-muted">Authorized Signatory</div>
+            </div>
+            <div class="col-4 offset-4">
+              <div class="border-top pt-2 text-center small text-muted">Receiver's Signature</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
