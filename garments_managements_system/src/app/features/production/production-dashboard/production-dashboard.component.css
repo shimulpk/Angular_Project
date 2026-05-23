@@ -1,6 +1,0 @@
-.kanban-container { min-height: 600px; }
-    .kanban-column { min-width: 250px; background: #f8fafc !important; }
-    .production-card { border-left: 4px solid #10b981; }
-    .status-in-progress { background-color: #dbeafe !important; color: #1e40af !important; }
-    .status-completed { background-color: #dcfce7 !important; color: #166534 !important; }
-    .status-delayed { background-color: #fee2e2 !important; color: #991b1b !important; }

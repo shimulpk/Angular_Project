@@ -2,10 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { QAService } from '../qa-service/qa.service';
-import { OrderService } from '../../orders/order-service/order.service';
-import { ProductionService } from '../../production/production-service/production.service';
+import { OrderService } from '../../../core/services/order.service';
+import { ProductionPlanningService } from '../../production-planning/production-planning.service';
 import { Order } from '../../../models/order/order.model';
-import { ProductionLine } from '../../../models/production/production.model';
 import { QAInspection, Defect } from '../../../models/qa/qa.model';
 import { NotificationService } from '../../../core/services/notification/notification.service';
 import { Router, RouterModule } from '@angular/router';
@@ -19,13 +18,13 @@ export class QAInspectionFormComponent implements OnInit {
   private fb = inject(FormBuilder);
   private qaService = inject(QAService);
   private orderService = inject(OrderService);
-  private prodService = inject(ProductionService);
+  private prodPlanService = inject(ProductionPlanningService);
   private notify = inject(NotificationService);
   private router = inject(Router);
 
   qaForm!: FormGroup;
   orders: Order[] = [];
-  lines: ProductionLine[] = [];
+  lines: any[] = [];
 
   ngOnInit() {
     this.initForm();
@@ -41,6 +40,8 @@ export class QAInspectionFormComponent implements OnInit {
       checkQty: [0, [Validators.required, Validators.min(1)]],
       passQty: [0],
       failQty: [0],
+      reworkQty: [0],
+      rejectQty: [0],
       defects: this.fb.array([]),
       dhu: [0],
       inspector: [''],
@@ -67,7 +68,7 @@ export class QAInspectionFormComponent implements OnInit {
 
   loadData() {
     this.orderService.getOrders().subscribe((data: Order[]) => this.orders = data);
-    this.prodService.getProductionLines().subscribe((data: ProductionLine[]) => this.lines = data);
+    this.prodPlanService.getLines().subscribe((data: any[]) => this.lines = data);
   }
 
   onOrderSelect() {
@@ -79,11 +80,15 @@ export class QAInspectionFormComponent implements OnInit {
   calculateMetrics() {
     const checkQty = this.qaForm.get('checkQty')?.value || 0;
     const failQty = this.qaForm.get('failQty')?.value || 0;
+    const reworkQty = this.qaForm.get('reworkQty')?.value || 0;
     
     // Auto calculate pass qty if check and fail are given
     if (checkQty > 0) {
       this.qaForm.patchValue({ passQty: checkQty - failQty }, { emitEvent: false });
     }
+
+    // Auto calculate reject qty
+    this.qaForm.patchValue({ rejectQty: Math.max(0, failQty - reworkQty) }, { emitEvent: false });
 
     // Calculate DHU
     let totalDefects = 0;
@@ -94,6 +99,7 @@ export class QAInspectionFormComponent implements OnInit {
       this.qaForm.patchValue({ dhu: parseFloat(dhu.toFixed(2)) }, { emitEvent: false });
     }
   }
+
 
   save() {
     if (this.qaForm.valid) {

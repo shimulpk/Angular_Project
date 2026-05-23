@@ -11,25 +11,113 @@
         <a routerLink="/dashboard" routerLinkActive="active" class="menu-item">
           <i class="bi bi-grid-1x2"></i> Dashboard
         </a>
-        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER'])" routerLink="/buyers" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-person-badge"></i> Buyer Center
+        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/buyer-management" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-person-badge"></i> Buyer Management
         </a>
-        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER'])" routerLink="/styles" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-palette"></i> Style Library
+        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/uom-management" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-rulers"></i> UOM
         </a>
-        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER'])" routerLink="/orders" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-cart-check"></i> Purchase Orders
+        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/bom-style" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-palette"></i> BOM Style
+        </a>
+        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/bom-view" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-eye"></i> BOM View
+        </a>
+        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/order-management" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-cart-check"></i> Order
+        </a>
+        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/raw-materials" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-box-seam"></i> Raw Materials Check
         </a>
 
-        <div *ngIf="hasRole(['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'STOREKEEPER'])" class="menu-section-label mt-4">Supply Chain</div>
-        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER'])" routerLink="/merchandising" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-calculator"></i> Merchandising
+        <div *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" class="menu-section-label mt-4">Production Planning & Control</div>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-production-order" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-plus-circle"></i> Add Production Order
         </a>
-        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR', 'SUPERVISOR'])" routerLink="/production" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-hammer"></i> Production
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-production-order" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-list-check"></i> View Production Order
         </a>
-        <a *ngIf="hasRole(['ADMIN', 'STOREKEEPER'])" routerLink="/inventory" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-box-seam"></i> Inventory
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-daywise-production" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-calendar-plus"></i> Add Day-wise Production
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-daywise-production" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-calendar3"></i> View Day-wise Production
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/production-summary-report" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-bar-chart-steps"></i> Production Summary
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/line-list" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-diagram-3"></i> Line List
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/machine-list" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-gear-wide-connected"></i> Machine List
+        </a>
+
+        <div *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" class="menu-section-label mt-3" style="font-size:0.65rem; opacity:0.7;">✂️ CUTTING</div>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-cutting-plan" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-scissors"></i> Add Cutting Plan
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-cutting-plan" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-table"></i> View Cutting Plan
+        </a>
+
+        <div *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" class="menu-section-label mt-3" style="font-size:0.65rem; opacity:0.7;">🪡 SEWING</div>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-sewing-plan" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-hand-index-thumb"></i> Add Sewing Plan
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-sewing-plan" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-table"></i> View Sewing Plan
+        </a>
+
+        <div *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" class="menu-section-label mt-3" style="font-size:0.65rem; opacity:0.7;">✨ FINISHING</div>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-finishing-plan" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-stars"></i> Add Finishing Plan
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-finishing-plan" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-table"></i> View Finishing Plan
+        </a>
+
+        <div *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" class="menu-section-label mt-3" style="font-size:0.65rem; opacity:0.7;">📦 PACKING</div>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-packing-plan" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-box-arrow-in-down"></i> Add Packing Plan
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-packing-plan" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-table"></i> View Packing Plan
+        </a>
+
+        <div *ngIf="hasRole(['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'PURCHASE_MGR'])" class="menu-section-label mt-4">Procurement & Inventory</div>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/add-vendor" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-person-plus"></i> Add Vendor
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/view-vendor" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-person-lines-fill"></i> View Vendor
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/add-item" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-box-seam"></i> Add Item
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/view-item" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-boxes"></i> View Item
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/stock-in" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-arrow-down-square"></i> Stock In
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/stock-out" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-arrow-up-square"></i> Stock Out
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/inventory-list" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-list-ul"></i> Inventory List
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/create-requisition" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-file-earmark-plus"></i> Create Requisition
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/view-requisition" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-file-earmark-text"></i> View Requisition
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/create-po" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-cart-plus"></i> Create PO
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/view-po" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-cart"></i> View PO
         </a>
 
         <div class="menu-section-label mt-4">Quality & Logistics</div>

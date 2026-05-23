@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-xl-4 mb-4">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+        <h5 class="mb-0">Raw Materials Input</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="rawForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <label class="form-label text-muted small fw-bold">Select Style *</label>
+            <select class="form-select" formControlName="styleId">
+              <option value="">Select Style...</option>
+              <option *ngFor="let s of styles" [value]="s.id">{{ s.styleCode }} - {{ s.styleName }}</option>
+            </select>
+          </div>
+
+          <div class="mb-4 p-3 border rounded-3 bg-light">
+            <h6 class="mb-3 fw-bold text-primary">Short Sleeve Shirt Qty</h6>
+            <div class="row g-2">
+              <div class="col-6">
+                <label class="small text-muted mb-1">Size S</label>
+                <input type="number" class="form-control" formControlName="short_S">
+              </div>
+              <div class="col-6">
+                <label class="small text-muted mb-1">Size M</label>
+                <input type="number" class="form-control" formControlName="short_M">
+              </div>
+              <div class="col-6 mt-2">
+                <label class="small text-muted mb-1">Size L</label>
+                <input type="number" class="form-control" formControlName="short_L">
+              </div>
+              <div class="col-6 mt-2">
+                <label class="small text-muted mb-1">Size XL</label>
+                <input type="number" class="form-control" formControlName="short_XL">
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4 p-3 border rounded-3 bg-light">
+            <h6 class="mb-3 fw-bold text-info">Full Sleeve Shirt Qty</h6>
+            <div class="row g-2">
+              <div class="col-6">
+                <label class="small text-muted mb-1">Size S</label>
+                <input type="number" class="form-control" formControlName="full_S">
+              </div>
+              <div class="col-6">
+                <label class="small text-muted mb-1">Size M</label>
+                <input type="number" class="form-control" formControlName="full_M">
+              </div>
+              <div class="col-6 mt-2">
+                <label class="small text-muted mb-1">Size L</label>
+                <input type="number" class="form-control" formControlName="full_L">
+              </div>
+              <div class="col-6 mt-2">
+                <label class="small text-muted mb-1">Size XL</label>
+                <input type="number" class="form-control" formControlName="full_XL">
+              </div>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-100" [disabled]="rawForm.invalid || calculations.length === 0">
+            <i class="bi bi-save me-1"></i> Save Fabric Data
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+        <h5 class="mb-0">Raw Materials Calculation</h5>
+      </div>
+      <div class="card-body">
+        
+        <div class="table-responsive mb-4">
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Product Name</th>
+                <th>Product Size</th>
+                <th>Type</th>
+                <th>Qty</th>
+                <th>Base Fabric (m)</th>
+                <th class="text-primary fw-bold text-end">Calculated Fabric (m)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let calc of calculations" [class.table-warning]="!calc.hasUom">
+                <td>{{ calc.productName }}</td>
+                <td class="text-center"><span class="badge bg-secondary">{{ calc.size }}</span></td>
+                <td><span class="badge border text-dark">{{ calc.type }}</span></td>
+                <td class="text-center">{{ calc.qty }}</td>
+                <td>
+                  <span *ngIf="calc.hasUom">{{ calc.baseFabric }}</span>
+                  <span *ngIf="!calc.hasUom" class="text-danger small"><i class="bi bi-exclamation-triangle"></i> UOM Not Found</span>
+                </td>
+                <td class="text-end fw-bold text-primary">{{ calc.calculatedFabric | number:'1.2-4' }}</td>
+              </tr>
+              <tr *ngIf="calculations.length === 0">
+                <td colspan="6" class="text-center py-5 text-muted">
+                  <i class="bi bi-calculator fs-1 d-block mb-2 text-light"></i>
+                  Enter quantities to calculate required fabric.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Total Panel -->
+        <div class="bg-primary text-white p-4 rounded-4 shadow-sm d-flex align-items-center justify-content-between">
+          <div>
+            <h5 class="mb-1 text-white-50">Total Fabric Required</h5>
+            <p class="mb-0 small">Sum of all calculated fabric values</p>
+          </div>
+          <div class="text-end">
+            <div class="display-5 fw-bold">{{ totalFabricRequired | number:'1.2-4' }} <span class="fs-4">m</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,80 +19,128 @@ export const routes: Routes = [
         data: { roles: ['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'QA_OFFICER', 'STOREKEEPER', 'VIEWER'] }
       },
       {
-        path: 'buyers',
-        loadComponent: () => import('./features/buyers/buyer-list/buyer-list.component').then(m => m.BuyerListComponent),
+        path: 'buyer-management',
+        loadComponent: () => import('./features/buyer-management/buyer-management.component').then(m => m.BuyerManagementComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
       {
-        path: 'buyers/:id',
-        loadComponent: () => import('./features/buyers/buyer-details/buyer-details.component').then(m => m.BuyerDetailsComponent),
+        path: 'uom-management',
+        loadComponent: () => import('./features/uom-management/uom-management.component').then(m => m.UomManagementComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
       {
-        path: 'styles',
-        loadComponent: () => import('./features/styles/style-list/style-list.component').then(m => m.StyleListComponent),
+        path: 'bom-style',
+        loadComponent: () => import('./features/bom-style/bom-style.component').then(m => m.BomStyleComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
       {
-        path: 'styles/new',
-        loadComponent: () => import('./features/styles/style-form/style-form.component').then(m => m.StyleFormComponent),
+        path: 'bom-view',
+        loadComponent: () => import('./features/bom-view/bom-view.component').then(m => m.BomViewComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
       {
-        path: 'styles/:id',
-        loadComponent: () => import('./features/styles/style-details/style-details.component').then(m => m.StyleDetailsComponent),
+        path: 'order-management',
+        loadComponent: () => import('./features/order-management/order-management.component').then(m => m.OrderManagementComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
       {
-        path: 'styles/edit/:id',
-        loadComponent: () => import('./features/styles/style-form/style-form.component').then(m => m.StyleFormComponent),
+        path: 'raw-materials',
+        loadComponent: () => import('./features/raw-materials/raw-materials.component').then(m => m.RawMaterialsComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
       {
-        path: 'orders',
-        loadComponent: () => import('./features/orders/order-list/order-list.component').then(m => m.OrderListComponent),
+        path: 'production-planning/add-production-order',
+        loadComponent: () => import('./features/production-planning/add-production-order/add-production-order.component').then(m => m.AddProductionOrderComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
-        path: 'orders/new',
-        loadComponent: () => import('./features/orders/order-wizard/order-wizard.component').then(m => m.OrderWizardComponent),
+        path: 'production-planning/view-production-order',
+        loadComponent: () => import('./features/production-planning/view-production-order/view-production-order.component').then(m => m.ViewProductionOrderComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
-        path: 'orders/:id',
-        loadComponent: () => import('./features/orders/order-details/order-details.component').then(m => m.OrderDetailsComponent),
+        path: 'production-planning/add-daywise-production',
+        loadComponent: () => import('./features/production-planning/add-daywise-production/add-daywise-production.component').then(m => m.AddDaywiseProductionComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
-        path: 'orders/edit/:id',
-        loadComponent: () => import('./features/orders/order-wizard/order-wizard.component').then(m => m.OrderWizardComponent),
+        path: 'production-planning/view-daywise-production',
+        loadComponent: () => import('./features/production-planning/view-daywise-production/view-daywise-production.component').then(m => m.ViewDaywiseProductionComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
-        path: 'merchandising',
-        loadComponent: () => import('./features/merchandising/bom-builder/bom-builder.component').then(m => m.BOMBuilderComponent),
+        path: 'production-planning/production-summary-report',
+        loadComponent: () => import('./features/production-planning/production-summary-report/production-summary-report.component').then(m => m.ProductionSummaryReportComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
-        path: 'production',
-        loadComponent: () => import('./features/production/production-dashboard/production-dashboard.component').then(m => m.ProductionDashboardComponent),
+        path: 'production-planning/line-list',
+        loadComponent: () => import('./features/production-planning/line-list/line-list.component').then(m => m.LineListComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'PRODUCTION_MGR', 'SUPERVISOR'] }
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
-        path: 'production/assign',
-        loadComponent: () => import('./features/production/production-form/production-form.component').then(m => m.ProductionFormComponent),
+        path: 'production-planning/machine-list',
+        loadComponent: () => import('./features/production-planning/machine-list/machine-list.component').then(m => m.MachineListComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/add-cutting-plan',
+        loadComponent: () => import('./features/production-planning/add-cutting-plan/add-cutting-plan.component').then(m => m.AddCuttingPlanComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/view-cutting-plan',
+        loadComponent: () => import('./features/production-planning/view-cutting-plan/view-cutting-plan.component').then(m => m.ViewCuttingPlanComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/add-sewing-plan',
+        loadComponent: () => import('./features/production-planning/add-sewing-plan/add-sewing-plan.component').then(m => m.AddSewingPlanComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/view-sewing-plan',
+        loadComponent: () => import('./features/production-planning/view-sewing-plan/view-sewing-plan.component').then(m => m.ViewSewingPlanComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/add-finishing-plan',
+        loadComponent: () => import('./features/production-planning/add-finishing-plan/add-finishing-plan.component').then(m => m.AddFinishingPlanComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/view-finishing-plan',
+        loadComponent: () => import('./features/production-planning/view-finishing-plan/view-finishing-plan.component').then(m => m.ViewFinishingPlanComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/add-packing-plan',
+        loadComponent: () => import('./features/production-planning/add-packing-plan/add-packing-plan.component').then(m => m.AddPackingPlanComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/view-packing-plan',
+        loadComponent: () => import('./features/production-planning/view-packing-plan/view-packing-plan.component').then(m => m.ViewPackingPlanComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
@@ -109,22 +157,70 @@ export const routes: Routes = [
         data: { roles: ['ADMIN', 'QA_OFFICER'] }
       },
       {
-        path: 'inventory',
-        loadComponent: () => import('./features/inventory/inventory-dashboard/inventory-dashboard.component').then(m => m.InventoryDashboardComponent),
+        path: 'procurement/add-vendor',
+        loadComponent: () => import('./features/procurement/add-vendor/add-vendor.component').then(m => m.AddVendorComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'STOREKEEPER'] }
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
       },
       {
-        path: 'inventory/new-transaction',
-        loadComponent: () => import('./features/inventory/inventory-form/inventory-form.component').then(m => m.InventoryFormComponent),
+        path: 'procurement/view-vendor',
+        loadComponent: () => import('./features/procurement/view-vendor/view-vendor.component').then(m => m.ViewVendorComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'STOREKEEPER'] }
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
       },
       {
-        path: 'inventory/transactions',
-        loadComponent: () => import('./features/inventory/transaction-table/transaction-table.component').then(m => m.TransactionTableComponent),
+        path: 'procurement/add-item',
+        loadComponent: () => import('./features/procurement/add-item/add-item.component').then(m => m.AddItemComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'STOREKEEPER'] }
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
+      },
+      {
+        path: 'procurement/view-item',
+        loadComponent: () => import('./features/procurement/view-item/view-item.component').then(m => m.ViewItemComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
+      },
+      {
+        path: 'procurement/stock-in',
+        loadComponent: () => import('./features/procurement/stock-in/stock-in.component').then(m => m.StockInComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
+      },
+      {
+        path: 'procurement/stock-out',
+        loadComponent: () => import('./features/procurement/stock-out/stock-out.component').then(m => m.StockOutComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
+      },
+      {
+        path: 'procurement/inventory-list',
+        loadComponent: () => import('./features/procurement/inventory-list/inventory-list.component').then(m => m.InventoryListComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
+      },
+      {
+        path: 'procurement/create-requisition',
+        loadComponent: () => import('./features/procurement/create-requisition/create-requisition.component').then(m => m.CreateRequisitionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
+      },
+      {
+        path: 'procurement/view-requisition',
+        loadComponent: () => import('./features/procurement/view-requisition/view-requisition.component').then(m => m.ViewRequisitionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
+      },
+      {
+        path: 'procurement/create-po',
+        loadComponent: () => import('./features/procurement/create-po/create-po.component').then(m => m.CreatePoComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
+      },
+      {
+        path: 'procurement/view-po',
+        loadComponent: () => import('./features/procurement/view-po/view-po.component').then(m => m.ViewPoComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PURCHASE_MGR'] }
       },
       {
         path: 'shipment',

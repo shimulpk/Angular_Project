@@ -2,21 +2,26 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShipmentService } from '../shipment-service/shipment.service';
-import { OrderService } from '../../orders/order-service/order.service';
+import { OrderService } from '../../../core/services/order.service';
+import { QAService } from '../../qa/qa-service/qa.service';
 import { Order } from '../../../models/order/order.model';
 import { Shipment } from '../../../models/shipment/shipment.model';
 import { NotificationService } from '../../../core/services/notification/notification.service';
 import { Router, RouterModule } from '@angular/router';
+import { forkJoin } from 'rxjs';
+
 @Component({
   selector: 'app-shipment-entry',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './shipment-entry.component.html',
-  styleUrl: './shipment-entry.component.css'})
+  styleUrl: './shipment-entry.component.css'
+})
 export class ShipmentEntryComponent implements OnInit {
   private fb = inject(FormBuilder);
   private shipmentService = inject(ShipmentService);
   private orderService = inject(OrderService);
+  private qaService = inject(QAService);
   private notify = inject(NotificationService);
   private router = inject(Router);
 
@@ -44,8 +49,21 @@ export class ShipmentEntryComponent implements OnInit {
   }
 
   loadData() {
-    this.orderService.getOrders().subscribe((orders: Order[]) => {
-      this.readyOrders = orders; // In real ERP, filter by production status
+    forkJoin({
+      orders: this.orderService.getOrders(),
+      inspections: this.qaService.getInspections()
+    }).subscribe({
+      next: ({ orders, inspections }) => {
+        const passedOrderIds = new Set(
+          inspections
+            .filter(insp => insp.passQty > 0)
+            .map(insp => insp.orderId)
+        );
+        this.readyOrders = orders.filter(o => o.id && passedOrderIds.has(o.id));
+      },
+      error: () => {
+        this.notify.error('Failed to load orders or inspection data');
+      }
     });
   }
 
@@ -64,3 +82,4 @@ export class ShipmentEntryComponent implements OnInit {
     }
   }
 }
+

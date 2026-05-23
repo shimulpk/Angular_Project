@@ -1,32 +1,33 @@
 import { Injectable, inject } from '@angular/core';
-import { OrderService } from '../../orders/order-service/order.service';
-import { ProductionService } from '../../production/production-service/production.service';
+import { OrderService } from '../../../core/services/order.service';
+import { ProductionPlanningService } from '../../production-planning/production-planning.service';
 import { QAService } from '../../qa/qa-service/qa.service';
-import { InventoryService } from '../../inventory/inventory-service/inventory.service';
+import { ProcurementService } from '../../../core/services/procurement.service';
 import { ShipmentService } from '../../shipment/shipment-service/shipment.service';
 import { forkJoin, map, Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
   private orderService = inject(OrderService);
-  private prodService = inject(ProductionService);
+  private prodPlanService = inject(ProductionPlanningService);
   private qaService = inject(QAService);
-  private invService = inject(InventoryService);
+  private procurementService = inject(ProcurementService);
   private shipService = inject(ShipmentService);
 
   getExecutiveSummary(): Observable<any> {
     return forkJoin({
       orders: this.orderService.getOrders(),
-      production: this.prodService.getProductionTracking(),
+      production: this.prodPlanService.getProductionOrders(),
       qa: this.qaService.getInspections(),
-      inventory: this.invService.getInventory(),
+      inventory: this.procurementService.getInventory(),
       shipments: this.shipService.getShipments()
     }).pipe(
       map(data => {
-        const totalOrderValue = data.orders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
-        const avgDHU = data.qa.reduce((sum, q) => sum + q.dhu, 0) / (data.qa.length || 1);
-        const totalInventoryValue = data.inventory.reduce((sum, i) => sum + (i.qtyOnHand * 5), 0); // Mock price $5
+        const totalOrderValue = data.orders.reduce((sum: number, o: any) => sum + (o.totalAmount || 0), 0);
+        const avgDHU = data.qa.reduce((sum: number, q: any) => sum + q.dhu, 0) / (data.qa.length || 1);
+        const totalInventoryValue = data.inventory.reduce((sum: number, i: any) => sum + ((i.quantity || 0) * 5), 0); // Mock price $5
 
         return {
           totalOrderValue,

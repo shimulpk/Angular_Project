@@ -13,6 +13,8 @@ export interface QAInspection {
   checkQty: number;
   passQty: number;
   failQty: number;
+  reworkQty?: number;
+  rejectQty?: number;
   defects: Defect[];
   dhu: number; // (Total Defects / Check Qty) * 100
   inspector: string;

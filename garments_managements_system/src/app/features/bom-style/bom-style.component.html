@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+        <h5 class="mb-0">Add BOM Style</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="styleForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label class="form-label text-muted small fw-bold">Style Code *</label>
+            <input type="text" class="form-control" formControlName="styleCode" placeholder="e.g. STY-001">
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-muted small fw-bold">Style Type *</label>
+            <select class="form-select" formControlName="styleType">
+              <option value="Casual">Casual</option>
+              <option value="Formal">Formal</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="form-label text-muted small fw-bold">Description</label>
+            <textarea class="form-control" formControlName="description" rows="3" placeholder="Brief description of the style..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-100" [disabled]="styleForm.invalid">
+            <i class="bi bi-save me-1"></i> Save BOM Style
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+        <h5 class="mb-0">BOM Style List (Bill of Materials List)</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Style Code</th>
+                <th>Style Type</th>
+                <th>Description</th>
+                <th class="text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let style of styles">
+                <td><span class="badge bg-light text-dark border">{{ style.styleCode }}</span></td>
+                <td>
+                  <span class="badge" [ngClass]="{'bg-primary': style.styleType === 'Formal', 'bg-info': style.styleType === 'Casual'}">
+                    {{ style.styleType || 'N/A' }}
+                  </span>
+                </td>
+                <td class="text-truncate" style="max-width: 250px;" [title]="style.description || style.styleName">
+                  {{ style.description || style.styleName || 'N/A' }}
+                </td>
+                <td class="text-end">
+                  <a [routerLink]="['/styles', style.id]" class="btn btn-sm btn-outline-primary me-1">
+                    <i class="bi bi-eye"></i> View
+                  </a>
+                  <button class="btn btn-sm btn-outline-danger" (click)="deleteStyle(style.id!)">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="styles.length === 0">
+                <td colspan="4" class="text-center py-4 text-muted">No BOM styles found.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

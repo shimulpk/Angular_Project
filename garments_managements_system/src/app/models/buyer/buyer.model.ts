@@ -5,7 +5,6 @@ export interface BuyerContact {
   designation: string;
 }
 
-
 export interface Buyer {
   id?: string;
   buyerCode: string;
@@ -13,7 +12,8 @@ export interface Buyer {
   country: string;
   currency: string;
   paymentTerms: string;
+  address?: string;
+  website?: string;
   contacts: BuyerContact[];
   status: 'Active' | 'Inactive';
 }
-

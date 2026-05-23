@@ -10,27 +10,34 @@
         </button>
       </div>
 
-      <div class="row g-4 mb-4">
-        <div class="col-md-3">
+      <div class="row g-3 mb-4">
+        <div class="col-md-2">
           <div class="card border-0 shadow-sm p-3 text-center h-100">
-            <h6 class="text-muted small">Avg. DHU</h6>
+            <h6 class="text-muted small mb-1">Avg. DHU</h6>
             <h2 class="fw-bold text-danger">{{ avgDHU | number:'1.2-2' }}</h2>
-            <small class="text-muted">Defects per 100 units</small>
+            <small class="text-muted small" style="font-size: 0.75rem;">Defects per 100 pcs</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="card border-0 shadow-sm p-3 text-center h-100">
-            <h6 class="text-muted small">Overall Pass Rate</h6>
+            <h6 class="text-muted small mb-1">Overall Pass Rate</h6>
             <h2 class="fw-bold text-success">{{ passRate | number:'1.1-1' }}%</h2>
             <div class="progress mt-2" style="height: 5px;">
               <div class="progress-bar bg-success" [style.width]="passRate + '%'"></div>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+          <div class="card border-0 shadow-sm p-3 text-center h-100 border-start border-4 border-warning">
+            <h6 class="text-muted small mb-1">Total Rework Items</h6>
+            <h2 class="fw-bold text-warning">{{ totalRework | number }}</h2>
+            <small class="text-muted small" style="font-size: 0.75rem;">Pending correction on floor</small>
+          </div>
+        </div>
+        <div class="col-md-4">
           <div class="card border-0 shadow-sm p-3 h-100">
-            <h6 class="fw-bold mb-3">Defect Distribution</h6>
-            <div style="height: 150px;">
+            <h6 class="fw-bold mb-2" style="font-size: 0.9rem;">Defect Distribution</h6>
+            <div style="height: 110px;">
               <canvas baseChart
                 [data]="pieChartData"
                 [options]="pieChartOptions"
@@ -48,7 +55,7 @@
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table align-middle mb-0">
-              <thead class="bg-light">
+              <thead class="bg-light text-muted small">
                 <tr>
                   <th>PO Number</th>
                   <th>Type</th>
@@ -56,6 +63,8 @@
                   <th class="text-center">Check Qty</th>
                   <th class="text-center text-success">Pass</th>
                   <th class="text-center text-danger">Fail</th>
+                  <th class="text-center text-warning">Rework</th>
+                  <th class="text-center text-secondary">Reject</th>
                   <th class="text-center">DHU</th>
                   <th>Inspector</th>
                   <th>Date</th>
@@ -64,13 +73,15 @@
               <tbody>
                 <tr *ngFor="let insp of inspections">
                   <td class="fw-bold text-primary">{{ insp.poNumber }}</td>
-                  <td><span class="badge bg-light text-dark border">{{ insp.inspectionType }}</span></td>
+                  <td><span class="badge bg-light text-dark border" style="font-size: 0.75rem;">{{ insp.inspectionType }}</span></td>
                   <td>{{ insp.lineId }}</td>
                   <td class="text-center">{{ insp.checkQty }}</td>
-                  <td class="text-center">{{ insp.passQty }}</td>
-                  <td class="text-center">{{ insp.failQty }}</td>
+                  <td class="text-center fw-semibold text-success">{{ insp.passQty }}</td>
+                  <td class="text-center fw-semibold text-danger">{{ insp.failQty }}</td>
+                  <td class="text-center fw-semibold text-warning">{{ insp.reworkQty || 0 }}</td>
+                  <td class="text-center fw-semibold text-secondary">{{ insp.rejectQty || 0 }}</td>
                   <td class="text-center fw-bold" [class.text-danger]="insp.dhu > 5">{{ insp.dhu | number:'1.2-2' }}</td>
-                  <td>{{ insp.inspector }}</td>
+                  <td>{{ insp.inspector || 'N/A' }}</td>
                   <td>{{ insp.date | date:'shortDate' }}</td>
                 </tr>
               </tbody>

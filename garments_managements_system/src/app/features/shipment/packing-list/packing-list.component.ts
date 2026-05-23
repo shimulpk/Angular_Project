@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ShipmentService } from '../shipment-service/shipment.service';
-import { OrderService } from '../../orders/order-service/order.service';
+import { OrderService } from '../../../core/services/order.service';
 import { Shipment } from '../../../models/shipment/shipment.model';
 import { Order } from '../../../models/order/order.model';
 @Component({

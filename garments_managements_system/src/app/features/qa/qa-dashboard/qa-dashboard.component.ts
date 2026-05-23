@@ -17,6 +17,8 @@ export class QADashboardComponent implements OnInit {
   inspections: QAInspection[] = [];
   avgDHU = 0;
   passRate = 0;
+  totalRework = 0;
+  totalReject = 0;
 
   // Chart
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
@@ -52,14 +54,20 @@ export class QADashboardComponent implements OnInit {
     let totalCheck = 0;
     let totalPass = 0;
     let totalDHU = 0;
+    let totalRework = 0;
+    let totalReject = 0;
     
     this.inspections.forEach(i => {
       totalCheck += i.checkQty;
       totalPass += i.passQty;
       totalDHU += i.dhu;
+      totalRework += i.reworkQty || 0;
+      totalReject += i.rejectQty || 0;
     });
     
     this.passRate = (totalPass / totalCheck) * 100;
     this.avgDHU = totalDHU / this.inspections.length;
+    this.totalRework = totalRework;
+    this.totalReject = totalReject;
   }
 }

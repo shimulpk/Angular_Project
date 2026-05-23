@@ -32,20 +32,28 @@
                     </select>
                   </div>
 
-                  <div class="col-md-3">
+                  <div class="col-md-2">
                     <label class="form-label fw-bold">Total Check Qty</label>
                     <input type="number" class="form-control" formControlName="checkQty" (input)="calculateMetrics()">
                   </div>
-                  <div class="col-md-3">
-                    <label class="form-label fw-bold">Pass Qty</label>
-                    <input type="number" class="form-control border-success" formControlName="passQty" (input)="calculateMetrics()">
+                  <div class="col-md-2">
+                    <label class="form-label fw-bold text-success">Pass Qty</label>
+                    <input type="number" class="form-control border-success bg-light" formControlName="passQty" readonly>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-2">
                     <label class="form-label fw-bold text-danger">Fail Qty</label>
                     <input type="number" class="form-control border-danger" formControlName="failQty" (input)="calculateMetrics()">
                   </div>
-                  <div class="col-md-3">
-                    <label class="form-label fw-bold">Calculated DHU</label>
+                  <div class="col-md-2">
+                    <label class="form-label fw-bold text-warning">Rework Qty</label>
+                    <input type="number" class="form-control border-warning" formControlName="reworkQty" (input)="calculateMetrics()">
+                  </div>
+                  <div class="col-md-2">
+                    <label class="form-label fw-bold text-secondary">Reject Qty</label>
+                    <input type="number" class="form-control border-secondary bg-light" formControlName="rejectQty" readonly>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="form-label fw-bold text-dark">Calculated DHU</label>
                     <input type="number" class="form-control bg-light" formControlName="dhu" readonly>
                   </div>
                 </div>

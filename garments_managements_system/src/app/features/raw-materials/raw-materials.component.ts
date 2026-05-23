@@ -1,0 +1,119 @@
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MerchandisingService } from '../../features/merchandising-service/merchandising.service';
+import { StyleService } from '../../core/services/style.service';
+import { NotificationService } from '../../core/services/notification/notification.service';
+import { Style } from '../../models/style/style.model';
+import { UOM } from '../../models/uom/uom.model';
+
+@Component({
+  selector: 'app-raw-materials',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './raw-materials.component.html',
+  styleUrl: './raw-materials.component.css'
+})
+export class RawMaterialsComponent implements OnInit {
+  private fb = inject(FormBuilder);
+  private merchService = inject(MerchandisingService);
+  private styleService = inject(StyleService);
+  private notify = inject(NotificationService);
+
+  rawForm!: FormGroup;
+  styles: Style[] = [];
+  uoms: UOM[] = [];
+
+  readonly SIZES = ['S', 'M', 'L', 'XL'];
+  
+  calculations: any[] = [];
+  totalFabricRequired: number = 0;
+
+  ngOnInit() {
+    this.initForm();
+    this.loadData();
+    this.setupCalculations();
+  }
+
+  initForm() {
+    this.rawForm = this.fb.group({
+      styleId: ['', Validators.required],
+      
+      short_S: [0, Validators.min(0)],
+      short_M: [0, Validators.min(0)],
+      short_L: [0, Validators.min(0)],
+      short_XL: [0, Validators.min(0)],
+      
+      full_S: [0, Validators.min(0)],
+      full_M: [0, Validators.min(0)],
+      full_L: [0, Validators.min(0)],
+      full_XL: [0, Validators.min(0)],
+    });
+  }
+
+  loadData() {
+    this.styleService.getStyles().subscribe(data => this.styles = data);
+    this.merchService.getUOMs().subscribe(data => this.uoms = data);
+  }
+
+  getUOM(productName: string, size: string): UOM | null {
+    const found = this.uoms.find(u => 
+      u.productName.toLowerCase().includes(productName.toLowerCase()) && 
+      u.size === size
+    );
+    return found || null;
+  }
+
+  setupCalculations() {
+    this.rawForm.valueChanges.subscribe(val => {
+      this.calculations = [];
+      this.totalFabricRequired = 0;
+
+      const types = [
+        { keyPrefix: 'short_', label: 'Short Sleeve Shirt', typeStr: 'SHORT' },
+        { keyPrefix: 'full_', label: 'Full Sleeve Shirt', typeStr: 'FULL' }
+      ];
+
+      types.forEach(t => {
+        this.SIZES.forEach(size => {
+          const qty = val[`${t.keyPrefix}${size}`] || 0;
+          if (qty > 0) {
+            // Find UOM
+            const uom = this.getUOM(t.label, size);
+            const baseFabric = uom ? uom.totalBaseFabric : 0;
+            const calculated = baseFabric * qty;
+            
+            this.calculations.push({
+              productName: t.label,
+              size: size,
+              type: t.typeStr,
+              baseFabric: baseFabric,
+              qty: qty,
+              calculatedFabric: calculated,
+              hasUom: !!uom
+            });
+            this.totalFabricRequired += calculated;
+          }
+        });
+      });
+    });
+  }
+
+  onSubmit() {
+    if (this.rawForm.valid && this.calculations.length > 0) {
+      const payload = {
+        styleId: this.rawForm.value.styleId,
+        date: new Date().toISOString(),
+        totalFabricRequired: this.totalFabricRequired,
+        details: this.calculations
+      };
+      
+      this.merchService.saveRawMaterialCheck(payload).subscribe(() => {
+        this.notify.success('Fabric Data Saved Successfully');
+        this.rawForm.reset();
+      });
+    } else if (this.calculations.length === 0) {
+      this.notify.error('Please enter at least one quantity to calculate.');
+    }
+  }
+}

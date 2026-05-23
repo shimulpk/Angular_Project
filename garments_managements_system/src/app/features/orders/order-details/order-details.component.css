@@ -1,6 +1,0 @@
-.color-dot { width: 10px; height: 10px; background: #1e293b; border-radius: 50%; display: inline-block; }
-    .timeline { position: relative; padding-left: 20px; }
-    .timeline-item { position: relative; padding-bottom: 20px; }
-    .timeline-dot { position: absolute; left: -24px; width: 10px; height: 10px; background: #e2e8f0; border-radius: 50%; top: 5px; }
-    .timeline-dot.active { background: #10b981; }
-    .timeline-item:not(:last-child)::before { content: ''; position: absolute; left: -19px; top: 15px; width: 1px; height: calc(100% - 10px); background: #e2e8f0; }
