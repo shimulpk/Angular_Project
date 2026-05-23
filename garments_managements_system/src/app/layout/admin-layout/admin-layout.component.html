@@ -11,22 +11,22 @@
         <a routerLink="/dashboard" routerLinkActive="active" class="menu-item">
           <i class="bi bi-grid-1x2"></i> Dashboard
         </a>
-        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/buyer-management" routerLinkActive="active" class="menu-item">
+        <a *ngIf="hasRole(['MERCHANDISER','ADMIN'])" routerLink="/buyer-management" routerLinkActive="active" class="menu-item">
           <i class="bi bi-person-badge"></i> Buyer Management
         </a>
-        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/uom-management" routerLinkActive="active" class="menu-item">
+        <a *ngIf="hasRole(['MERCHANDISER' ,'ADMIN'])" routerLink="/uom-management" routerLinkActive="active" class="menu-item">
           <i class="bi bi-rulers"></i> UOM
         </a>
-        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/bom-style" routerLinkActive="active" class="menu-item">
+        <a *ngIf="hasRole(['MERCHANDISER' ,'ADMIN'])" routerLink="/bom-style" routerLinkActive="active" class="menu-item">
           <i class="bi bi-palette"></i> BOM Style
         </a>
-        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/bom-view" routerLinkActive="active" class="menu-item">
+        <a *ngIf="hasRole(['MERCHANDISER' ,'ADMIN'])" routerLink="/bom-view" routerLinkActive="active" class="menu-item">
           <i class="bi bi-eye"></i> BOM View
         </a>
-        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/order-management" routerLinkActive="active" class="menu-item">
+        <a *ngIf="hasRole(['MERCHANDISER' ,'ADMIN'])" routerLink="/order-management" routerLinkActive="active" class="menu-item">
           <i class="bi bi-cart-check"></i> Order
         </a>
-        <a *ngIf="hasRole(['MERCHANDISER'])" routerLink="/raw-materials" routerLinkActive="active" class="menu-item">
+        <a *ngIf="hasRole(['MERCHANDISER' ,'ADMIN'])" routerLink="/raw-materials" routerLinkActive="active" class="menu-item">
           <i class="bi bi-box-seam"></i> Raw Materials Check
         </a>
 
