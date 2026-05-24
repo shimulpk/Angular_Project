@@ -1,28 +1,27 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MerchandisingService } from '../../features/merchandising-service/merchandising.service';
-import { NotificationService } from '../../core/services/notification/notification.service';
-import { UOM } from '../../models/uom/uom.model';
+import { RouterModule, Router } from '@angular/router';
+import { MerchandisingService } from '../../../features/merchandising-service/merchandising.service';
+import { NotificationService } from '../../../core/services/notification/notification.service';
+import { UOM } from '../../../models/uom/uom.model';
 
 @Component({
-  selector: 'app-uom-management',
+  selector: 'app-add-uom',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './uom-management.component.html',
-  styleUrl: './uom-management.component.css'
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  templateUrl: './add-uom.component.html'
 })
-export class UomManagementComponent implements OnInit {
+export class AddUomComponent implements OnInit {
   private fb = inject(FormBuilder);
   private merchService = inject(MerchandisingService);
   private notify = inject(NotificationService);
+  private router = inject(Router);
 
   uomForm!: FormGroup;
-  uoms: UOM[] = [];
 
   ngOnInit() {
     this.initForm();
-    this.loadUOMs();
     this.setupAutoCalculation();
   }
 
@@ -52,12 +51,6 @@ export class UomManagementComponent implements OnInit {
     });
   }
 
-  loadUOMs() {
-    this.merchService.getUOMs().subscribe(data => {
-      this.uoms = data;
-    });
-  }
-
   onSubmit() {
     if (this.uomForm.valid) {
       const uomData: UOM = {
@@ -65,17 +58,7 @@ export class UomManagementComponent implements OnInit {
       };
       this.merchService.createUOM(uomData).subscribe(() => {
         this.notify.success('UOM added successfully');
-        this.uomForm.reset({ size: 'M', body: 0, sleeve: 0, pocket: 0, wastage: 0, shrinkage: 0 });
-        this.loadUOMs();
-      });
-    }
-  }
-
-  deleteUOM(id: string) {
-    if (confirm('Are you sure you want to delete this UOM?')) {
-      this.merchService.deleteUOM(id).subscribe(() => {
-        this.notify.success('UOM deleted');
-        this.loadUOMs();
+        this.router.navigate(['/uom-management/list']);
       });
     }
   }

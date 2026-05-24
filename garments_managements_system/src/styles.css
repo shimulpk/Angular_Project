@@ -123,3 +123,42 @@ body {
     margin-left: 0;
   }
 }
+
+/* Global Print Media Styles */
+@media print {
+  .sidebar, .top-navbar, .d-print-none, button, .btn {
+    display: none !important;
+  }
+  .main-content {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #dee2e6 !important;
+    page-break-inside: avoid;
+  }
+  .card-header {
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #dee2e6 !important;
+  }
+  .table-light {
+    background-color: #f8f9fa !important;
+  }
+  .badge {
+    border: 1px solid #dee2e6 !important;
+    color: black !important;
+    background-color: white !important;
+  }
+  .bg-primary {
+    background-color: #f8f9fa !important;
+    border-color: #dee2e6 !important;
+  }
+}
+

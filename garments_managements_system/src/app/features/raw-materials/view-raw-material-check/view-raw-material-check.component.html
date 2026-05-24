@@ -1,0 +1,232 @@
+<div class="vrc-wrapper">
+
+  <!-- Page Header -->
+  <div class="vrc-header">
+    <div class="header-left">
+      <div class="header-icon">
+        <i class="bi bi-clipboard2-data-fill"></i>
+      </div>
+      <div>
+        <h1 class="page-title">Raw Material Check Records</h1>
+        <p class="page-subtitle">Fabric calculations grouped by Order ID</p>
+      </div>
+    </div>
+    <button class="btn-add-new" (click)="navigateToNew()">
+      <i class="bi bi-plus-lg me-2"></i> New Check
+    </button>
+  </div>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar" *ngIf="!isLoading">
+    <div class="stat-item">
+      <i class="bi bi-layers"></i>
+      <span><strong>{{ filteredGroups.length }}</strong> Order Group{{ filteredGroups.length !== 1 ? 's' : '' }}</span>
+    </div>
+    <div class="stat-sep">|</div>
+    <div class="stat-item">
+      <i class="bi bi-file-earmark-text"></i>
+      <span><strong>{{ totalRecordCount }}</strong> Record{{ totalRecordCount !== 1 ? 's' : '' }}</span>
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-panel">
+    <div class="search-input-wrap">
+      <i class="bi bi-search search-icon"></i>
+      <input
+        id="searchOrderInput"
+        type="text"
+        class="search-input"
+        placeholder="Search by Order ID, PO Number, or Style..."
+        [(ngModel)]="searchOrderId"
+        (input)="onSearch()"
+      />
+      <button *ngIf="searchOrderId" class="clear-btn" (click)="clearSearch()">
+        <i class="bi bi-x-circle-fill"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading records...</p>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && filteredGroups.length === 0" class="empty-state">
+    <i class="bi bi-inbox"></i>
+    <h3>No Records Found</h3>
+    <p *ngIf="!searchOrderId">No fabric checks have been saved yet.</p>
+    <p *ngIf="searchOrderId">No records match <strong>"{{ searchOrderId }}"</strong>.</p>
+    <button class="btn-add-new mt-3" (click)="navigateToNew()" *ngIf="!searchOrderId">
+      <i class="bi bi-plus-lg me-2"></i> Create First Check
+    </button>
+    <button class="btn-clear-sm mt-3" (click)="clearSearch()" *ngIf="searchOrderId">
+      Clear Search
+    </button>
+  </div>
+
+  <!-- Cards Grid -->
+  <div class="cards-grid" *ngIf="!isLoading && filteredGroups.length > 0">
+    <div class="order-card" *ngFor="let group of filteredGroups">
+
+      <!-- Card Header -->
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="order-pill">
+            <i class="bi bi-hash"></i>{{ group.orderId }}
+          </span>
+          <span class="po-label" *ngIf="group.orderNumber && group.orderNumber !== '—'">
+            PO: {{ group.orderNumber }}
+          </span>
+        </div>
+        <div class="card-header-right">
+          <span class="record-badge">{{ group.records.length }} record{{ group.records.length !== 1 ? 's' : '' }}</span>
+        </div>
+      </div>
+
+      <!-- Style Info -->
+      <div class="style-info">
+        <i class="bi bi-palette2 me-1"></i>
+        <span class="style-name">{{ group.styleName }}</span>
+        <span class="style-code" *ngIf="group.styleCode">&nbsp;({{ group.styleCode }})</span>
+      </div>
+
+      <!-- Total Fabric Summary -->
+      <div class="fabric-summary">
+        <div class="fabric-stat">
+          <span class="fabric-label">Total Fabric Required</span>
+          <span class="fabric-value">{{ group.totalFabric | number: '1.2-2' }} <small>metres</small></span>
+        </div>
+        <div class="fabric-stat">
+          <span class="fabric-label">Latest Entry</span>
+          <span class="fabric-date">{{ group.latestDate | date: 'dd MMM yyyy' }}</span>
+        </div>
+      </div>
+
+      <!-- Individual Records inside the card -->
+      <div class="records-list">
+        <div class="record-row" *ngFor="let rec of group.records; let i = index">
+          <div class="record-meta">
+            <span class="rec-num">Entry {{ i + 1 }}</span>
+            <span class="rec-date">{{ rec.date | date: 'dd MMM yyyy, hh:mm a' }}</span>
+          </div>
+          <div class="rec-fabric">
+            <span class="fabric-chip">{{ rec.totalFabricRequired | number: '1.2-2' }} m</span>
+          </div>
+
+          <!-- Detail chips -->
+          <div class="detail-chips" *ngIf="rec.details?.length">
+            <span class="chip" *ngFor="let d of rec.details">
+              {{ d.productName }} / {{ d.size }}:
+              <strong>{{ d.calculatedFabric | number: '1.2-2' }}m</strong>
+              <em>(qty: {{ d.qty }})</em>
+            </span>
+          </div>
+
+          <!-- Actions -->
+          <div class="rec-actions">
+            <button class="btn-action btn-edit" (click)="openEditModal(rec)" title="Edit this record">
+              <i class="bi bi-pencil-square me-1"></i> Edit
+            </button>
+            <button class="btn-action btn-delete" (click)="openDeleteConfirm(rec, group.orderId)" title="Delete this record">
+              <i class="bi bi-trash3 me-1"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /cards-grid -->
+
+</div><!-- /vrc-wrapper -->
+
+
+<!-- ═══════════════ DELETE CONFIRM DIALOG ═══════════════ -->
+<div class="modal-overlay" *ngIf="deleteConfirmOpen" (click)="cancelDelete()">
+  <div class="confirm-dialog" (click)="$event.stopPropagation()">
+    <div class="confirm-icon danger">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+    </div>
+    <h3>Delete Record?</h3>
+    <p>This action cannot be undone. The fabric record dated
+      <strong>{{ deletingRecord?.date | date: 'dd MMM yyyy' }}</strong>
+      will be permanently removed.</p>
+    <div class="confirm-actions">
+      <button class="btn-cancel" (click)="cancelDelete()">Cancel</button>
+      <button class="btn-danger-confirm" (click)="confirmDelete()">
+        <i class="bi bi-trash3 me-1"></i> Yes, Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════ EDIT MODAL ═══════════════ -->
+<div class="modal-overlay" *ngIf="editModalOpen" (click)="closeEditModal()">
+  <div class="edit-modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <i class="bi bi-pencil-square"></i>
+        <h3>Edit Fabric Record</h3>
+      </div>
+      <button class="modal-close" (click)="closeEditModal()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <div class="modal-body" *ngIf="editingRecord">
+      <div class="modal-meta">
+        <span><i class="bi bi-calendar3 me-1"></i> {{ editingRecord.date | date: 'dd MMM yyyy, hh:mm a' }}</span>
+        <span><i class="bi bi-hash me-1"></i> Order: {{ editingRecord.orderId || '—' }}</span>
+      </div>
+
+      <p class="edit-hint">Adjust order quantities below. Calculated fabric will update automatically.</p>
+
+      <div class="edit-table-wrap">
+        <table class="edit-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Size</th>
+              <th>Base Fabric (m)</th>
+              <th>Qty</th>
+              <th>Calculated (m)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detail of editingRecord.details">
+              <td>{{ detail.productName }}</td>
+              <td><span class="size-tag">{{ detail.size }}</span></td>
+              <td>{{ detail.baseFabric | number: '1.3-3' }}</td>
+              <td>
+                <input
+                  type="number"
+                  class="qty-input"
+                  [value]="detail.qty"
+                  min="0"
+                  (change)="updateDetailQty(detail, $event)"
+                />
+              </td>
+              <td class="calc-cell">{{ detail.calculatedFabric | number: '1.2-2' }}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="total-row">
+              <td colspan="4" class="text-end"><strong>Total Fabric Required</strong></td>
+              <td class="total-val">{{ editTotalFabric | number: '1.2-2' }} m</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" (click)="closeEditModal()">Cancel</button>
+      <button class="btn-save" (click)="saveEdit()">
+        <i class="bi bi-check2-circle me-1"></i> Save Changes
+      </button>
+    </div>
+  </div>
+</div>

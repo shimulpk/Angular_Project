@@ -9,6 +9,7 @@ export interface OrderItem {
 
 export interface Order {
   id?: string;
+  orderId?: string;
   poNumber: string;
   buyerId: string;
   styleId: string;
@@ -18,7 +19,7 @@ export interface Order {
   items: OrderItem[];
   totalQuantity: number;
   totalAmount: number;
-  
+
   shippingAddress?: string;
   subtotal?: number;
   vat?: number;

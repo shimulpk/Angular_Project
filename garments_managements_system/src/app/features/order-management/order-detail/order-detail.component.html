@@ -1,0 +1,196 @@
+<div class="container-fluid py-4">
+  <!-- Header -->
+  <div class="d-flex align-items-center justify-content-between mb-4 d-print-none">
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-sm btn-outline-secondary" routerLink="/order-management/list">
+        <i class="bi bi-arrow-left me-1"></i> Back to Order List
+      </button>
+      <div>
+        <h4 class="mb-0 fw-bold">Order Details</h4>
+        <small class="text-muted">Complete order information</small>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="printOrder()" [disabled]="isLoading || !order">
+      <i class="bi bi-printer me-2"></i>Print
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center py-5 text-muted">
+    <div class="spinner-border text-primary mb-3" role="status"></div>
+    <div>Loading order details...</div>
+  </div>
+
+  <div *ngIf="!isLoading && order">
+    <!-- Print Only Header -->
+    <div class="d-none d-print-block mb-5 border-bottom pb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h2 class="fw-bold mb-0">ORDER DETAILS</h2>
+          <p class="text-muted">Order ID: {{ order.orderId || 'N/A' }}</p>
+        </div>
+        <div class="text-end">
+          <h4 class="fw-bold text-primary">Garments ERP Pro</h4>
+          <p class="text-muted small">Industrial Zone, Dhaka, Bangladesh<br>Contact: +880 2 9882731</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Info Card -->
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-header bg-white border-0 py-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="mb-0 text-primary"><i class="bi bi-receipt me-2"></i>Order Information</h5>
+          <span class="badge fs-6"
+            [ngClass]="{'bg-warning text-dark': order.status === 'Pending', 'bg-success': order.status === 'Confirmed', 'bg-info text-dark': order.status === 'IN_PRODUCTION', 'bg-primary': order.status === 'SHIPPED'}">
+            {{ order.status }}
+          </span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <div class="text-muted small fw-bold mb-1">Order ID</div>
+            <div class="fw-semibold">{{ order.orderId || 'N/A' }}</div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-muted small fw-bold mb-1">PO Number</div>
+            <div><span class="badge bg-light text-dark border">{{ order.poNumber }}</span></div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-muted small fw-bold mb-1">Buyer</div>
+            <div class="fw-semibold">{{ buyerName }}</div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-muted small fw-bold mb-1">Style Code</div>
+            <div class="fw-semibold">{{ styleCode }}</div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-muted small fw-bold mb-1">Order Date</div>
+            <div>{{ order.orderDate | date:'mediumDate' }}</div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-muted small fw-bold mb-1">Delivery Date</div>
+            <div>{{ order.shipDate | date:'mediumDate' }}</div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-muted small fw-bold mb-1">Total Quantity</div>
+            <div class="fw-semibold">{{ order.totalQuantity }} pcs</div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-muted small fw-bold mb-1">Shipping Address</div>
+            <div>{{ order.shippingAddress || 'N/A' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Items -->
+    <div class="row mb-4">
+      <!-- Short Sleeve Items -->
+      <div class="col-md-6" *ngIf="shortSleeveItems.length > 0">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-header bg-white border-0 py-3">
+            <h6 class="mb-0 fw-bold"><i class="bi bi-tag me-2"></i>Short Sleeve Items</h6>
+          </div>
+          <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th class="px-4">Size</th>
+                  <th>Color</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                  <th class="text-end px-4">Line Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of shortSleeveItems">
+                  <td class="px-4"><span class="badge bg-secondary">{{ item.size }}</span></td>
+                  <td>{{ item.color }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>${{ item.unitPrice | number:'1.2-2' }}</td>
+                  <td class="text-end fw-medium px-4">${{ (item.quantity * item.unitPrice) | number:'1.2-2' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Sleeve Items -->
+      <div class="col-md-6" *ngIf="fullSleeveItems.length > 0">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-header bg-white border-0 py-3">
+            <h6 class="mb-0 fw-bold"><i class="bi bi-tag me-2"></i>Full Sleeve Items</h6>
+          </div>
+          <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th class="px-4">Size</th>
+                  <th>Color</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                  <th class="text-end px-4">Line Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of fullSleeveItems">
+                  <td class="px-4"><span class="badge bg-secondary">{{ item.size }}</span></td>
+                  <td>{{ item.color }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>${{ item.unitPrice | number:'1.2-2' }}</td>
+                  <td class="text-end fw-medium px-4">${{ (item.quantity * item.unitPrice) | number:'1.2-2' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- No items message -->
+      <div class="col-12" *ngIf="shortSleeveItems.length === 0 && fullSleeveItems.length === 0">
+        <div class="card shadow-sm border-0">
+          <div class="card-body text-center py-5 text-muted">
+            <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+            No line items in this order.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Summary -->
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <div class="row justify-content-end">
+          <div class="col-md-5">
+            <div class="bg-primary bg-opacity-10 p-3 rounded-3 border border-primary border-opacity-25">
+              <h6 class="fw-bold text-primary mb-3">Financial Summary</h6>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Subtotal:</span>
+                <span class="fw-medium">${{ (order.subtotal || 0) | number:'1.2-2' }}</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">VAT:</span>
+                <span class="fw-medium">${{ (order.vat || 0) | number:'1.2-2' }}</span>
+              </div>
+              <hr class="my-2 border-primary border-opacity-25">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-bold text-dark fs-5">Grand Total:</span>
+                <span class="fw-bold text-primary fs-4">${{ (order.grandTotal || 0) | number:'1.2-2' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Not Found -->
+  <div *ngIf="!isLoading && !order" class="text-center py-5 text-muted">
+    <i class="bi bi-exclamation-triangle fs-1 d-block mb-3"></i>
+    <h5>Order not found</h5>
+    <a routerLink="/order-management/list" class="btn btn-primary mt-2">Back to Order List</a>
+  </div>
+</div>

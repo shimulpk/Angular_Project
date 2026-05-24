@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { MerchandisingService } from '../../features/merchandising-service/merchandising.service';
 import { StyleService } from '../../core/services/style.service';
 import { NotificationService } from '../../core/services/notification/notification.service';
@@ -11,7 +12,7 @@ import { UOM } from '../../models/uom/uom.model';
 @Component({
   selector: 'app-bom-view',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './bom-view.component.html',
   styleUrl: './bom-view.component.css'
 })
@@ -22,7 +23,6 @@ export class BomViewComponent implements OnInit {
   private notify = inject(NotificationService);
 
   bomForm!: FormGroup;
-  bomItems: BOMItem[] = [];
   styles: Style[] = [];
   uoms: UOM[] = [];
 
@@ -55,7 +55,6 @@ export class BomViewComponent implements OnInit {
   }
 
   loadData() {
-    this.merchService.getAllBOMItems().subscribe(data => this.bomItems = data);
     this.styleService.getStyles().subscribe(data => this.styles = data);
     this.merchService.getUOMs().subscribe(data => this.uoms = data);
   }
@@ -66,7 +65,7 @@ export class BomViewComponent implements OnInit {
       const bomItem: BOMItem = {
         materialName: formData.materialName,
         unit: formData.unit,
-        consumption: 0, // Fallback for old model requirement
+        consumption: 0,
         wastagePercent: 0,
         totalRequirement: 0,
         serial: formData.serial,
@@ -78,9 +77,8 @@ export class BomViewComponent implements OnInit {
       };
 
       this.merchService.createBOMItem(bomItem).subscribe(() => {
-        this.notify.success('BOM View added successfully');
+        this.notify.success('BOM item added successfully');
         this.bomForm.reset({ unit: 'Kg', quantity: 0, unitPrice: 0 });
-        this.loadData();
       });
     }
   }

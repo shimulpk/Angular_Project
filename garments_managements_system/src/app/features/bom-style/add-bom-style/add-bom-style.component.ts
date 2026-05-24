@@ -1,29 +1,27 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { StyleService } from '../../core/services/style.service';
-import { NotificationService } from '../../core/services/notification/notification.service';
-import { Style } from '../../models/style/style.model';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { StyleService } from '../../../core/services/style.service';
+import { NotificationService } from '../../../core/services/notification/notification.service';
+import { Style } from '../../../models/style/style.model';
 
 @Component({
-  selector: 'app-bom-style',
+  selector: 'app-add-bom-style',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  templateUrl: './bom-style.component.html',
-  styleUrl: './bom-style.component.css'
+  templateUrl: './add-bom-style.component.html'
 })
-export class BomStyleComponent implements OnInit {
+export class AddBomStyleComponent implements OnInit {
   private fb = inject(FormBuilder);
   private styleService = inject(StyleService);
   private notify = inject(NotificationService);
+  private router = inject(Router);
 
   styleForm!: FormGroup;
-  styles: Style[] = [];
 
   ngOnInit() {
     this.initForm();
-    this.loadStyles();
   }
 
   initForm() {
@@ -34,20 +32,12 @@ export class BomStyleComponent implements OnInit {
     });
   }
 
-  loadStyles() {
-    this.styleService.getStyles().subscribe(data => {
-      this.styles = data;
-    });
-  }
-
   onSubmit() {
     if (this.styleForm.valid) {
       const formValue = this.styleForm.value;
-      
-      // Creating a new Style object mapping BOM Style fields to the core Style model
       const styleData: Style = {
         styleCode: formValue.styleCode,
-        styleName: formValue.description || formValue.styleCode, // using description as name fallback
+        styleName: formValue.description || formValue.styleCode,
         styleType: formValue.styleType,
         description: formValue.description,
         buyerId: '',
@@ -60,17 +50,7 @@ export class BomStyleComponent implements OnInit {
 
       this.styleService.createStyle(styleData).subscribe(() => {
         this.notify.success('BOM Style added successfully');
-        this.styleForm.reset({ styleType: 'Casual' });
-        this.loadStyles();
-      });
-    }
-  }
-
-  deleteStyle(id: string) {
-    if (confirm('Are you sure you want to delete this BOM style?')) {
-      this.styleService.deleteStyle(id).subscribe(() => {
-        this.notify.success('BOM Style deleted');
-        this.loadStyles();
+        this.router.navigate(['/bom-style/list']);
       });
     }
   }

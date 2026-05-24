@@ -71,4 +71,16 @@ export class MerchandisingService {
   saveRawMaterialCheck(data: any): Observable<any> {
     return this.api.create<any>('rawMaterialChecks', data);
   }
+
+  getRawMaterialChecks(): Observable<any[]> {
+    return this.api.getAll<any>('rawMaterialChecks');
+  }
+
+  updateRawMaterialCheck(id: string, data: any): Observable<any> {
+    return this.api.update<any>('rawMaterialChecks', id, data);
+  }
+
+  deleteRawMaterialCheck(id: string): Observable<any> {
+    return this.api.delete('rawMaterialChecks', id);
+  }
 }

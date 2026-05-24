@@ -26,13 +26,41 @@ export const routes: Routes = [
       },
       {
         path: 'uom-management',
-        loadComponent: () => import('./features/uom-management/uom-management.component').then(m => m.UomManagementComponent),
+        redirectTo: 'uom-management/list',
+        pathMatch: 'full'
+      },
+      {
+        path: 'uom-management/add',
+        loadComponent: () => import('./features/uom-management/add-uom/add-uom.component').then(m => m.AddUomComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+      },
+      {
+        path: 'uom-management/list',
+        loadComponent: () => import('./features/uom-management/uom-list/uom-list.component').then(m => m.UomListComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
       {
         path: 'bom-style',
-        loadComponent: () => import('./features/bom-style/bom-style.component').then(m => m.BomStyleComponent),
+        redirectTo: 'bom-style/list',
+        pathMatch: 'full'
+      },
+      {
+        path: 'bom-style/add',
+        loadComponent: () => import('./features/bom-style/add-bom-style/add-bom-style.component').then(m => m.AddBomStyleComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+      },
+      {
+        path: 'bom-style/list',
+        loadComponent: () => import('./features/bom-style/bom-style-list/bom-style-list.component').then(m => m.BomStyleListComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+      },
+      {
+        path: 'bom-style/detail/:styleCode',
+        loadComponent: () => import('./features/bom-style/bom-style-detail/bom-style-detail.component').then(m => m.BomStyleDetailComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
@@ -44,13 +72,36 @@ export const routes: Routes = [
       },
       {
         path: 'order-management',
-        loadComponent: () => import('./features/order-management/order-management.component').then(m => m.OrderManagementComponent),
+        redirectTo: 'order-management/list',
+        pathMatch: 'full'
+      },
+      {
+        path: 'order-management/create',
+        loadComponent: () => import('./features/order-management/create-order/create-order.component').then(m => m.CreateOrderComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+      },
+      {
+        path: 'order-management/list',
+        loadComponent: () => import('./features/order-management/order-list/order-list.component').then(m => m.OrderListComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+      },
+      {
+        path: 'order-management/detail/:id',
+        loadComponent: () => import('./features/order-management/order-detail/order-detail.component').then(m => m.OrderDetailComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },
       {
         path: 'raw-materials',
         loadComponent: () => import('./features/raw-materials/raw-materials.component').then(m => m.RawMaterialsComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'MERCHANDISER'] }
+      },
+      {
+        path: 'raw-materials/view-checks',
+        loadComponent: () => import('./features/raw-materials/view-raw-material-check/view-raw-material-check.component').then(m => m.ViewRawMaterialCheckComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'MERCHANDISER'] }
       },

@@ -67,295 +67,263 @@
   ],
   "buyers": [
     {
-      "buyerCode": "ZARA-01",
+      "buyerCode": "101",
       "companyName": "Inditex (Zara)",
       "country": "Spain",
+      "address": "",
+      "website": "",
       "currency": "EUR",
       "paymentTerms": "LC at Sight",
       "status": "Active",
       "contacts": [
         {
           "name": "Badrul Amin",
-          "email": "b@zara.com",
           "phone": " 91 123 4567",
+          "email": "b@zara.com",
           "designation": "Merchandising Manager"
         }
       ],
       "id": "1"
     },
     {
-      "buyerCode": "C&A",
+      "buyerCode": "102",
       "companyName": "Hamim group",
       "country": "Bangladesh",
+      "address": "",
+      "website": "",
       "currency": "USD",
       "paymentTerms": "60 days",
       "status": "Active",
       "contacts": [
         {
           "name": "Syed Sajin Ahmed",
-          "email": "s@gmail.com",
           "phone": "12345",
+          "email": "s@gmail.com",
           "designation": "Marchandiser"
         }
       ],
       "id": "kmc20oh0tuI"
     },
     {
-      "buyerCode": "H&A02",
+      "buyerCode": "103",
       "companyName": "Nakano International Ltd",
       "country": "Japan",
+      "address": "",
+      "website": "",
       "currency": "USD",
       "paymentTerms": "Lc",
       "status": "Active",
       "contacts": [
         {
           "name": "Badrul Amin",
-          "email": "b@gmail.com",
           "phone": "123456",
+          "email": "b@gmail.com",
           "designation": "Marchandiser"
         }
       ],
       "id": "z4hcXZOoC1E"
     },
     {
-      "buyerCode": "TH03",
+      "buyerCode": "104",
       "companyName": "Vintage Denim Studio Ltd",
       "country": "Zarmany",
+      "address": "",
+      "website": "",
       "currency": "EUR",
       "paymentTerms": "Lc",
       "status": "Active",
       "contacts": [
         {
           "name": "Sajin Ahmed",
-          "email": "s@gmail.com",
           "phone": "123456",
+          "email": "s@gmail.com",
           "designation": "Marchandiser"
         }
       ],
       "id": "sFXWdOLVCYo"
+    },
+    {
+      "buyerCode": "105",
+      "companyName": "Norban Comtex Ltd",
+      "country": "America",
+      "address": "Newyork,USA",
+      "website": "www.norban.com",
+      "currency": "USD",
+      "paymentTerms": "",
+      "status": "Active",
+      "contacts": [
+        {
+          "name": "Youkihiro Kajihara sun",
+          "phone": "097627888",
+          "email": "y@gmail.com",
+          "designation": "Contact Person"
+        }
+      ],
+      "id": "8C4QuXwzTeM"
     }
   ],
   "styles": [
     {
-      "styleCode": "TS-2024-B1",
-      "styleName": "Basic Cotton Tee",
-      "buyerId": "1",
-      "season": "Summer 2024",
-      "garmentType": "T-Shirt",
-      "gender": "Men",
-      "approvalStatus": "Approved",
+      "styleCode": "NK201",
+      "styleName": "Short Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Casual",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
       "sizeSet": [
         "S",
         "M",
         "L",
         "XL"
       ],
-      "id": "1",
-      "measurements": [
-        {
-          "materialId": "m1",
-          "materialName": "Cotton Fabric",
-          "quantityPerUnit": 1.5,
-          "unit": "Yards"
-        },
-        {
-          "materialId": "m2",
-          "materialName": "Thread",
-          "quantityPerUnit": 0.1,
-          "unit": "Spools"
-        }
-      ]
+      "id": "Aw93c1FNrmc"
     },
     {
-      "id": "2",
-      "styleCode": "CH-2024-C2",
-      "styleName": "Chino Slim Fit",
-      "buyerId": null,
-      "season": "Fall 2024",
-      "garmentType": "Trousers",
-      "gender": "Women",
-      "approvalStatus": "Pending",
-      "sizeSet": [
-        "28",
-        "30",
-        "32",
-        "34"
-      ],
-      "imageUrl": "https://images.unsplash.com/photo-1473966968600-fa804b86862b?w=300",
-      "measurements": [
-        {
-          "materialId": "m1",
-          "materialName": "Cotton Fabric",
-          "quantityPerUnit": 1.5,
-          "unit": "Yards"
-        },
-        {
-          "materialId": "m2",
-          "materialName": "Thread",
-          "quantityPerUnit": 0.1,
-          "unit": "Spools"
-        }
-      ]
-    },
-    {
-      "styleCode": "Denim Jeans",
-      "styleName": "Slim Fit Stretch Denim",
-      "buyerId": "kmc20oh0tuI",
-      "season": "Spring 2024",
-      "garmentType": "Trousers",
+      "styleCode": "NK202",
+      "styleName": "Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Formal",
       "gender": "Unisex",
-      "approvalStatus": "Approved",
-      "sizeSet": [
-        "32",
-        "34",
-        "36",
-        "38"
-      ],
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200&auto=format&fit=crop",
-      "id": "hINxyS8UzfA",
-      "measurements": [
-        {
-          "materialId": "m1",
-          "materialName": "Cotton Fabric",
-          "quantityPerUnit": 1.5,
-          "unit": "Yards"
-        },
-        {
-          "materialId": "m2",
-          "materialName": "Thread",
-          "quantityPerUnit": 0.1,
-          "unit": "Spools"
-        }
-      ]
-    },
-    {
-      "styleCode": "JK8801",
-      "styleName": "Jaket",
-      "buyerId": "1",
-      "season": "Fall 2024",
-      "garmentType": "Jacket",
-      "gender": "Men",
-      "approvalStatus": "Approved",
-      "sizeSet": [
-        "M",
-        "S",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200&auto=format&fit=crop",
-      "id": "zC_ozO0ISB0",
-      "measurements": [
-        {
-          "materialId": "m1",
-          "materialName": "Cotton Fabric",
-          "quantityPerUnit": 1.5,
-          "unit": "Yards"
-        },
-        {
-          "materialId": "m2",
-          "materialName": "Thread",
-          "quantityPerUnit": 0.1,
-          "unit": "Spools"
-        }
-      ]
-    },
-    {
-      "styleCode": "Dt004",
-      "styleName": "Vintage Denim",
-      "buyerId": "z4hcXZOoC1E",
-      "season": "Summer 2024",
-      "garmentType": "Trousers",
-      "gender": "Unisex",
-      "approvalStatus": "Pending",
-      "sizeSet": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL",
-        "30"
-      ],
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200&auto=format&fit=crop",
-      "id": "FmKt649Bz_c",
-      "measurements": [
-        {
-          "materialId": "m1",
-          "materialName": "Cotton Fabric",
-          "quantityPerUnit": 1.5,
-          "unit": "Yards"
-        },
-        {
-          "materialId": "m2",
-          "materialName": "Thread",
-          "quantityPerUnit": 0.1,
-          "unit": "Spools"
-        }
-      ]
-    },
-    {
-      "styleCode": "fg555",
-      "styleName": "hggg",
-      "buyerId": "1",
-      "season": "Summer 2024",
-      "garmentType": "Polo",
-      "gender": "Women",
-      "approvalStatus": "Pending",
-      "sizeSet": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200&auto=format&fit=crop",
-      "id": "Dmh7WgWKd7g",
-      "measurements": [
-        {
-          "materialId": "m1",
-          "materialName": "Cotton Fabric",
-          "quantityPerUnit": 1.5,
-          "unit": "Yards"
-        },
-        {
-          "materialId": "m2",
-          "materialName": "Thread",
-          "quantityPerUnit": 0.1,
-          "unit": "Spools"
-        }
-      ]
-    },
-    {
-      "styleCode": "ddd4",
-      "styleName": "jeans",
-      "buyerId": "kmc20oh0tuI",
-      "season": "Summer 2024",
-      "garmentType": "Jacket",
-      "gender": "Men",
       "approvalStatus": "Draft",
-      "measurements": [
-        {
-          "materialId": "m1",
-          "quantityPerUnit": 500,
-          "unit": "1.35",
-          "materialName": "Cotton Fabric"
-        },
-        {
-          "materialId": "m2",
-          "quantityPerUnit": 500,
-          "unit": "1",
-          "materialName": "Thread"
-        }
-      ],
       "sizeSet": [
-        "34",
-        "36",
-        "38"
+        "S",
+        "M",
+        "L",
+        "XL"
       ],
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200&auto=format&fit=crop",
-      "id": "XkkFqgV0VUA"
+      "id": "6gMo60zO8LU"
+    },
+    {
+      "styleCode": "IZ203",
+      "styleName": "Short Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Casual",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "_OUymJJ8fRU"
+    },
+    {
+      "styleCode": "IZ204",
+      "styleName": "Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Formal",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "gfACMl6d4qI"
+    },
+    {
+      "styleCode": "VD207",
+      "styleName": "Short Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Casual",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "ZopKndbKntg"
+    },
+    {
+      "styleCode": "VD208",
+      "styleName": "Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Formal",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "v7RTkl9C5-g"
+    },
+    {
+      "styleCode": "NC209",
+      "styleName": "Short Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Casual",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "IO8WLz92ifw"
+    },
+    {
+      "styleCode": "NC210",
+      "styleName": "Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Formal",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "Ybv2B8KjfNw"
+    },
+    {
+      "styleCode": "HG205",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Formal",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "EzGuakbwWnk"
     }
   ],
   "purchaseOrders": [
@@ -363,7 +331,7 @@
       "id": "1",
       "poNumber": "PO-99201",
       "buyerId": "1",
-      "styleId": "1",
+      "styleId": null,
       "orderDate": "2024-05-01",
       "shipDate": "2024-06-30",
       "status": "IN_PRODUCTION",
@@ -387,7 +355,7 @@
     {
       "poNumber": "po-ss256",
       "buyerId": "1",
-      "styleId": "zC_ozO0ISB0",
+      "styleId": null,
       "orderDate": "2026-05-17",
       "shipDate": "2026-06-06",
       "status": "DRAFT",
@@ -406,7 +374,7 @@
     {
       "poNumber": "po404",
       "buyerId": "kmc20oh0tuI",
-      "styleId": "hINxyS8UzfA",
+      "styleId": null,
       "orderDate": "2026-05-19",
       "shipDate": "2026-06-25",
       "status": "DRAFT",
@@ -449,7 +417,7 @@
     {
       "poNumber": "po405",
       "buyerId": "sFXWdOLVCYo",
-      "styleId": "FmKt649Bz_c",
+      "styleId": null,
       "orderDate": "2026-05-20",
       "shipDate": "2026-06-05",
       "status": "DRAFT",
@@ -474,7 +442,7 @@
     {
       "poNumber": "po406",
       "buyerId": "z4hcXZOoC1E",
-      "styleId": "FmKt649Bz_c",
+      "styleId": null,
       "orderDate": "2026-05-23",
       "shipDate": "2026-06-05",
       "status": "DRAFT",
@@ -494,13 +462,13 @@
   "bomHeaders": [
     {
       "id": "1",
-      "styleId": "1",
+      "styleId": null,
       "version": "V1.0",
       "status": "Final",
       "createdAt": "2024-05-05"
     },
     {
-      "styleId": "zC_ozO0ISB0",
+      "styleId": null,
       "version": "V1.0",
       "status": "Final",
       "items": [
@@ -558,6 +526,48 @@
       "wastagePercent": 2,
       "supplier": "ThreadCo",
       "totalRequirement": 0.051
+    },
+    {
+      "materialName": "Woven Knit Fabric",
+      "unit": "Yard",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 1,
+      "baseFabric": "short sleve shirt",
+      "styleCode": "NK201",
+      "quantity": 1.72,
+      "unitPrice": 150,
+      "totalCost": 258,
+      "id": "zxMVvhk2z1s"
+    },
+    {
+      "materialName": "Button",
+      "unit": "Pieces",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 2,
+      "baseFabric": "short sleve shirt",
+      "styleCode": "NK201",
+      "quantity": 10,
+      "unitPrice": 0.1,
+      "totalCost": 1,
+      "id": "DgPfVpinoPc"
+    },
+    {
+      "materialName": "Woven Knit Fabric",
+      "unit": "yard",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 1,
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "HG205",
+      "quantity": 500,
+      "unitPrice": 50,
+      "totalCost": 25000,
+      "id": "Ei1EDSauVbA"
     }
   ],
   "productionOrders": [
@@ -744,18 +754,140 @@
   "productionStages": [],
   "uoms": [
     {
-      "productName": "jeans shirt",
+      "productName": "Short Sleeve Shirt",
+      "size": "S",
+      "body": 1.32,
+      "sleeve": 0.1,
+      "pocket": 0.12,
+      "wastage": 2,
+      "shrinkage": 3,
+      "totalBaseFabric": 1.606,
+      "id": "ZdfhDn_i02g"
+    },
+    {
+      "productName": "Short Sleeve Shirt",
       "size": "M",
-      "body": 12,
-      "sleeve": 5,
-      "pocket": 3,
-      "wastage": 1,
-      "shrinkage": 1,
-      "totalBaseFabric": 20.24,
-      "id": "mjXM-cZ-bnw"
+      "body": 1.35,
+      "sleeve": 0.1,
+      "pocket": 0.12,
+      "wastage": 2,
+      "shrinkage": 3,
+      "totalBaseFabric": 1.6375,
+      "id": "XagIJ_ZKfkw"
+    },
+    {
+      "productName": "Short Sleeve Shirt",
+      "size": "L",
+      "body": 1.38,
+      "sleeve": 0.1,
+      "pocket": 0.12,
+      "wastage": 2,
+      "shrinkage": 3,
+      "totalBaseFabric": 1.669,
+      "id": "jNSvvlXb8B8"
+    },
+    {
+      "productName": "Short Sleeve Shirt",
+      "size": "XL",
+      "body": 1.4,
+      "sleeve": 0.1,
+      "pocket": 0.12,
+      "wastage": 2,
+      "shrinkage": 3,
+      "totalBaseFabric": 1.69,
+      "id": "0juScoyZixQ"
+    },
+    {
+      "productName": "Full Sleeve Shirt",
+      "size": "S",
+      "body": 1.4,
+      "sleeve": 0.1,
+      "pocket": 0.12,
+      "wastage": 2,
+      "shrinkage": 2.9,
+      "totalBaseFabric": 1.6886,
+      "id": "mCLcXdZWFd8"
+    },
+    {
+      "productName": "Full Sleeve Shirt",
+      "size": "M",
+      "body": 1.45,
+      "sleeve": 0.1,
+      "pocket": 0.12,
+      "wastage": 2,
+      "shrinkage": 2.8,
+      "totalBaseFabric": 1.7396,
+      "id": "mSrgkdp0L5U"
+    },
+    {
+      "productName": "Full Sleeve Shirt",
+      "size": "L",
+      "body": 1.48,
+      "sleeve": 0.1,
+      "pocket": 0.12,
+      "wastage": 2,
+      "shrinkage": 3,
+      "totalBaseFabric": 1.774,
+      "id": "Aiuz61KJsh4"
+    },
+    {
+      "productName": "Full Sleeve Shirt",
+      "size": "XL",
+      "body": 1.52,
+      "sleeve": 0.1,
+      "pocket": 0.1,
+      "wastage": 2,
+      "shrinkage": 3,
+      "totalBaseFabric": 1.796,
+      "id": "4EFngCVwszo"
     }
   ],
-  "rawMaterialChecks": [],
+  "rawMaterialChecks": [
+    {
+      "styleId": "Aw93c1FNrmc",
+      "date": "2026-05-24T06:37:29.737Z",
+      "totalFabricRequired": 2799.5,
+      "details": [
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "S",
+          "type": "SHORT",
+          "baseFabric": 1.606,
+          "qty": 500,
+          "calculatedFabric": 803,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "M",
+          "type": "SHORT",
+          "baseFabric": 1.6375,
+          "qty": 400,
+          "calculatedFabric": 655,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "L",
+          "type": "SHORT",
+          "baseFabric": 1.669,
+          "qty": 500,
+          "calculatedFabric": 834.5,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "XL",
+          "type": "SHORT",
+          "baseFabric": 1.69,
+          "qty": 300,
+          "calculatedFabric": 507,
+          "hasUom": true
+        }
+      ],
+      "id": "vfg7p5Y88BM"
+    }
+  ],
   "vendors": [],
   "items": [],
   "stockTransactions": [],
@@ -770,5 +902,53 @@
   "sewingPlans": [],
   "finishingPlans": [],
   "packingPlans": [],
+  "orders": [
+    {
+      "orderId": "OR301",
+      "poNumber": "ORD-9626",
+      "buyerId": "z4hcXZOoC1E",
+      "styleId": "Aw93c1FNrmc",
+      "orderDate": "2026-05-24",
+      "shipDate": "2026-07-09",
+      "status": "Pending",
+      "items": [
+        {
+          "type": "Short Sleeve",
+          "size": "S",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 50
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "M",
+          "color": "Default",
+          "quantity": 400,
+          "unitPrice": 54
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "L",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 55
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "XL",
+          "color": "Default",
+          "quantity": 300,
+          "unitPrice": 56
+        }
+      ],
+      "totalQuantity": 1700,
+      "totalAmount": 92900,
+      "shippingAddress": "Tokiyo,Japan",
+      "subtotal": 90900,
+      "vat": 2000,
+      "grandTotal": 92900,
+      "id": "46sHTTeghvI"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

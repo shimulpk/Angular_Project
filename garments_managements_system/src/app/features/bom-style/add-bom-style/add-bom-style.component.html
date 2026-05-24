@@ -1,0 +1,36 @@
+<div class="container-fluid py-4">
+  <div class="card shadow-sm border-0">
+    <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+      <h5 class="mb-0 text-primary"><i class="bi bi-plus-circle me-2"></i>Add BOM Style</h5>
+      <button class="btn btn-sm btn-outline-primary" routerLink="/bom-style/list">
+        <i class="bi bi-list-ul me-1"></i> View BOM Style List
+      </button>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="styleForm" (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label text-muted small fw-bold">Style Code *</label>
+            <input type="text" class="form-control" formControlName="styleCode" placeholder="e.g. STY-001">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label text-muted small fw-bold">Style Type *</label>
+            <select class="form-select" formControlName="styleType">
+              <option value="Casual">Casual</option>
+              <option value="Formal">Formal</option>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <label class="form-label text-muted small fw-bold">Description</label>
+            <textarea class="form-control" formControlName="description" rows="3" placeholder="Brief description of the style..."></textarea>
+          </div>
+          <div class="col-md-12 mt-2 text-end">
+            <button type="submit" class="btn btn-primary px-5" [disabled]="styleForm.invalid">
+              <i class="bi bi-save me-2"></i> Save BOM Style
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
