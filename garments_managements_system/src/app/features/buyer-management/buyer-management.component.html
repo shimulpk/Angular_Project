@@ -82,9 +82,9 @@
                 <td><span class="badge bg-light text-dark border">{{ buyer.buyerCode }}</span></td>
                 <td class="fw-medium">{{ buyer.companyName }}</td>
                 <td>{{ buyer.country }}</td>
-                <td>{{ buyer.contacts?.[0]?.name || 'N/A' }}</td>
-                <td>{{ buyer.contacts?.[0]?.phone || 'N/A' }}</td>
-                <td>{{ buyer.contacts?.[0]?.email || 'N/A' }}</td>
+                <td>{{ buyer.contacts[0]?.name || 'N/A' }}</td>
+                <td>{{ buyer.contacts[0]?.phone || 'N/A' }}</td>
+                <td>{{ buyer.contacts[0]?.email || 'N/A' }}</td>
                 <td class="text-end">
                   <button class="btn btn-sm btn-outline-primary me-1" (click)="editBuyer(buyer)">
                     <i class="bi bi-pencil"></i>

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ProcurementService } from '../../../core/services/procurement.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { OrderService } from '../../../core/services/order.service';
 
 @Component({
   selector: 'app-create-requisition',
@@ -28,7 +29,7 @@ import { AuthService } from '../../../core/services/auth/auth.service';
               </div>
               <div class="col-md-3">
                 <label class="form-label">Requested By</label>
-                <input type="text" class="form-control" formControlName="requestedBy" readonly>
+                <input type="text" class="form-control" formControlName="requestedBy" >
               </div>
               <div class="col-md-3">
                 <label class="form-label">PR Status</label>
@@ -49,7 +50,12 @@ import { AuthService } from '../../../core/services/auth/auth.service';
               </div>
               <div class="col-md-4">
                 <label class="form-label">Order ID</label>
-                <input type="text" class="form-control" formControlName="orderId" placeholder="e.g. ORD-1001">
+                <select class="form-select" formControlName="orderId">
+                  <option value="">Select Order ID</option>
+                  <option *ngFor="let order of orders" [value]="order.orderId">
+                    {{ order.orderId }} ({{ order.poNumber }})
+                  </option>
+                </select>
               </div>
               
               <div class="col-md-4"></div>
@@ -82,6 +88,9 @@ export class CreateRequisitionComponent implements OnInit {
   private procurementService = inject(ProcurementService);
   private notify = inject(NotificationService);
   private authService = inject(AuthService);
+  private orderService = inject(OrderService);
+
+  orders: any[] = [];
 
   reqForm: FormGroup = this.fb.group({
     prDate: [new Date().toISOString().substring(0, 10), Validators.required],
@@ -96,6 +105,16 @@ export class CreateRequisitionComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.orderService.getOrders().subscribe({
+      next: (data) => {
+        this.orders = data;
+      },
+      error: (err) => {
+        this.notify.error('Failed to load orders');
+        console.error(err);
+      }
+    });
+
     this.reqForm.valueChanges.subscribe(val => {
       const q = val.quantity || 0;
       const p = val.unitPrice || 0;

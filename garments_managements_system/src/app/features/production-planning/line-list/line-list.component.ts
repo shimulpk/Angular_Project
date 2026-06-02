@@ -23,8 +23,8 @@ import { NotificationService } from '../../../core/services/notification/notific
                   <input class="form-control" formControlName="lineId" placeholder="e.g. L1">
                 </div>
                 <div class="mb-3">
-                  <label class="form-label fw-semibold">Line Name</label>
-                  <input class="form-control" formControlName="lineName" placeholder="e.g. Line 01">
+                  <label class="form-label fw-semibold">Capacity per day</label>
+                  <input type="number" class="form-control" formControlName="capacityPerDay" placeholder="e.g. 500" min="1">
                 </div>
                 <div class="mb-3">
                   <label class="form-label fw-semibold">Supervisor</label>
@@ -43,12 +43,12 @@ import { NotificationService } from '../../../core/services/notification/notific
             <div class="card-body p-0">
               <table class="table table-hover mb-0 align-middle">
                 <thead class="table-light">
-                  <tr><th>Line ID</th><th>Line Name</th><th>Supervisor</th></tr>
+                  <tr><th>Line ID</th><th>Capacity per day</th><th>Supervisor</th></tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let l of lines">
                     <td class="fw-bold text-primary">{{ l.lineId }}</td>
-                    <td>{{ l.lineName }}</td>
+                    <td>{{ l.capacityPerDay | number }}</td>
                     <td>{{ l.supervisor }}</td>
                   </tr>
                   <tr *ngIf="lines.length === 0">
@@ -71,7 +71,7 @@ export class LineListComponent implements OnInit {
   lines: any[] = [];
   form: FormGroup = this.fb.group({
     lineId: ['', Validators.required],
-    lineName: ['', Validators.required],
+    capacityPerDay: [null, [Validators.required, Validators.min(1)]],
     supervisor: ['', Validators.required]
   });
 

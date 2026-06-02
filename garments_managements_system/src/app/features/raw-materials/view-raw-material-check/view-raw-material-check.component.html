@@ -117,7 +117,7 @@
           </div>
 
           <!-- Detail chips -->
-          <div class="detail-chips" *ngIf="rec.details?.length">
+          <div class="detail-chips" *ngIf="rec.details.length">
             <span class="chip" *ngFor="let d of rec.details">
               {{ d.productName }} / {{ d.size }}:
               <strong>{{ d.calculatedFabric | number: '1.2-2' }}m</strong>

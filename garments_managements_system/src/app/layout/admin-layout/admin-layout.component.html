@@ -72,6 +72,12 @@
         <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-cutting-plan" routerLinkActive="active" class="menu-item">
           <i class="bi bi-table"></i> View Cutting Plan
         </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-day-wise-cutting-production" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-calendar-plus"></i> Add Day Wise Cutting Production
+        </a>
+        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-day-wise-cutting-production" routerLinkActive="active" class="menu-item">
+          <i class="bi bi-calendar3-week"></i> View Day Wise Cutting Production
+        </a>
 
         <div *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" class="menu-section-label mt-3" style="font-size:0.65rem; opacity:0.7;">🪡 SEWING</div>
         <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-sewing-plan" routerLinkActive="active" class="menu-item">

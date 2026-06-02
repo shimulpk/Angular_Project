@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ProductionPlanningService } from '../production-planning.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
 import { OrderService } from '../../../core/services/order.service';
+import { StyleService } from '../../../core/services/style.service';
 
 @Component({
   selector: 'app-add-production-order',
@@ -27,13 +28,9 @@ import { OrderService } from '../../../core/services/order.service';
               </div>
               <div class="col-md-4">
                 <label class="form-label fw-semibold">Style Code</label>
-                <input class="form-control" formControlName="styleCode" placeholder="e.g. TS-2024-B1">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label fw-semibold">Size</label>
-                <select class="form-select" formControlName="size">
-                  <option value="">Select Size</option>
-                  <option *ngFor="let s of sizes" [value]="s">{{ s }}</option>
+                <select class="form-select" formControlName="styleCode">
+                  <option value="">Select Style</option>
+                  <option *ngFor="let s of styles" [value]="s.styleCode">{{ s.styleCode }} - {{ s.styleName }}</option>
                 </select>
               </div>
               <div class="col-md-4">
@@ -57,13 +54,63 @@ import { OrderService } from '../../../core/services/order.service';
                   <option value="On Hold">On Hold</option>
                 </select>
               </div>
-              <div class="col-md-12">
+
+              <!-- Dynamic Size Quantities Grid -->
+              <div class="col-md-6 mt-4">
+                <div class="card border-0 bg-light p-3 h-100">
+                  <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-circle-fill me-2" style="font-size:0.6rem"></i>Short Sleeve Sizes</h6>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small mb-1 fw-semibold">short s size</label>
+                      <input type="number" class="form-control" formControlName="short_S" min="0">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small mb-1 fw-semibold">short m size</label>
+                      <input type="number" class="form-control" formControlName="short_M" min="0">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small mb-1 fw-semibold">short l size</label>
+                      <input type="number" class="form-control" formControlName="short_L" min="0">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small mb-1 fw-semibold">short xl size</label>
+                      <input type="number" class="form-control" formControlName="short_XL" min="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-4">
+                <div class="card border-0 bg-light p-3 h-100">
+                  <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-circle-fill me-2" style="font-size:0.6rem"></i>Full Sleeve Sizes</h6>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small mb-1 fw-semibold">full s size</label>
+                      <input type="number" class="form-control" formControlName="full_S" min="0">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small mb-1 fw-semibold">full m size</label>
+                      <input type="number" class="form-control" formControlName="full_M" min="0">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small mb-1 fw-semibold">full l size</label>
+                      <input type="number" class="form-control" formControlName="full_L" min="0">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small mb-1 fw-semibold">full xl size</label>
+                      <input type="number" class="form-control" formControlName="full_XL" min="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 mt-4">
                 <label class="form-label fw-semibold">Description</label>
                 <textarea class="form-control" formControlName="description" rows="2" placeholder="Additional notes..."></textarea>
               </div>
             </div>
             <div class="mt-4 text-end">
-              <button type="button" class="btn btn-outline-secondary me-2" (click)="form.reset()">Reset</button>
+              <button type="button" class="btn btn-outline-secondary me-2" (click)="onReset()">Reset</button>
               <button type="submit" class="btn btn-primary px-4" [disabled]="form.invalid">
                 <i class="bi bi-check2-circle me-1"></i> Submit Order
               </button>
@@ -79,31 +126,170 @@ export class AddProductionOrderComponent implements OnInit {
   private svc = inject(ProductionPlanningService);
   private notify = inject(NotificationService);
   private orderSvc = inject(OrderService);
+  private styleSvc = inject(StyleService);
 
   orders: any[] = [];
-  sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+  styles: any[] = [];
 
   form: FormGroup = this.fb.group({
     orderId: ['', Validators.required],
     styleCode: ['', Validators.required],
-    size: ['', Validators.required],
     planQty: [0, [Validators.required, Validators.min(1)]],
     startDate: ['', Validators.required],
     endDate: ['', Validators.required],
     status: ['Planned', Validators.required],
-    description: ['']
+    description: [''],
+    short_S: [0, [Validators.required, Validators.min(0)]],
+    short_M: [0, [Validators.required, Validators.min(0)]],
+    short_L: [0, [Validators.required, Validators.min(0)]],
+    short_XL: [0, [Validators.required, Validators.min(0)]],
+    full_S: [0, [Validators.required, Validators.min(0)]],
+    full_M: [0, [Validators.required, Validators.min(0)]],
+    full_L: [0, [Validators.required, Validators.min(0)]],
+    full_XL: [0, [Validators.required, Validators.min(0)]]
   });
 
   ngOnInit() {
-    this.orderSvc.getOrders().subscribe(d => this.orders = d);
+    this.orderSvc.getOrders().subscribe(orders => {
+      this.orders = orders;
+      this.styleSvc.getStyles().subscribe(styles => {
+        const referencedStyleIds = new Set(orders.map(o => o.styleId).filter(Boolean));
+        this.styles = styles.filter(s => referencedStyleIds.has(s.id));
+      });
+    });
+    this.setupStyleSubscription();
+    this.setupQuantityCalculation();
+  }
+
+  setupStyleSubscription() {
+    this.form.get('styleCode')?.valueChanges.subscribe(code => {
+      if (!code) {
+        this.form.patchValue({
+          short_S: 0,
+          short_M: 0,
+          short_L: 0,
+          short_XL: 0,
+          full_S: 0,
+          full_M: 0,
+          full_L: 0,
+          full_XL: 0
+        }, { emitEvent: false });
+        return;
+      }
+      const selectedStyle = this.styles.find(s => s.styleCode === code);
+      if (selectedStyle) {
+        const descValue = selectedStyle.description || selectedStyle.styleName || '';
+        
+        // Find matching orders for this style
+        const matchingOrders = this.orders.filter(o => o.styleId === selectedStyle.id);
+        
+        let shortS = 0, shortM = 0, shortL = 0, shortXL = 0;
+        let fullS = 0, fullM = 0, fullL = 0, fullXL = 0;
+
+        matchingOrders.forEach(order => {
+          if (order.items && Array.isArray(order.items)) {
+            order.items.forEach((item: any) => {
+              const qty = Number(item.quantity) || 0;
+              const size = item.size;
+              const type = item.type; // 'Short Sleeve' or 'Full Sleeve'
+
+              if (type === 'Short Sleeve') {
+                if (size === 'S') shortS += qty;
+                else if (size === 'M') shortM += qty;
+                else if (size === 'L') shortL += qty;
+                else if (size === 'XL') shortXL += qty;
+              } else if (type === 'Full Sleeve') {
+                if (size === 'S') fullS += qty;
+                else if (size === 'M') fullM += qty;
+                else if (size === 'L') fullL += qty;
+                else if (size === 'XL') fullXL += qty;
+              }
+            });
+          }
+        });
+
+        const patchData: any = {
+          description: descValue,
+          short_S: shortS,
+          short_M: shortM,
+          short_L: shortL,
+          short_XL: shortXL,
+          full_S: fullS,
+          full_M: fullM,
+          full_L: fullL,
+          full_XL: fullXL
+        };
+        
+        const matchingOrder = matchingOrders[0];
+        if (matchingOrder) {
+          patchData.orderId = matchingOrder.id;
+          patchData.planQty = matchingOrder.totalQuantity || (shortS + shortM + shortL + shortXL + fullS + fullM + fullL + fullXL);
+          patchData.startDate = matchingOrder.orderDate || '';
+          patchData.endDate = matchingOrder.shipDate || '';
+        }
+        
+        this.form.patchValue(patchData, { emitEvent: false });
+      }
+    });
+  }
+
+  setupQuantityCalculation() {
+    const sizeControls = ['short_S', 'short_M', 'short_L', 'short_XL', 'full_S', 'full_M', 'full_L', 'full_XL'];
+    sizeControls.forEach(ctrlName => {
+      this.form.get(ctrlName)?.valueChanges.subscribe(() => {
+        const sum = sizeControls.reduce((acc, name) => acc + (Number(this.form.get(name)?.value) || 0), 0);
+        this.form.get('planQty')?.setValue(sum, { emitEvent: false });
+      });
+    });
   }
 
   onSubmit() {
     if (this.form.valid) {
-      this.svc.createProductionOrder(this.form.value).subscribe(() => {
+      const activeSizes: string[] = [];
+      const sizeMappings = [
+        { key: 'short_S', label: 'Short-S' },
+        { key: 'short_M', label: 'Short-M' },
+        { key: 'short_L', label: 'Short-L' },
+        { key: 'short_XL', label: 'Short-XL' },
+        { key: 'full_S', label: 'Full-S' },
+        { key: 'full_M', label: 'Full-M' },
+        { key: 'full_L', label: 'Full-L' },
+        { key: 'full_XL', label: 'Full-XL' }
+      ];
+      sizeMappings.forEach(m => {
+        if (Number(this.form.get(m.key)?.value) > 0) {
+          activeSizes.push(m.label);
+        }
+      });
+      
+      const sizeStr = activeSizes.join(', ') || 'N/A';
+      
+      const payload = {
+        ...this.form.value,
+        size: sizeStr
+      };
+
+      this.svc.createProductionOrder(payload).subscribe(() => {
         this.notify.success('Production Order added successfully');
-        this.form.reset({ status: 'Planned' });
+        this.onReset();
       });
     }
   }
+
+  onReset() {
+    this.form.reset({
+      status: 'Planned',
+      planQty: 0,
+      short_S: 0,
+      short_M: 0,
+      short_L: 0,
+      short_XL: 0,
+      full_S: 0,
+      full_M: 0,
+      full_L: 0,
+      full_XL: 0
+    });
+  }
 }
+
+

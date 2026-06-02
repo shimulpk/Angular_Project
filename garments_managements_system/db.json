@@ -89,8 +89,8 @@
       "buyerCode": "102",
       "companyName": "Hamim group",
       "country": "Bangladesh",
-      "address": "",
-      "website": "",
+      "address": "Gulsan Corporate Office,Dhaka",
+      "website": "www.hamim.com",
       "currency": "USD",
       "paymentTerms": "60 days",
       "status": "Active",
@@ -324,6 +324,42 @@
         "XL"
       ],
       "id": "EzGuakbwWnk"
+    },
+    {
+      "styleCode": "HG212",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Casual",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "Z9dYFkuNaiA"
+    },
+    {
+      "styleCode": "NC211",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Casual",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "dwdiPAUjSoQ"
     }
   ],
   "purchaseOrders": [
@@ -568,6 +604,20 @@
       "unitPrice": 50,
       "totalCost": 25000,
       "id": "Ei1EDSauVbA"
+    },
+    {
+      "materialName": "Sewing Thread",
+      "unit": "Cone",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 1,
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "NC211",
+      "quantity": 20,
+      "unitPrice": 10,
+      "totalCost": 200,
+      "id": "ze0LA2EwniA"
     }
   ],
   "productionOrders": [
@@ -886,22 +936,448 @@
         }
       ],
       "id": "vfg7p5Y88BM"
+    },
+    {
+      "styleId": "dwdiPAUjSoQ",
+      "orderId": "OR-302",
+      "orderDbId": "qsD2M6t0i-8",
+      "orderNumber": "ORD-8594",
+      "date": "2026-05-28T09:17:34.877Z",
+      "totalFabricRequired": 6620.75,
+      "details": [
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "S",
+          "type": "SHORT",
+          "baseFabric": 1.606,
+          "qty": 500,
+          "calculatedFabric": 803,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "M",
+          "type": "SHORT",
+          "baseFabric": 1.6375,
+          "qty": 500,
+          "calculatedFabric": 818.75,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "L",
+          "type": "SHORT",
+          "baseFabric": 1.669,
+          "qty": 500,
+          "calculatedFabric": 834.5,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "XL",
+          "type": "SHORT",
+          "baseFabric": 1.69,
+          "qty": 500,
+          "calculatedFabric": 845,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "S",
+          "type": "FULL",
+          "baseFabric": 1.6886,
+          "qty": 500,
+          "calculatedFabric": 844.3000000000001,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "M",
+          "type": "FULL",
+          "baseFabric": 1.7396,
+          "qty": 500,
+          "calculatedFabric": 869.8000000000001,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "L",
+          "type": "FULL",
+          "baseFabric": 1.774,
+          "qty": 500,
+          "calculatedFabric": 887,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "XL",
+          "type": "FULL",
+          "baseFabric": 1.796,
+          "qty": 400,
+          "calculatedFabric": 718.4,
+          "hasUom": true
+        }
+      ],
+      "id": "t4MtBgIOJDk"
     }
   ],
-  "vendors": [],
-  "items": [],
-  "stockTransactions": [],
-  "inventoryItems": [],
-  "requisitions": [],
-  "procurementPOs": [],
-  "productionPlanOrders": [],
+  "vendors": [
+    {
+      "companyName": "Salma Textiles",
+      "contactPerson": "Sumaiya Akter",
+      "phone": "01987564323",
+      "address": "Valuka,Mymenshings",
+      "id": "uDUSFCTIGMo"
+    },
+    {
+      "companyName": "Sardar Textiles Mills",
+      "contactPerson": "Israt Jahan Jui",
+      "phone": "01898764523",
+      "address": "Savar,Dhaka",
+      "id": "BPfzWwOv76E"
+    }
+  ],
+  "items": [
+    {
+      "itemName": "Woven Knit Fabric",
+      "category": "Fabric",
+      "unit": "Yards",
+      "id": "b-wZfWqPZY0"
+    },
+    {
+      "itemName": "Plastic Button",
+      "category": "Accessories",
+      "unit": "Pieces",
+      "id": "LbXOQZbGHFQ"
+    },
+    {
+      "itemName": "Sweing Thread",
+      "category": "Accessories",
+      "unit": "Cones",
+      "id": "pnCzSw4YMOw"
+    },
+    {
+      "itemName": "Poly Bag",
+      "category": "Accessories",
+      "unit": "Kg",
+      "id": "Agvr5yJJFqQ"
+    }
+  ],
+  "stockTransactions": [
+    {
+      "inventoryItemId": "q1B7DtXamHk",
+      "quantity": 10000,
+      "date": "2026-05-29",
+      "type": "IN",
+      "itemName": "Woven Knit Fabric",
+      "id": "NI8iz0qE8os"
+    },
+    {
+      "inventoryItemId": "kOP2WSEneL4",
+      "quantity": 1000,
+      "date": "2026-05-29",
+      "type": "IN",
+      "itemName": "Plastic Button",
+      "id": "8cHavA-2Lak"
+    },
+    {
+      "inventoryItemId": "WTmPzCppCwg",
+      "quantity": 1000,
+      "date": "2026-05-28",
+      "type": "IN",
+      "itemName": "Sweing Thread",
+      "timestamp": "2026-05-28T11:26:20.018Z",
+      "id": "ybGcYIcnQho"
+    },
+    {
+      "inventoryItemId": "ld1hZx9mFOg",
+      "quantity": 300,
+      "date": "2026-05-30",
+      "type": "IN",
+      "itemName": "Poly Bag",
+      "timestamp": "2026-05-28T11:27:03.923Z",
+      "id": "StvVSgytCkk"
+    },
+    {
+      "inventoryItemId": "q1B7DtXamHk",
+      "quantity": 400,
+      "date": "2026-05-30",
+      "type": "OUT",
+      "itemName": "Woven Knit Fabric",
+      "timestamp": "2026-05-28T11:29:32.173Z",
+      "id": "rS4XxrGqeHM"
+    }
+  ],
+  "inventoryItems": [
+    {
+      "itemName": "Woven Knit Fabric",
+      "category": "Fabric",
+      "unit": "Yards",
+      "quantity": 9600,
+      "id": "q1B7DtXamHk"
+    },
+    {
+      "itemName": "Plastic Button",
+      "category": "Accessories",
+      "unit": "Pieces",
+      "quantity": 1000,
+      "id": "kOP2WSEneL4"
+    },
+    {
+      "itemName": "Sweing Thread",
+      "category": "Accessories",
+      "unit": "Cones",
+      "quantity": 1000,
+      "id": "WTmPzCppCwg"
+    },
+    {
+      "itemName": "Poly Bag",
+      "category": "Accessories",
+      "unit": "Kg",
+      "quantity": 300,
+      "id": "ld1hZx9mFOg"
+    }
+  ],
+  "requisitions": [
+    {
+      "prDate": "2026-05-28",
+      "department": "Cutting",
+      "requestedBy": "System Administrator",
+      "categoryName": "Fabric",
+      "orderId": "OR301",
+      "quantity": 500,
+      "unitPrice": 10,
+      "totalPrice": 5000,
+      "status": "Pending",
+      "id": "ah5DWKciYQA"
+    },
+    {
+      "prDate": "2026-05-28",
+      "department": "Cutting",
+      "requestedBy": "Shaharan",
+      "categoryName": "Fabric",
+      "orderId": "OR-302",
+      "quantity": 2000,
+      "unitPrice": 10,
+      "totalPrice": 20000,
+      "status": "Pending",
+      "id": "l5vU6_iphm0"
+    },
+    {
+      "prDate": "2026-05-28",
+      "department": "Cutting",
+      "requestedBy": "Shaharan",
+      "categoryName": "Fabric",
+      "orderId": "OR-302",
+      "quantity": 2000,
+      "unitPrice": 10,
+      "totalPrice": 20000,
+      "status": "Approved",
+      "id": "6GiA64Enjj8"
+    },
+    {
+      "prDate": "2026-05-28",
+      "department": "Cutting",
+      "requestedBy": "Shaharan",
+      "categoryName": "Fabric",
+      "orderId": "OR301",
+      "quantity": 500,
+      "unitPrice": 10,
+      "totalPrice": 5000,
+      "status": "Approved",
+      "id": "kFAOIM-axqw"
+    }
+  ],
+  "procurementPOs": [
+    {
+      "poNumber": "PO501",
+      "poDate": "2026-05-28",
+      "deliveryDate": "2026-12-03",
+      "vendorId": "uDUSFCTIGMo",
+      "requisitionId": "kFAOIM-axqw",
+      "productName": "Fabric",
+      "quantity": 500,
+      "unitPrice": 10,
+      "taxPercent": 5,
+      "totalPrice": 5250,
+      "vendorName": "Salma Textiles",
+      "vendorPhone": "01987564323",
+      "status": "Issued",
+      "id": "i9ZnpQVt_Zk"
+    },
+    {
+      "poNumber": "PO-502",
+      "poDate": "2026-05-28",
+      "deliveryDate": "2026-12-09",
+      "vendorId": "BPfzWwOv76E",
+      "requisitionId": "6GiA64Enjj8",
+      "productName": "Fabric",
+      "quantity": 2000,
+      "unitPrice": 10,
+      "taxPercent": 3,
+      "totalPrice": 20600,
+      "vendorName": "Sardar Textiles Mills",
+      "vendorPhone": "01898764523",
+      "status": "Issued",
+      "id": "CFXmG1G1ins"
+    }
+  ],
+  "productionPlanOrders": [
+    {
+      "orderId": "qsD2M6t0i-8",
+      "styleCode": "NC211",
+      "planQty": 3900,
+      "startDate": "2026-05-28",
+      "endDate": "2026-06-05",
+      "status": "Planned",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "short_S": 500,
+      "short_M": 500,
+      "short_L": 500,
+      "short_XL": 500,
+      "full_S": 500,
+      "full_M": 500,
+      "full_L": 500,
+      "full_XL": 400,
+      "size": "Short-S, Short-M, Short-L, Short-XL, Full-S, Full-M, Full-L, Full-XL",
+      "id": "tojKqlx_v1M"
+    }
+  ],
   "daywiseProduction": [],
-  "productionPlanLines": [],
-  "machines": [],
-  "cuttingPlans": [],
-  "sewingPlans": [],
-  "finishingPlans": [],
-  "packingPlans": [],
+  "productionPlanLines": [
+    {
+      "lineId": "L-1",
+      "capacityPerDay": 5000,
+      "supervisor": "Masud Rana",
+      "id": "GsvVHNFJ4gY"
+    },
+    {
+      "lineId": "L-2",
+      "capacityPerDay": 3000,
+      "supervisor": "Miskatul Islam",
+      "id": "1Eh5fC1YZw8"
+    },
+    {
+      "lineId": "L-3",
+      "capacityPerDay": 2000,
+      "supervisor": "Anik",
+      "id": "1PiuYHFcHL8"
+    }
+  ],
+  "machines": [
+    {
+      "machineId": "M-1",
+      "machineName": "Overloack Sewing Machine",
+      "type": "Overlock",
+      "line": "undefined",
+      "id": "2aS4-rFTgzM"
+    },
+    {
+      "machineId": "M-2",
+      "machineName": "Overloack Sewing Machine",
+      "type": "Overlock",
+      "line": "undefined",
+      "id": "x6_Sx1Vxt8o"
+    },
+    {
+      "machineId": "M-3",
+      "machineName": "Overloack Sewing Machine",
+      "type": "Overlock",
+      "line": "undefined",
+      "id": "7Ganm8MxqaQ"
+    }
+  ],
+  "cuttingPlans": [
+    {
+      "order_id": "qsD2M6t0i-8",
+      "style_no": "NC211",
+      "planned_pieces": 3900,
+      "actual_pieces": 3500,
+      "marker_efficiency": 89.7,
+      "cutting_date": "2026-05-29",
+      "assigned_to": "Sajin Ahmed",
+      "status": "Done",
+      "remarks": "good",
+      "cutting_plan_id": "CP-1780050546848",
+      "id": "9NqvhtDcU6Q"
+    }
+  ],
+  "sewingPlans": [
+    {
+      "order_id": "qsD2M6t0i-8",
+      "cutting_plan_id": "CP-1780050546848",
+      "style_no": "NC211",
+      "targets": [
+        {
+          "line_no": "L-1",
+          "target_quantity": 1800,
+          "achieved_quantity": 1750,
+          "rejection_qty": 50
+        },
+        {
+          "line_no": "L-2",
+          "target_quantity": 1700,
+          "achieved_quantity": 1680,
+          "rejection_qty": 20
+        }
+      ],
+      "start_date": "2026-05-29",
+      "end_date": "2026-05-30",
+      "assigned_supervisor": "Sumi Khatun",
+      "input_received_qty": 3500,
+      "output_qty": 3430,
+      "rejection_qty": 70,
+      "status": "Completed",
+      "sewing_plan_id": "SP-1780057112964",
+      "id": "M1bA_kOSNzA"
+    }
+  ],
+  "finishingPlans": [
+    {
+      "order_id": "qsD2M6t0i-8",
+      "sewing_plan_id": "SP-1780057112964",
+      "style_no": "NC211",
+      "input_qty": 3430,
+      "target_qty": 3430,
+      "pass_qty": 3300,
+      "rejection_qty": 130,
+      "ironing_type": "Dry Iron",
+      "quality_check": "QC Pass",
+      "thread_cutting": true,
+      "button_attach": true,
+      "label_attach": true,
+      "start_date": "2026-05-30",
+      "end_date": "2026-05-31",
+      "assigned_to": "Sumaiya Akter",
+      "status": "Done",
+      "finishing_plan_id": "FP-1780117805400",
+      "id": "Kw5hI5CfCCI",
+      "passQty": null
+    }
+  ],
+  "packingPlans": [
+    {
+      "order_id": "qsD2M6t0i-8",
+      "finishing_plan_id": "FP-1780117805400",
+      "style_no": "NC211",
+      "buyer_name": "Norban Comtex Ltd",
+      "input_qty": 3300,
+      "total_packed_qty": 3290,
+      "rejection_qty": 10,
+      "packing_method": "Ratio",
+      "carton_qty": 329,
+      "pcs_per_carton": 10,
+      "poly_bag_type": "16*12",
+      "barcode": "",
+      "hang_tag": true,
+      "shipment_date": "2026-06-05",
+      "destination": "Newyork,USA, America",
+      "status": "Pending",
+      "packing_plan_id": "PKG-1780120333482",
+      "computed_total": 3290,
+      "id": "Ms2GpMG6IuA"
+    }
+  ],
   "orders": [
     {
       "orderId": "OR301",
@@ -948,6 +1424,120 @@
       "vat": 2000,
       "grandTotal": 92900,
       "id": "46sHTTeghvI"
+    },
+    {
+      "orderId": "OR-302",
+      "poNumber": "ORD-8594",
+      "buyerId": "8C4QuXwzTeM",
+      "styleId": "dwdiPAUjSoQ",
+      "orderDate": "2026-05-28",
+      "shipDate": "2026-06-05",
+      "status": "Pending",
+      "items": [
+        {
+          "type": "Short Sleeve",
+          "size": "S",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 10
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "M",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 12
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "L",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 12
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "XL",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 15
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "S",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 13
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "M",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 13
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "L",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 14
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "XL",
+          "color": "Default",
+          "quantity": 400,
+          "unitPrice": 16
+        }
+      ],
+      "totalQuantity": 3900,
+      "totalAmount": 70900,
+      "shippingAddress": "Newyork,USA, America",
+      "subtotal": 50900,
+      "vat": 20000,
+      "grandTotal": 70900,
+      "id": "qsD2M6t0i-8"
+    }
+  ],
+  "dayWiseCuttingProduction": [
+    {
+      "order_id": "qsD2M6t0i-8",
+      "style_no": "NC211",
+      "stage": "Cutting",
+      "date": "2026-05-28",
+      "shift": "Morning",
+      "target_quantity": 3900,
+      "actual_quantity": 1800,
+      "reject_quantity": 199,
+      "line_allocations": [
+        {
+          "line_id": "L-1",
+          "quantity": 1800
+        }
+      ],
+      "supervisor_name": "Sajin Ahmed",
+      "remarks": "Machine Problem",
+      "id": "K3wn57-MLDo"
+    },
+    {
+      "order_id": "qsD2M6t0i-8",
+      "style_no": "NC211",
+      "stage": "Cutting",
+      "date": "2026-05-29",
+      "shift": "Morning",
+      "target_quantity": 3900,
+      "actual_quantity": 3500,
+      "reject_quantity": 400,
+      "line_allocations": [
+        {
+          "line_id": "L-2",
+          "quantity": 1700
+        }
+      ],
+      "supervisor_name": "Sajin Ahmed",
+      "remarks": "Good Works",
+      "id": "PxNcWEeKNxo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

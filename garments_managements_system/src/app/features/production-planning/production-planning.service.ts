@@ -13,6 +13,8 @@ export class ProductionPlanningService {
   // Day-wise Production
   getDaywiseProduction(): Observable<any[]> { return this.api.getAll<any>('daywiseProduction'); }
   createDaywiseProduction(d: any): Observable<any> { return this.api.create<any>('daywiseProduction', d); }
+  createDayWiseCuttingProduction(d: any): Observable<any> { return this.api.create<any>('dayWiseCuttingProduction', d); }
+  getDayWiseCuttingProduction(): Observable<any[]> { return this.api.getAll<any>('dayWiseCuttingProduction'); }
 
   // Lines
   getLines(): Observable<any[]> { return this.api.getAll<any>('productionPlanLines'); }

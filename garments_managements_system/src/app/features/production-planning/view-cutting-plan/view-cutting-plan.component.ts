@@ -21,12 +21,11 @@ import { NotificationService } from '../../../core/services/notification/notific
                 <tr>
                   <th>Plan ID</th>
                   <th>Order ID</th>
-                  <th>Style</th>
-                  <th>Size</th>
-                  <th>Target Qty</th>
-                  <th>Actual Cut Qty</th>
-                  <th>Line/Table No</th>
-                  <th>Fabric Lot</th>
+                  <th>Style No</th>
+                  <th>Planned Pieces</th>
+                  <th>Actual Pieces</th>
+                  <th>Marker Efficiency</th>
+                  <th>Assigned To</th>
                   <th>Cutting Date</th>
                   <th>Status</th>
                   <th>Actions</th>
@@ -34,21 +33,21 @@ import { NotificationService } from '../../../core/services/notification/notific
               </thead>
               <tbody>
                 <tr *ngFor="let p of plans">
-                  <td class="fw-semibold">#{{ p.id }}</td>
-                  <td class="text-primary fw-semibold">{{ p.orderId }}</td>
-                  <td>{{ p.style }}</td>
-                  <td><span class="badge bg-secondary">{{ p.size }}</span></td>
-                  <td>{{ p.targetQty | number }}</td>
+                  <td class="fw-semibold">{{ p.cutting_plan_id || '#' + p.id }}</td>
+                  <td class="text-primary fw-semibold">{{ p.order_id || p.orderId }}</td>
+                  <td>{{ p.style_no || p.style }}</td>
+                  <td>{{ p.planned_pieces || p.targetQty | number }}</td>
                   <td>
-                    <input type="number" class="form-control form-control-sm" style="width: 100px" [(ngModel)]="p.actualCutQty" min="0">
+                    <input type="number" class="form-control form-control-sm" style="width: 100px" [(ngModel)]="p.actual_pieces" min="0">
                   </td>
-                  <td>{{ p.lineTableNo }}</td>
-                  <td>{{ p.fabricLot }}</td>
-                  <td>{{ p.cuttingDate | date:'mediumDate' }}</td>
+                  <td>{{ p.marker_efficiency ? p.marker_efficiency + '%' : '-' }}</td>
+                  <td>{{ p.assigned_to || '-' }}</td>
+                  <td>{{ p.cutting_date || p.cuttingDate | date:'mediumDate' }}</td>
                   <td>
                     <select class="form-select form-select-sm" [(ngModel)]="p.status" style="width: 130px">
-                      <option value="Planned">Planned</option>
+                      <option value="Pending">Pending</option>
                       <option value="In Progress">In Progress</option>
+                      <option value="Done">Done</option>
                       <option value="Completed">Completed</option>
                     </select>
                   </td>
@@ -59,7 +58,7 @@ import { NotificationService } from '../../../core/services/notification/notific
                   </td>
                 </tr>
                 <tr *ngIf="plans.length === 0">
-                  <td colspan="11" class="text-center py-5 text-muted">No cutting plans found.</td>
+                  <td colspan="10" class="text-center py-5 text-muted">No cutting plans found.</td>
                 </tr>
               </tbody>
             </table>

@@ -160,6 +160,18 @@ export const routes: Routes = [
         data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
+        path: 'production-planning/add-day-wise-cutting-production',
+        loadComponent: () => import('./features/production-planning/add-day-wise-cutting-production/add-day-wise-cutting-production.component').then(m => m.AddDayWiseCuttingProductionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/view-day-wise-cutting-production',
+        loadComponent: () => import('./features/production-planning/view-day-wise-cutting-production/view-day-wise-cutting-production.component').then(m => m.ViewDayWiseCuttingProductionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
         path: 'production-planning/add-sewing-plan',
         loadComponent: () => import('./features/production-planning/add-sewing-plan/add-sewing-plan.component').then(m => m.AddSewingPlanComponent),
         canActivate: [authGuard],
