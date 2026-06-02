@@ -895,7 +895,10 @@
   "rawMaterialChecks": [
     {
       "styleId": "Aw93c1FNrmc",
-      "date": "2026-05-24T06:37:29.737Z",
+      "orderId": "OR301",
+      "orderDbId": "46sHTTeghvI",
+      "orderNumber": "ORD-9626",
+      "date": "2026-05-24T09:17:14.512Z",
       "totalFabricRequired": 2799.5,
       "details": [
         {
