@@ -2,9 +2,11 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductionPlanningService } from '../production-planning.service';
+import { BuyerService } from '../../../core/services/buyer.service';
 import { OrderService } from '../../../core/services/order.service';
-import { StyleService } from '../../../core/services/style.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
+import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-add-sewing-plan',
@@ -12,151 +14,165 @@ import { NotificationService } from '../../../core/services/notification/notific
   imports: [CommonModule, ReactiveFormsModule],
   template: `
     <div class="container-fluid py-4">
-      <div class="card shadow-sm border-0">
+      <div class="card shadow border-0" style="border-radius:14px; overflow:hidden;">
         <!-- Header -->
-        <div class="card-header border-0 py-3" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">
-          <h5 class="mb-0 text-white"><i class="bi bi-layers me-2"></i>Add Sewing Plan</h5>
-          <small class="text-white-50">Link cutting plan → define sewing line targets and capacity</small>
+        <div class="card-header border-0 py-4 px-4" style="background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%);">
+          <div class="d-flex align-items-center gap-3">
+            <div class="icon-wrap d-flex align-items-center justify-content-center rounded-3"
+                 style="width:48px;height:48px;background:rgba(255,255,255,0.18);">
+              <i class="bi bi-layers fs-4 text-white"></i>
+            </div>
+            <div>
+              <h5 class="mb-0 text-white fw-bold">Add Sewing Plan</h5>
+              <small class="text-white-50">Link completed cutting plan and define line targets</small>
+            </div>
+          </div>
         </div>
 
         <div class="card-body p-4">
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-            <!-- Section 1: FK References -->
-            <div class="section-title mb-2">
-              <i class="bi bi-link-45deg me-1"></i>Order & Cutting Plan Reference
+            <!-- Section 1: Cutting Plan Reference -->
+            <div class="section-label mb-3">
+              <i class="bi bi-link-45deg me-1"></i>Cutting Plan Reference
             </div>
             <div class="row g-3 mb-4">
-              <div class="col-md-4">
-                <label class="form-label fw-semibold">Order ID <span class="text-danger">*</span></label>
-                <select class="form-select" formControlName="order_id" (change)="onOrderChange($event)"
-                  [class.is-invalid]="isInvalid('order_id')">
-                  <option value="">— Select Order —</option>
-                  <option *ngFor="let o of orders" [value]="o.id ?? o.orderId">
-                    {{ o.id ?? o.orderId }}{{ o.buyerName ? ' · ' + o.buyerName : '' }}
-                  </option>
-                </select>
-                <div class="invalid-feedback">Order is required.</div>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label fw-semibold">Cutting Plan ID (FK) <span class="text-danger">*</span></label>
+              <!-- Cutting Plan ID (FK) -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">
+                  Cutting Plan ID (FK) <span class="text-danger">*</span>
+                </label>
                 <select class="form-select" formControlName="cutting_plan_id"
-                  (change)="onCuttingPlanChange($event)"
-                  [class.is-invalid]="isInvalid('cutting_plan_id')">
-                  <option value="">— Select Cutting Plan —</option>
+                        (change)="onCuttingPlanChange($event)"
+                        [class.is-invalid]="isInvalid('cutting_plan_id')">
+                  <option value="">— Select Completed Cutting Plan —</option>
                   <option *ngFor="let cp of cuttingPlans" [value]="cp.cutting_plan_id ?? cp.id">
                     {{ cp.cutting_plan_id ?? cp.id }}
-                    {{ cp.style_no ? ' · ' + cp.style_no : '' }}
+                    {{ cp.style_no ? ' · Style: ' + cp.style_no : '' }}
+                    {{ cp.planned_pieces ? ' · Target: ' + cp.planned_pieces + ' pcs' : '' }}
                   </option>
                 </select>
                 <div class="invalid-feedback">Cutting Plan reference is required.</div>
+                <small class="text-muted">Only plans with status <strong>Completed</strong> or <strong>Done</strong> appear here.</small>
               </div>
-              <div class="col-md-4">
+
+              <!-- Input Received Qty (from Cutting) -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Input Received Qty (from Cutting)</label>
+                <input type="number" class="form-control bg-light text-primary fw-bold" 
+                       formControlName="input_received_qty" readonly
+                       placeholder="Auto-filled from Cutting Plan">
+                <small class="text-muted">Total actual pieces cut in the selected plan</small>
+              </div>
+            </div>
+
+            <!-- Section 2: Auto-filled Details -->
+            <div class="section-label mb-3">
+              <i class="bi bi-info-circle me-1"></i>Auto-filled Details
+            </div>
+            <div class="row g-3 mb-4">
+              <!-- Buyer Name -->
+              <div class="col-md-3">
+                <label class="form-label fw-semibold">Buyer Name</label>
+                <input class="form-control bg-light" formControlName="buyer_name" readonly
+                       placeholder="Auto-filled">
+              </div>
+
+              <!-- Order / PO No -->
+              <div class="col-md-3">
+                <label class="form-label fw-semibold">Order No</label>
+                <input class="form-control bg-light" formControlName="order_no" readonly
+                       placeholder="Auto-filled">
+              </div>
+
+              <!-- Style No -->
+              <div class="col-md-3">
                 <label class="form-label fw-semibold">Style No</label>
-                <input class="form-control" formControlName="style_no" readonly placeholder="Auto-filled from Order">
+                <input class="form-control bg-light" formControlName="style_no" readonly
+                       placeholder="Auto-filled">
               </div>
-            </div>
 
-            <!-- Section 2: Line & Targets -->
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <div class="section-title mb-0">
-                <i class="bi bi-diagram-3 me-1"></i>Line & Production Targets
-              </div>
-              <button type="button" class="btn btn-sm btn-outline-primary" (click)="addTarget()">
-                <i class="bi bi-plus-lg me-1"></i>Add Line & Production Target
-              </button>
-            </div>
-            
-            <div formArrayName="targets">
-              <div *ngFor="let target of targetsArray.controls; let i = index" [formGroupName]="i" class="row g-3 mb-4 position-relative border rounded p-3 bg-light mt-2 mx-0">
-                
-                <button type="button" class="btn btn-sm btn-danger position-absolute" style="top: -10px; right: -10px; width: 32px; height: 32px; border-radius: 50%; z-index: 10;" (click)="removeTarget(i)" *ngIf="targetsArray.length > 1">
-                  <i class="bi bi-trash"></i>
-                </button>
-
-                <div class="col-md-3">
-                  <label class="form-label fw-semibold">Line No <span class="text-danger">*</span></label>
-                  <select class="form-select" formControlName="line_no"
-                    [class.is-invalid]="target.get('line_no')?.invalid && (target.get('line_no')?.dirty || target.get('line_no')?.touched)">
-                    <option value="">— Select Line —</option>
-                    <option *ngFor="let l of lines" [value]="l.lineName ?? l.lineId">
-                      {{ l.lineName }} ({{ l.lineId }})
-                    </option>
-                  </select>
-                  <div class="invalid-feedback">Line number is required.</div>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label fw-semibold">Target Quantity (pcs) <span class="text-danger">*</span></label>
-                  <input type="number" class="form-control" formControlName="target_quantity" min="1"
-                    [class.is-invalid]="target.get('target_quantity')?.invalid && (target.get('target_quantity')?.dirty || target.get('target_quantity')?.touched)">
-                  <div class="invalid-feedback">Must be at least 1.</div>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label fw-semibold">Achieved Quantity <span class="text-danger">*</span></label>
-                  <input type="number" class="form-control" formControlName="achieved_quantity" min="1"
-                    placeholder="e.g. 500" [class.is-invalid]="target.get('achieved_quantity')?.invalid && (target.get('achieved_quantity')?.dirty || target.get('achieved_quantity')?.touched)">
-                  <div class="invalid-feedback">Must be at least 1.</div>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label fw-semibold">Rejection Qty</label>
-                  <input type="number" class="form-control" formControlName="rejection_qty" min="0"
-                    placeholder="e.g. 20">
-                </div>
+              <!-- Color -->
+              <div class="col-md-3">
+                <label class="form-label fw-semibold">Color</label>
+                <input class="form-control bg-light" formControlName="color" readonly
+                       placeholder="Auto-filled">
               </div>
             </div>
 
             <!-- Section 3: Schedule -->
-            <div class="section-title mb-2">
-              <i class="bi bi-calendar-range me-1"></i>Schedule & Supervisor
+            <div class="section-label mb-3">
+              <i class="bi bi-calendar-range me-1"></i>Schedule
             </div>
             <div class="row g-3 mb-4">
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <label class="form-label fw-semibold">Start Date <span class="text-danger">*</span></label>
                 <input type="date" class="form-control" formControlName="start_date"
-                  [class.is-invalid]="isInvalid('start_date')">
-                <div class="invalid-feedback">Start date is required.</div>
+                       [class.is-invalid]="isInvalid('start_date')">
+                <div class="invalid-feedback">Start Date is required.</div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <label class="form-label fw-semibold">End Date <span class="text-danger">*</span></label>
                 <input type="date" class="form-control" formControlName="end_date"
-                  [class.is-invalid]="isInvalid('end_date')">
-                <div class="invalid-feedback">End date is required.</div>
-              </div>
-              <div class="col-md-3">
-                <label class="form-label fw-semibold">Assigned Supervisor</label>
-                <input class="form-control" formControlName="assigned_supervisor" placeholder="e.g. Md. Kamal">
-              </div>
-              <div class="col-md-3">
-                <label class="form-label fw-semibold">Status <span class="text-danger">*</span></label>
-                <select class="form-select" formControlName="status"
-                  [class.is-invalid]="isInvalid('status')">
-                  <option value="Pending">Pending</option>
-                  <option value="Running">Running</option>
-                  <option value="Completed">Completed</option>
-                </select>
+                       [class.is-invalid]="isInvalid('end_date')">
+                <div class="invalid-feedback">End Date is required.</div>
               </div>
             </div>
 
-            <!-- Section 4: Quantities -->
-            <div class="section-title mb-2">
-              <i class="bi bi-boxes me-1"></i>Quantity Tracking
+            <!-- Section 4: Line & Production Target -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="section-label mb-0">
+                <i class="bi bi-diagram-3 me-1"></i>Line & Production Target
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" (click)="addTarget()">
+                <i class="bi bi-plus-lg me-1"></i>Add Row
+              </button>
             </div>
-            <div class="row g-3 mb-4">
-              <div class="col-md-4">
-                <label class="form-label fw-semibold">Input Received Qty (from Cutting)</label>
-                <input type="number" class="form-control" formControlName="input_received_qty" min="0"
-                  placeholder="Auto-filled from Cutting Plan">
+            
+            <div formArrayName="targets">
+              <div *ngFor="let target of targetsArray.controls; let i = index" [formGroupName]="i" 
+                   class="row g-3 mb-3 align-items-end border rounded p-3 bg-light position-relative">
+                
+                <!-- Remove button -->
+                <button type="button" class="btn-close position-absolute" 
+                        style="top:10px; right:10px; font-size:0.8rem;" 
+                        aria-label="Close"
+                        (click)="removeTarget(i)" 
+                        *ngIf="targetsArray.length > 1">
+                </button>
+
+                <!-- Line No -->
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Line No <span class="text-danger">*</span></label>
+                  <select class="form-select" formControlName="line_no"
+                          [class.is-invalid]="target.get('line_no')?.invalid && (target.get('line_no')?.dirty || target.get('line_no')?.touched)">
+                    <option value="">— Select Line —</option>
+                    <option *ngFor="let l of lines" [value]="l.lineId">
+                      {{ l.lineId }}
+                    </option>
+                  </select>
+                  <div class="invalid-feedback">Line number is required.</div>
+                </div>
+
+                <!-- Target Quantity -->
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Target Quantity <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control" formControlName="target_quantity" min="1"
+                         placeholder="e.g. 2000"
+                         [class.is-invalid]="target.get('target_quantity')?.invalid && (target.get('target_quantity')?.dirty || target.get('target_quantity')?.touched)">
+                  <div class="invalid-feedback">Must be at least 1.</div>
+                </div>
               </div>
-              <div class="col-md-4">
-                <label class="form-label fw-semibold">Output Qty (Manufactured)</label>
-                <input type="number" class="form-control" formControlName="output_qty" readonly
-                  placeholder="Auto-summed from lines">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label fw-semibold">Rejection Qty</label>
-                <input type="number" class="form-control" formControlName="rejection_qty" readonly
-                  placeholder="Auto-summed from lines">
-              </div>
+            </div>
+
+            <!-- Status preview -->
+            <div class="alert alert-info d-flex align-items-center gap-2 py-2 mb-4" style="border-radius:8px;">
+              <i class="bi bi-info-circle-fill text-info"></i>
+              <span class="small">
+                Status will be automatically set to
+                <span class="badge bg-primary fw-semibold ms-1">In Sewing</span>
+                upon submission.
+              </span>
             </div>
 
             <!-- Actions -->
@@ -166,7 +182,7 @@ import { NotificationService } from '../../../core/services/notification/notific
                 <button type="button" class="btn btn-outline-secondary px-4" (click)="resetForm()">
                   <i class="bi bi-arrow-counterclockwise me-1"></i>Reset
                 </button>
-                <button type="submit" class="btn btn-primary px-4" [disabled]="form.invalid || submitting">
+                <button type="submit" class="btn btn-primary px-5" [disabled]="form.invalid || submitting">
                   <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
                   <i *ngIf="!submitting" class="bi bi-check2-circle me-1"></i>
                   {{ submitting ? 'Saving...' : 'Save Sewing Plan' }}
@@ -180,42 +196,47 @@ import { NotificationService } from '../../../core/services/notification/notific
     </div>
   `,
   styles: [`
-    .section-title {
-      font-size: 0.75rem;
+    .section-label {
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.6px;
       color: #6c757d;
       border-left: 3px solid #2563eb;
       padding-left: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      margin-top: 4px;
     }
   `]
 })
 export class AddSewingPlanComponent implements OnInit {
-  private fb = inject(FormBuilder);
-  private svc = inject(ProductionPlanningService);
+  private fb       = inject(FormBuilder);
+  private svc      = inject(ProductionPlanningService);
+  private buyerSvc = inject(BuyerService);
   private orderSvc = inject(OrderService);
-  private styleSvc = inject(StyleService);
-  private notify = inject(NotificationService);
+  private notify   = inject(NotificationService);
+  private router   = inject(Router);
 
+  buyers: any[] = [];
   orders: any[] = [];
   cuttingPlans: any[] = [];
+  dailyCuttingRecords: any[] = [];
   lines: any[] = [];
-  styles: any[] = [];
   submitting = false;
 
   form: FormGroup = this.fb.group({
-    order_id:           ['', Validators.required],
     cutting_plan_id:    ['', Validators.required],
+    order_id:           [''],
+    buyer_id:           [''],
+    buyer_name:         [''],
+    order_no:           [''],
     style_no:           [''],
-    targets:            this.fb.array([this.createTargetRow()]),
+    color:              [''],
+    input_received_qty: [null],
     start_date:         [new Date().toISOString().substring(0, 10), Validators.required],
     end_date:           ['', Validators.required],
-    assigned_supervisor:[''],
-    input_received_qty: [null, Validators.min(0)],
-    output_qty:         [null, Validators.min(0)],
-    rejection_qty:      [null, Validators.min(0)],
-    status:             ['Pending', Validators.required]
+    targets:            this.fb.array([this.createTargetRow()]),
+    status:             ['In Sewing']
   });
 
   get targetsArray(): FormArray {
@@ -225,9 +246,7 @@ export class AddSewingPlanComponent implements OnInit {
   createTargetRow(): FormGroup {
     return this.fb.group({
       line_no: ['', Validators.required],
-      target_quantity: [null, [Validators.required, Validators.min(1)]],
-      achieved_quantity: [null, [Validators.required, Validators.min(1)]],
-      rejection_qty: [null, Validators.min(0)]
+      target_quantity: [null, [Validators.required, Validators.min(1)]]
     });
   }
 
@@ -242,56 +261,27 @@ export class AddSewingPlanComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderSvc.getOrders().subscribe(data => this.orders = data);
-    this.styleSvc.getStyles().subscribe(data => this.styles = data);
-    this.svc.getLines().subscribe(data => this.lines = data);
-    this.svc.getCuttingPlans().subscribe(data => this.cuttingPlans = data);
-
-    // Real-time aggregation: sum achieved_quantity and rejection_qty across all target rows
-    this.targetsArray.valueChanges.subscribe((rows: any[]) => {
-      const totalOutput = rows.reduce((sum, r) => sum + (Number(r.achieved_quantity) || 0), 0);
-      const totalRejection = rows.reduce((sum, r) => sum + (Number(r.rejection_qty) || 0), 0);
-      this.form.patchValue(
-        { output_qty: totalOutput || null, rejection_qty: totalRejection || null },
-        { emitEvent: false }
-      );
-    });
+    this.loadData();
   }
 
-  onOrderChange(event: any) {
-    const orderId = event.target.value;
-    const sel = this.orders.find(o => (o.id ?? o.orderId) === orderId);
-    if (sel) {
-      let styleCode = sel.styleNo ?? sel.styleCode ?? '';
-      
-      // Look up style code if not directly on the order but we have styleId
-      if (!styleCode && sel.styleId) {
-        const foundStyle = this.styles.find(s => s.id === sel.styleId);
-        if (foundStyle) {
-          styleCode = foundStyle.styleCode;
-        }
+  loadData() {
+    forkJoin({
+      buyers: this.buyerSvc.getBuyers(),
+      orders: this.orderSvc.getOrders(),
+      plans:  this.svc.getCuttingPlans(),
+      daily:  this.svc.getDayWiseCuttingProduction(),
+      lines:  this.svc.getLines()
+    }).subscribe({
+      next: ({ buyers, orders, plans, daily, lines }) => {
+        this.buyers = buyers;
+        this.orders = orders;
+        this.dailyCuttingRecords = daily;
+        this.lines = lines;
+        
+        // Filter: only Completed or Done cutting plans
+        this.cuttingPlans = plans.filter((p: any) => p.status === 'Completed' || p.status === 'Done');
       }
-
-      this.form.patchValue({
-        style_no:        styleCode,
-        end_date:        sel.endDate ?? ''
-      });
-      if (this.targetsArray.length > 0) {
-        this.targetsArray.at(0).patchValue({
-          target_quantity: sel.planQty ?? sel.quantity ?? null
-        });
-      }
-      // Filter cutting plans for this order
-      this.svc.getCuttingPlans().subscribe(plans => {
-        this.cuttingPlans = plans.filter(p => (p.order_id ?? p.orderId) === orderId);
-      });
-    } else {
-      this.form.patchValue({ style_no: '', end_date: '' });
-      if (this.targetsArray.length > 0) {
-        this.targetsArray.at(0).patchValue({ target_quantity: null });
-      }
-      this.svc.getCuttingPlans().subscribe(data => this.cuttingPlans = data);
-    }
+    });
   }
 
   onCuttingPlanChange(event: any) {
@@ -299,10 +289,40 @@ export class AddSewingPlanComponent implements OnInit {
     const cp = this.cuttingPlans.find(p => (p.cutting_plan_id ?? p.id) === cpId);
     
     if (cp) {
-      const actualQty = cp.actual_pieces ?? cp.actualCutQty ?? null;
-      this.form.patchValue({ input_received_qty: actualQty });
+      // Find actual total cut quantity by summing actual cut pieces from day-wise cutting production
+      const actualQty = this.dailyCuttingRecords
+        .filter(r => (r.cutting_plan_id || r.plan_id) === cpId)
+        .reduce((sum, r) => sum + (Number(r.actual_cut_pieces) || 0), 0) || cp.planned_pieces || cp.actual_pieces || 0;
+
+      // Find buyer name
+      const buyer = this.buyers.find(b => b.id === cp.buyer_id);
+      const buyerName = buyer ? buyer.companyName : '';
+
+      // Find order number
+      const order = this.orders.find(o => o.id === cp.order_id);
+      const orderNo = order ? (order.poNumber || order.orderId) : cp.order_id;
+
+      this.form.patchValue({
+        order_id:           cp.order_id || '',
+        buyer_id:           cp.buyer_id || '',
+        buyer_name:         buyerName,
+        order_no:           orderNo,
+        style_no:           cp.style_no || '',
+        color:              cp.color || '',
+        input_received_qty: actualQty,
+        end_date:           cp.end_date || ''
+      });
     } else {
-      this.form.patchValue({ input_received_qty: null });
+      this.form.patchValue({
+        order_id:           '',
+        buyer_id:           '',
+        buyer_name:         '',
+        order_no:           '',
+        style_no:           '',
+        color:              '',
+        input_received_qty: null,
+        end_date:           ''
+      });
     }
   }
 
@@ -314,7 +334,7 @@ export class AddSewingPlanComponent implements OnInit {
   resetForm() {
     this.form.reset({
       start_date: new Date().toISOString().substring(0, 10),
-      status: 'Pending'
+      status: 'In Sewing'
     });
     while (this.targetsArray.length > 1) {
       this.targetsArray.removeAt(1);
@@ -324,17 +344,24 @@ export class AddSewingPlanComponent implements OnInit {
   onSubmit() {
     if (this.form.invalid) { this.form.markAllAsTouched(); return; }
     this.submitting = true;
+
+    // Get raw value
+    const raw = this.form.getRawValue();
     const payload = {
-      ...this.form.value,
+      ...raw,
+      status:         'In Sewing',
       sewing_plan_id: 'SP-' + Date.now()
     };
+
     this.svc.createSewingPlan(payload).subscribe({
       next: () => {
-        this.notify.success('Sewing Plan created successfully');
+        this.notify.success('Sewing Plan created successfully with status: In Sewing');
         this.resetForm();
         this.submitting = false;
+        this.router.navigate(['/production-planning/view-sewing-plan']);
       },
       error: () => { this.submitting = false; }
     });
   }
 }
+

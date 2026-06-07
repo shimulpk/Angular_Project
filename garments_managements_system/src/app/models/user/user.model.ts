@@ -3,7 +3,7 @@ export interface User {
   username: string;
   password?: string;
   fullName: string;
-  role: 'ADMIN' | 'MERCHANDISER' | 'PRODUCTION_MGR' | 'SUPERVISOR' | 'QA_OFFICER' | 'STOREKEEPER' | 'VIEWER';
+  role: 'ADMIN' | 'MERCHANDISER' | 'PRODUCTION_MGR' | 'SUPERVISOR' | 'QA_OFFICER' | 'STOREKEEPER' | 'PURCHASE_MGR' | 'VIEWER';
   email: string;
   token?: string;
 }

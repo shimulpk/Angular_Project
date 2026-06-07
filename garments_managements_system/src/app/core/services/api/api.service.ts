@@ -19,7 +19,14 @@ export class ApiService {
         }
       });
     }
-    return this.http.get<T[]>(`${this.baseUrl}/${endpoint}`, { params: httpParams });
+    return this.http.get<T[]>(`${this.baseUrl}/${endpoint}`, {
+      params: httpParams,
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      }
+    });
   }
 
   getById<T>(endpoint: string, id: string | number): Observable<T> {

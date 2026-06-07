@@ -6,16 +6,16 @@ import { ProductionPlanningService } from '../production-planning.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
 
 @Component({
-  selector: 'app-view-day-wise-cutting-production',
+  selector: 'app-view-day-wise-finishing-production',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
     <div class="container-fluid py-4">
 
-      <!-- ── Page Header ──────────────────────────────────────────── -->
+      <!-- Page Header -->
       <div class="card border-0 shadow-sm mb-4" style="border-radius:12px; overflow:hidden;">
         <div class="card-body py-4 px-4"
-             style="background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%);">
+             style="background:linear-gradient(135deg,#1e3a5f 0%,#7c3aed 100%);">
           <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div class="d-flex align-items-center gap-3">
               <div class="d-flex align-items-center justify-content-center rounded-3"
@@ -23,8 +23,8 @@ import { NotificationService } from '../../../core/services/notification/notific
                 <i class="bi bi-calendar3-week fs-4 text-white"></i>
               </div>
               <div>
-                <h5 class="mb-0 text-white fw-bold">Day Wise Cutting Production</h5>
-                <small class="text-white-50">Daily cutting output log — review, edit, or delete entries</small>
+                <h5 class="mb-0 text-white fw-bold">Day Wise Finishing Production</h5>
+                <small class="text-white-50">Daily finishing audit log — review, edit or correct entries</small>
               </div>
             </div>
             <span class="badge px-3 py-2 fw-semibold"
@@ -35,7 +35,7 @@ import { NotificationService } from '../../../core/services/notification/notific
         </div>
       </div>
 
-      <!-- ── Filter Bar ─────────────────────────────────────────────── -->
+      <!-- Filter Bar -->
       <div class="card border-0 shadow-sm mb-4" style="border-radius:12px;">
         <div class="card-body py-3 px-4">
           <div class="row g-3 align-items-end">
@@ -45,18 +45,18 @@ import { NotificationService } from '../../../core/services/notification/notific
                 <i class="bi bi-search me-1"></i>Search by Plan ID
               </label>
               <input type="text" class="form-control form-control-sm bg-light"
-                     placeholder="e.g. CP-102..."
+                     placeholder="e.g. FP-..."
                      [(ngModel)]="searchPlanId"
                      (ngModelChange)="applyFilter()">
             </div>
 
             <div class="col-md-3">
               <label class="form-label small fw-semibold text-muted mb-1">
-                <i class="bi bi-tag me-1"></i>Search by Style No
+                <i class="bi bi-palette me-1"></i>Filter by Style
               </label>
               <input type="text" class="form-control form-control-sm bg-light"
-                     placeholder="e.g. ST-990..."
-                     [(ngModel)]="searchStyleNo"
+                     placeholder="e.g. NK201"
+                     [(ngModel)]="searchStyle"
                      (ngModelChange)="applyFilter()">
             </div>
 
@@ -82,19 +82,19 @@ import { NotificationService } from '../../../core/services/notification/notific
         </div>
       </div>
 
-      <!-- ── Loading ──────────────────────────────────────────────── -->
+      <!-- Loading -->
       <div *ngIf="loading" class="text-center py-5">
         <div class="spinner-border text-primary" role="status"></div>
         <p class="text-muted mt-3">Loading records...</p>
       </div>
 
-      <!-- ── Empty State ───────────────────────────────────────────── -->
+      <!-- Empty State -->
       <div *ngIf="!loading && filteredRecords.length === 0"
            class="card border-0 shadow-sm text-center py-5" style="border-radius:12px;">
         <i class="bi bi-inbox fs-1 text-muted d-block mb-3"></i>
         <h5 class="text-muted">No Records Found</h5>
         <p class="text-muted small mb-0" *ngIf="allRecords.length === 0">
-          No daily cutting entries yet. Use <strong>Add Day Wise Cutting Production</strong>.
+          No daily finishing entries yet. Use <strong>Add Day Wise Finishing Production</strong>.
         </p>
         <p class="text-muted small mb-0" *ngIf="allRecords.length > 0">
           No records match your filters.
@@ -103,83 +103,64 @@ import { NotificationService } from '../../../core/services/notification/notific
         </p>
       </div>
 
-      <!-- ── Main Table ─────────────────────────────────────────────── -->
+      <!-- Main Table -->
       <div *ngIf="!loading && filteredRecords.length > 0"
            class="card border-0 shadow-sm" style="border-radius:12px; overflow:hidden;">
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
               <thead>
-                <tr style="background:linear-gradient(135deg,#f8faff,#eef2ff);">
+                <tr style="background:linear-gradient(135deg,#f8faff,#f3e8ff);">
                   <th class="py-3 ps-4 th-style">#</th>
                   <th class="py-3 th-style">Date (তারিখ)</th>
-                  <th class="py-3 th-style">Cutting Plan ID</th>
-                  <th class="py-3 th-style">Style No</th>
-                  <th class="py-3 th-style text-center">Target Pcs</th>
-                  <th class="py-3 th-style text-center">Today's Cut (আজকের কাটা)</th>
-                  <th class="py-3 th-style text-center">Today's Reject</th>
+                  <th class="py-3 th-style">Finishing Plan ID</th>
+                  <th class="py-3 th-style">Style / Buyer</th>
+                  <th class="py-3 th-style text-center">Today's Pass (পাস)</th>
+                  <th class="py-3 th-style text-center">Today's Reject (রিজেক্ট)</th>
+                  <th class="py-3 th-style">Remarks</th>
                   <th class="py-3 th-style text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <ng-container *ngFor="let rec of filteredRecords; let i = index">
 
-                  <!-- ── View Row ─────────────────────────────────── -->
+                  <!-- View Row -->
                   <tr *ngIf="editingId !== rec.id" class="record-row">
-
-                    <!-- # -->
                     <td class="ps-4 py-3 text-muted small">{{ i + 1 }}</td>
-
-                    <!-- Date -->
                     <td class="py-3">
                       <div class="fw-semibold" style="font-size:0.9rem;">
                         {{ rec.date | date:'dd/MM/yyyy' }}
                       </div>
                     </td>
-
-                    <!-- Cutting Plan ID -->
                     <td class="py-3">
                       <span class="badge fw-semibold"
-                            style="background:#eff6ff;color:#1d4ed8;font-size:0.8rem;padding:5px 10px;border-radius:20px;">
-                        <i class="bi bi-scissors me-1"></i>
-                        {{ rec.cutting_plan_id || rec.plan_id || '—' }}
+                            style="background:#f3e8ff;color:#7c3aed;font-size:0.8rem;padding:5px 10px;border-radius:20px;">
+                        <i class="bi bi-stars me-1"></i>
+                        {{ rec.finishing_plan_id || rec.plan_id || '—' }}
                       </span>
                     </td>
-
-                    <!-- Style No -->
                     <td class="py-3">
-                      <span class="badge bg-light text-dark border" style="font-size:0.8rem;">
-                        {{ rec.style_no || '—' }}
-                      </span>
+                      <div class="fw-semibold small">{{ rec.style_no || '—' }}</div>
+                      <div class="text-muted" style="font-size:0.75rem;">{{ rec.buyer_name || '' }}</div>
                     </td>
-
-                    <!-- Target Pcs (from parent plan) -->
-                    <td class="py-3 text-center">
-                      <span class="fw-semibold text-primary" style="font-size:0.95rem;">
-                        {{ getTargetPcs(rec) | number }}
-                      </span>
-                      <div class="text-muted" style="font-size:0.7rem;">pcs</div>
-                    </td>
-
-                    <!-- Today's Cut -->
                     <td class="py-3 text-center">
                       <span class="fw-bold text-success" style="font-size:1rem;">
-                        {{ getActualCut(rec) | number }}
+                        {{ rec.pass_qty | number }}
                       </span>
                       <span class="text-muted small ms-1">pcs</span>
                     </td>
-
-                    <!-- Today's Reject -->
                     <td class="py-3 text-center">
                       <span class="fw-bold"
-                            [ngClass]="getRejectPieces(rec) > 0 ? 'text-danger' : 'text-muted'"
+                            [ngClass]="rec.reject_qty > 0 ? 'text-danger' : 'text-muted'"
                             style="font-size:1rem;">
-                        {{ getRejectPieces(rec) | number }}
+                        {{ rec.reject_qty | number }}
                       </span>
                       <span class="text-muted small ms-1">pcs</span>
                     </td>
-
-                    <!-- Actions -->
+                    <td class="py-3">
+                      <span class="text-muted small" style="max-width:180px; display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"
+                            [title]="rec.remarks">{{ rec.remarks || '—' }}</span>
+                    </td>
                     <td class="py-3 text-center">
                       <div class="d-flex gap-2 justify-content-center">
                         <button class="btn btn-sm btn-outline-primary px-3"
@@ -200,57 +181,41 @@ import { NotificationService } from '../../../core/services/notification/notific
                     </td>
                   </tr>
 
-                  <!-- ── Inline Edit Row ───────────────────────────── -->
+                  <!-- Inline Edit Row -->
                   <tr *ngIf="editingId === rec.id"
-                      style="background:#fffbeb; border-left:3px solid #f59e0b;">
+                      style="background:#fefce8; border-left:3px solid #f59e0b;">
                     <td class="ps-4 py-3 text-muted small">{{ i + 1 }}</td>
-
-                    <!-- Date (editable) -->
                     <td class="py-2">
                       <input type="date" class="form-control form-control-sm"
                              style="min-width:130px;"
                              [(ngModel)]="editForm.date">
                     </td>
-
-                    <!-- Plan ID (read-only in edit) -->
                     <td class="py-2">
                       <span class="badge fw-semibold"
-                            style="background:#eff6ff;color:#1d4ed8;font-size:0.8rem;padding:5px 10px;border-radius:20px;">
-                        <i class="bi bi-scissors me-1"></i>
-                        {{ rec.cutting_plan_id || rec.plan_id || '—' }}
+                            style="background:#f3e8ff;color:#7c3aed;font-size:0.8rem;padding:5px 10px;border-radius:20px;">
+                        {{ rec.finishing_plan_id || rec.plan_id }}
                       </span>
                     </td>
-
-                    <!-- Style No (read-only) -->
                     <td class="py-2">
-                      <span class="badge bg-light text-dark border" style="font-size:0.8rem;">
-                        {{ rec.style_no || '—' }}
-                      </span>
+                      <div class="small fw-semibold">{{ rec.style_no || '—' }}</div>
                     </td>
-
-                    <!-- Target Pcs (read-only) -->
-                    <td class="py-2 text-center">
-                      <span class="fw-semibold text-primary">{{ getTargetPcs(rec) | number }}</span>
-                      <div class="text-muted" style="font-size:0.7rem;">pcs</div>
-                    </td>
-
-                    <!-- Today's Cut (editable) -->
                     <td class="py-2 text-center">
                       <input type="number" class="form-control form-control-sm text-center"
                              style="max-width:110px; margin:0 auto;"
-                             [(ngModel)]="editForm.actual_cut_pieces"
-                             min="0" placeholder="e.g. 2000">
+                             [(ngModel)]="editForm.pass_qty"
+                             min="0" placeholder="Pass Qty">
                     </td>
-
-                    <!-- Today's Reject (editable) -->
                     <td class="py-2 text-center">
                       <input type="number" class="form-control form-control-sm text-center"
                              style="max-width:90px; margin:0 auto;"
-                             [(ngModel)]="editForm.reject_pieces"
-                             min="0" placeholder="e.g. 5">
+                             [(ngModel)]="editForm.reject_qty"
+                             min="0" placeholder="Reject Qty">
                     </td>
-
-                    <!-- Save / Cancel -->
+                    <td class="py-2">
+                      <input type="text" class="form-control form-control-sm"
+                             [(ngModel)]="editForm.remarks"
+                             placeholder="Remarks...">
+                    </td>
                     <td class="py-2 text-center">
                       <div class="d-flex gap-2 justify-content-center">
                         <button class="btn btn-sm btn-success px-3"
@@ -274,31 +239,30 @@ import { NotificationService } from '../../../core/services/notification/notific
           </div>
         </div>
 
-        <!-- ── Summary Footer ─────────────────────────────────────── -->
+        <!-- Summary Footer -->
         <div class="card-footer border-0 py-3 px-4"
-             style="background:linear-gradient(135deg,#f8faff,#eef2ff);">
+             style="background:linear-gradient(135deg,#f8faff,#f3e8ff);">
           <div class="row g-3 text-center">
             <div class="col-6 col-md-3">
               <div class="text-muted small fw-semibold">Total Entries</div>
               <div class="fw-bold text-primary fs-6">{{ filteredRecords.length }}</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="text-muted small fw-semibold">Total Cut</div>
-              <div class="fw-bold text-success fs-6">{{ getTotalActual() | number }} pcs</div>
+              <div class="text-muted small fw-semibold">Total Passed</div>
+              <div class="fw-bold text-success fs-6">{{ getTotalPass() | number }} pcs</div>
             </div>
             <div class="col-6 col-md-3">
               <div class="text-muted small fw-semibold">Total Rejected</div>
               <div class="fw-bold text-danger fs-6">{{ getTotalReject() | number }} pcs</div>
             </div>
             <div class="col-6 col-md-3">
-              <div class="text-muted small fw-semibold">Net Good Pieces</div>
+              <div class="text-muted small fw-semibold">Net Finished Pieces</div>
               <div class="fw-bold text-dark fs-6">
-                {{ (getTotalActual() - getTotalReject()) | number }} pcs
+                {{ (getTotalPass() - getTotalReject()) | number }} pcs
               </div>
             </div>
           </div>
         </div>
-
       </div>
 
     </div>
@@ -313,16 +277,16 @@ import { NotificationService } from '../../../core/services/notification/notific
       white-space: nowrap;
     }
     .record-row { transition: background 0.15s ease; }
-    .record-row:hover { background: rgba(37,99,235,0.03) !important; }
+    .record-row:hover { background: rgba(124,58,237,0.03) !important; }
   `]
 })
-export class ViewDayWiseCuttingProductionComponent implements OnInit {
+export class ViewDayWiseFinishingProductionComponent implements OnInit {
   private svc    = inject(ProductionPlanningService);
   private notify = inject(NotificationService);
 
   allRecords:      any[] = [];
   filteredRecords: any[] = [];
-  cuttingPlans:    any[] = [];
+  finishingPlans:  any[] = [];
   loading     = false;
   deletingId: any = null;
 
@@ -331,14 +295,15 @@ export class ViewDayWiseCuttingProductionComponent implements OnInit {
   savingEdit          = false;
   editForm: {
     date: string;
-    actual_cut_pieces: number | null;
-    reject_pieces: number | null;
-  } = { date: '', actual_cut_pieces: null, reject_pieces: null };
+    pass_qty: number | null;
+    reject_qty: number | null;
+    remarks: string;
+  } = { date: '', pass_qty: null, reject_qty: null, remarks: '' };
 
   // Filters
-  searchPlanId  = '';
-  searchStyleNo = '';
-  searchDate    = '';
+  searchPlanId = '';
+  searchStyle  = '';
+  searchDate   = '';
 
   ngOnInit() {
     this.loadRecords();
@@ -348,12 +313,11 @@ export class ViewDayWiseCuttingProductionComponent implements OnInit {
     this.loading = true;
     this.editingId = null;
     forkJoin({
-      records: this.svc.getDayWiseCuttingProduction(),
-      plans:   this.svc.getCuttingPlans()
+      records: this.svc.getDayWiseFinishingProduction(),
+      plans:   this.svc.getFinishingPlans()
     }).subscribe({
       next: ({ records, plans }) => {
-        this.cuttingPlans  = plans;
-        // Sort newest date first
+        this.finishingPlans = plans;
         this.allRecords = records.sort((a: any, b: any) =>
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );
@@ -365,56 +329,33 @@ export class ViewDayWiseCuttingProductionComponent implements OnInit {
   }
 
   applyFilter() {
-    const planId  = this.searchPlanId.toLowerCase().trim();
-    const styleNo = this.searchStyleNo.toLowerCase().trim();
-    const date    = this.searchDate;
+    const planId = this.searchPlanId.toLowerCase().trim();
+    const style  = this.searchStyle.toLowerCase().trim();
+    const date   = this.searchDate;
 
     this.filteredRecords = this.allRecords.filter(rec => {
-      const planKey   = (rec.cutting_plan_id || rec.plan_id || '').toLowerCase();
-      const matchPlan  = !planId  || planKey.includes(planId);
-      const matchStyle = !styleNo || (rec.style_no || '').toLowerCase().includes(styleNo);
-      const matchDate  = !date    || rec.date === date;
+      const planKey = (rec.finishing_plan_id || rec.plan_id || '').toLowerCase();
+      const matchPlan  = !planId || planKey.includes(planId);
+      const matchStyle = !style  || (rec.style_no || '').toLowerCase().includes(style);
+      const matchDate  = !date   || rec.date === date;
       return matchPlan && matchStyle && matchDate;
     });
   }
 
   clearFilters() {
     this.searchPlanId = '';
-    this.searchStyleNo = '';
-    this.searchDate    = '';
+    this.searchStyle  = '';
+    this.searchDate   = '';
     this.applyFilter();
   }
-
-  // ── Field accessors (handles both old & new field names) ─────────
-
-  /** actual_cut_pieces (new form) OR actual_quantity (old form) */
-  getActualCut(rec: any): number {
-    return Number(rec.actual_cut_pieces) || Number(rec.actual_quantity) || 0;
-  }
-
-  /** reject_pieces (new form) OR reject_quantity (old form) */
-  getRejectPieces(rec: any): number {
-    return Number(rec.reject_pieces) || Number(rec.reject_quantity) || 0;
-  }
-
-  /** Fetch planned_pieces from the parent cutting plan */
-  getTargetPcs(rec: any): number {
-    const planKey = rec.cutting_plan_id || rec.plan_id;
-    if (!planKey) return 0;
-    const plan = this.cuttingPlans.find(p =>
-      (p.cutting_plan_id || p.id) === planKey
-    );
-    return Number(plan?.planned_pieces) || 0;
-  }
-
-  // ── Edit logic ───────────────────────────────────────────────────
 
   startEdit(rec: any) {
     this.editingId = rec.id;
     this.editForm  = {
-      date:              rec.date || new Date().toISOString().substring(0, 10),
-      actual_cut_pieces: this.getActualCut(rec),
-      reject_pieces:     this.getRejectPieces(rec)
+      date:       rec.date || new Date().toISOString().substring(0, 10),
+      pass_qty:   Number(rec.pass_qty) || 0,
+      reject_qty: Number(rec.reject_qty) || 0,
+      remarks:    rec.remarks || ''
     };
   }
 
@@ -426,23 +367,18 @@ export class ViewDayWiseCuttingProductionComponent implements OnInit {
     this.savingEdit = true;
     const updated = {
       ...rec,
-      date:              this.editForm.date,
-      actual_cut_pieces: this.editForm.actual_cut_pieces,
-      reject_pieces:     this.editForm.reject_pieces,
-      // Keep legacy field names in sync for backward compatibility
-      actual_quantity:   this.editForm.actual_cut_pieces,
-      reject_quantity:   this.editForm.reject_pieces
+      date:       this.editForm.date,
+      pass_qty:   this.editForm.pass_qty,
+      reject_qty: this.editForm.reject_qty,
+      remarks:    this.editForm.remarks
     };
 
-    this.svc.updateDayWiseCuttingProduction(rec.id, updated).subscribe({
+    this.svc.updateDayWiseFinishingProduction(rec.id, updated).subscribe({
       next: () => {
-        this.notify.success('Daily cutting record updated successfully.');
+        this.notify.success('Daily finishing record updated.');
         this.editingId  = null;
         this.savingEdit = false;
-
-        // Re-run status logic: check if plan should become Completed
-        this.checkAndUpdatePlanStatus(rec.cutting_plan_id || rec.plan_id);
-        this.loadRecords();
+        this.syncPlanData(rec.finishing_plan_id || rec.plan_id);
       },
       error: () => {
         this.notify.error('Failed to update record.');
@@ -451,24 +387,15 @@ export class ViewDayWiseCuttingProductionComponent implements OnInit {
     });
   }
 
-  // ── Delete logic ─────────────────────────────────────────────────
-
   deleteRecord(rec: any) {
-    if (!confirm('Are you sure you want to delete this daily cutting entry?')) return;
+    if (!confirm('Are you sure you want to delete this daily finishing entry?')) return;
     this.deletingId = rec.id;
 
-    this.svc.updateDayWiseCuttingProduction(rec.id, { ...rec, _deleted: true }).subscribe({
-      // json-server doesn't have DELETE via update, so use the API delete
-      next: () => {},
-      error: () => {}
-    });
-
-    // Use proper delete via API
-    this.svc.deleteDayWiseCuttingProduction(rec.id).subscribe({
+    this.svc.deleteDayWiseFinishingProduction(rec.id).subscribe({
       next: () => {
-        this.notify.success('Record deleted successfully.');
+        this.notify.success('Record deleted.');
         this.deletingId = null;
-        this.loadRecords();
+        this.syncPlanData(rec.finishing_plan_id || rec.plan_id);
       },
       error: () => {
         this.notify.error('Failed to delete record.');
@@ -477,31 +404,44 @@ export class ViewDayWiseCuttingProductionComponent implements OnInit {
     });
   }
 
-  // ── Auto status check after edit ─────────────────────────────────
+  syncPlanData(planKey: string) {
+    if (!planKey) { this.loadRecords(); return; }
 
-  checkAndUpdatePlanStatus(planKey: string) {
-    if (!planKey) return;
-    const plan = this.cuttingPlans.find(p =>
-      (p.cutting_plan_id || p.id) === planKey
-    );
-    if (!plan || plan.status === 'Completed') return;
+    this.svc.getDayWiseFinishingProduction().subscribe(records => {
+      this.allRecords = records.sort((a: any, b: any) =>
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
 
-    const totalCut = this.allRecords
-      .filter(r => (r.cutting_plan_id || r.plan_id) === planKey)
-      .reduce((sum: number, r: any) => sum + this.getActualCut(r), 0);
+      const siblingRecords = this.allRecords.filter(
+        r => (r.finishing_plan_id || r.plan_id) === planKey
+      );
+      const cumPass   = siblingRecords.reduce((sum, r) => sum + (Number(r.pass_qty) || 0), 0);
+      const cumReject = siblingRecords.reduce((sum, r) => sum + (Number(r.reject_qty) || 0), 0);
 
-    if (totalCut >= Number(plan.planned_pieces)) {
-      this.svc.updateCuttingPlan(plan.id, { ...plan, status: 'Completed' }).subscribe({
-        next: () => this.notify.success(`Plan ${planKey} status updated to Completed.`)
-      });
-    }
+      const plan = this.finishingPlans.find(
+        p => (p.finishing_plan_id || p.id) === planKey
+      );
+
+      if (plan) {
+        const target = Number(plan.target_qty) || 0;
+        const willComplete = target > 0 && cumPass >= target;
+
+        const updatedPlan = {
+          ...plan,
+          pass_qty:      cumPass,
+          rejection_qty: cumReject,
+          status: willComplete ? 'Completed' : 'In Finishing'
+        };
+
+        this.svc.updateFinishingPlan(plan.id, updatedPlan).subscribe({
+          next: () => { this.loadRecords(); }
+        });
+      } else {
+        this.loadRecords();
+      }
+    });
   }
 
-  // ── Footer totals ────────────────────────────────────────────────
-  getTotalActual() {
-    return this.filteredRecords.reduce((s, r) => s + this.getActualCut(r), 0);
-  }
-  getTotalReject() {
-    return this.filteredRecords.reduce((s, r) => s + this.getRejectPieces(r), 0);
-  }
+  getTotalPass()   { return this.filteredRecords.reduce((s, r) => s + (Number(r.pass_qty)   || 0), 0); }
+  getTotalReject() { return this.filteredRecords.reduce((s, r) => s + (Number(r.reject_qty) || 0), 0); }
 }

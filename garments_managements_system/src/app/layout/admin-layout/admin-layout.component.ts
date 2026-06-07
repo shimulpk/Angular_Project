@@ -17,6 +17,7 @@ export class AdminLayoutComponent {
   }
 
   hasRole(roles: string[]): boolean {
+    if (!roles || roles.length === 0) return false;
     const role = this.authService.currentUserValue?.role;
     return !!role && roles.includes(role);
   }

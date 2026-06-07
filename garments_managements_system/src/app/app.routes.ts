@@ -7,6 +7,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/auth/login/login.component').then(m => m.LoginComponent)
   },
   {
+    path: 'access-denied',
+    loadComponent: () => import('./features/auth/access-denied/access-denied.component').then(m => m.AccessDeniedComponent)
+  },
+  {
     path: '',
     component: AdminLayoutComponent,
     canActivate: [authGuard],
@@ -184,6 +188,18 @@ export const routes: Routes = [
         data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
+        path: 'production-planning/add-day-wise-sewing-production',
+        loadComponent: () => import('./features/production-planning/add-day-wise-sewing-production/add-day-wise-sewing-production.component').then(m => m.AddDayWiseSewingProductionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/view-day-wise-sewing-production',
+        loadComponent: () => import('./features/production-planning/view-day-wise-sewing-production/view-day-wise-sewing-production.component').then(m => m.ViewDayWiseSewingProductionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
         path: 'production-planning/add-finishing-plan',
         loadComponent: () => import('./features/production-planning/add-finishing-plan/add-finishing-plan.component').then(m => m.AddFinishingPlanComponent),
         canActivate: [authGuard],
@@ -196,6 +212,18 @@ export const routes: Routes = [
         data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
+        path: 'production-planning/add-day-wise-finishing-production',
+        loadComponent: () => import('./features/production-planning/add-day-wise-finishing-production/add-day-wise-finishing-production.component').then(m => m.AddDayWiseFinishingProductionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/view-day-wise-finishing-production',
+        loadComponent: () => import('./features/production-planning/view-day-wise-finishing-production/view-day-wise-finishing-production.component').then(m => m.ViewDayWiseFinishingProductionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
         path: 'production-planning/add-packing-plan',
         loadComponent: () => import('./features/production-planning/add-packing-plan/add-packing-plan.component').then(m => m.AddPackingPlanComponent),
         canActivate: [authGuard],
@@ -204,6 +232,18 @@ export const routes: Routes = [
       {
         path: 'production-planning/view-packing-plan',
         loadComponent: () => import('./features/production-planning/view-packing-plan/view-packing-plan.component').then(m => m.ViewPackingPlanComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/add-day-wise-packing-production',
+        loadComponent: () => import('./features/production-planning/add-day-wise-packing-production/add-day-wise-packing-production.component').then(m => m.AddDayWisePackingProductionComponent),
+        canActivate: [authGuard],
+        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
+      },
+      {
+        path: 'production-planning/view-day-wise-packing-production',
+        loadComponent: () => import('./features/production-planning/view-day-wise-packing-production/view-day-wise-packing-production.component').then(m => m.ViewDayWisePackingProductionComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },

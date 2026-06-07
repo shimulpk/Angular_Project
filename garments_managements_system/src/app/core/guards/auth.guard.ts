@@ -11,11 +11,11 @@ export const authGuard: CanActivateFn = (route, state) => {
     if (allowedRoles && allowedRoles.length > 0) {
       const userRole = authService.currentUserValue?.role;
       if (!userRole || !allowedRoles.includes(userRole)) {
-        router.navigate(['/dashboard']);
+        router.navigate(['/access-denied']);
         return false;
       }
     } else if (expectedRole && !authService.hasRole(expectedRole)) {
-      router.navigate(['/dashboard']);
+      router.navigate(['/access-denied']);
       return false;
     }
     return true;

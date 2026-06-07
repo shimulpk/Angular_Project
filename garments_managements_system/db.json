@@ -4,7 +4,7 @@
       "id": "1",
       "username": "admin",
       "password": "password123",
-      "fullName": "System Administrator",
+      "fullName": "Md Emran Hossain",
       "role": "ADMIN",
       "email": "admin@garments.com"
     },
@@ -12,7 +12,7 @@
       "id": "2",
       "username": "merch",
       "password": "password123",
-      "fullName": "Alex Merch",
+      "fullName": "Md Shimul Pramanik",
       "role": "MERCHANDISER",
       "email": "merch@garments.com"
     },
@@ -20,23 +20,15 @@
       "id": "3",
       "username": "prod",
       "password": "password123",
-      "fullName": "John Prod",
+      "fullName": "Badrul Amin",
       "role": "PRODUCTION_MGR",
       "email": "prod@garments.com"
-    },
-    {
-      "id": "4",
-      "username": "qa",
-      "password": "password123",
-      "fullName": "Sarah QA",
-      "role": "QA_OFFICER",
-      "email": "qa@garments.com"
     },
     {
       "id": "5",
       "username": "store",
       "password": "password123",
-      "fullName": "Mike Store",
+      "fullName": "Masud Rana",
       "role": "STOREKEEPER",
       "email": "store@garments.com"
     },
@@ -62,7 +54,7 @@
       "username": "purchase",
       "email": "purchase@garments.com",
       "role": "PURCHASE_MGR",
-      "fullName": "Paul Purchase"
+      "fullName": "Abul Hasan"
     }
   ],
   "buyers": [
@@ -1303,36 +1295,57 @@
       "remarks": "good",
       "cutting_plan_id": "CP-1780050546848",
       "id": "9NqvhtDcU6Q"
+    },
+    {
+      "buyer_id": "z4hcXZOoC1E",
+      "order_id": "46sHTTeghvI",
+      "style_no": "NK201",
+      "fabric_type": "Cotton-Polyester Blend",
+      "color": "Purple",
+      "total_fabric_required": 2799.5,
+      "marker_length": 120,
+      "marker_width": 50,
+      "number_of_plies": 60,
+      "marker_efficiency": 84.9,
+      "planned_pieces": 1700,
+      "cutting_table_number": "Table1",
+      "cutting_master": "Masud Rana",
+      "start_date": "2026-06-06",
+      "end_date": "2026-06-07",
+      "status": "Completed",
+      "cutting_plan_id": "CP-1780774654176",
+      "id": "RyTtMaa5zTU"
     }
   ],
   "sewingPlans": [
     {
-      "order_id": "qsD2M6t0i-8",
-      "cutting_plan_id": "CP-1780050546848",
-      "style_no": "NC211",
+      "cutting_plan_id": "CP-1780774654176",
+      "buyer_name": "Nakano International Ltd",
+      "order_no": "ORD-9626",
+      "style_no": "NK201",
+      "color": "Purple",
+      "input_received_qty": 1700,
+      "start_date": "2026-06-08",
+      "end_date": "2026-06-10",
       "targets": [
         {
           "line_no": "L-1",
-          "target_quantity": 1800,
-          "achieved_quantity": 1750,
-          "rejection_qty": 50
+          "target_quantity": 700
         },
         {
           "line_no": "L-2",
-          "target_quantity": 1700,
-          "achieved_quantity": 1680,
-          "rejection_qty": 20
+          "target_quantity": 500
+        },
+        {
+          "line_no": "L-3",
+          "target_quantity": 500
         }
       ],
-      "start_date": "2026-05-29",
-      "end_date": "2026-05-30",
-      "assigned_supervisor": "Sumi Khatun",
-      "input_received_qty": 3500,
-      "output_qty": 3430,
-      "rejection_qty": 70,
       "status": "Completed",
-      "sewing_plan_id": "SP-1780057112964",
-      "id": "M1bA_kOSNzA"
+      "sewing_plan_id": "SP-1780778717346",
+      "id": "rKBr30DlRLM",
+      "output_qty": 1700,
+      "rejection_qty": 20
     }
   ],
   "finishingPlans": [
@@ -1356,6 +1369,28 @@
       "finishing_plan_id": "FP-1780117805400",
       "id": "Kw5hI5CfCCI",
       "passQty": null
+    },
+    {
+      "sewing_plan_id": "SP-1780778717346",
+      "buyer_name": "Nakano International Ltd",
+      "order_no": "ORD-9626",
+      "style_no": "NK201",
+      "color": "Purple",
+      "input_qty": 1700,
+      "target_qty": 1700,
+      "proc_trimming": true,
+      "proc_ironing": true,
+      "proc_washing": true,
+      "proc_button_attach": true,
+      "finishing_table_no": "Table1",
+      "supervisor_name": "Israt Jahan Jui",
+      "start_date": "2026-06-11",
+      "end_date": "2026-06-12",
+      "status": "Completed",
+      "finishing_plan_id": "FP-1780809791460",
+      "id": "DNV2XgnSKU0",
+      "pass_qty": 1700,
+      "rejection_qty": 30
     }
   ],
   "packingPlans": [
@@ -1379,6 +1414,24 @@
       "packing_plan_id": "PKG-1780120333482",
       "computed_total": 3290,
       "id": "Ms2GpMG6IuA"
+    },
+    {
+      "finishing_plan_id": "FP-1780809791460",
+      "buyer_name": "Nakano International Ltd",
+      "order_no": "ORD-9626",
+      "style_no": "NK201",
+      "color": "Purple",
+      "total_order_qty": 1700,
+      "packing_method": "Solid Packing",
+      "pcs_per_carton": 10,
+      "total_planned_cartons": 170,
+      "carton_supplier": "Sardar Textiles Mills",
+      "packing_supervisor": "Sumaiya Akter",
+      "start_date": "2026-06-13",
+      "expected_shipment_date": "2026-06-16",
+      "packing_plan_id": "PKG-1780811449078",
+      "status": "Ready to Ship",
+      "id": "-kC6vE4qIoE"
     }
   ],
   "orders": [
@@ -1389,7 +1442,7 @@
       "styleId": "Aw93c1FNrmc",
       "orderDate": "2026-05-24",
       "shipDate": "2026-07-09",
-      "status": "Pending",
+      "status": "Ready to Ship",
       "items": [
         {
           "type": "Short Sleeve",
@@ -1505,42 +1558,136 @@
   ],
   "dayWiseCuttingProduction": [
     {
-      "order_id": "qsD2M6t0i-8",
-      "style_no": "NC211",
-      "stage": "Cutting",
-      "date": "2026-05-28",
-      "shift": "Morning",
-      "target_quantity": 3900,
-      "actual_quantity": 1800,
-      "reject_quantity": 199,
-      "line_allocations": [
-        {
-          "line_id": "L-1",
-          "quantity": 1800
-        }
-      ],
-      "supervisor_name": "Sajin Ahmed",
-      "remarks": "Machine Problem",
-      "id": "K3wn57-MLDo"
+      "cutting_plan_id": "CP-1780774654176",
+      "plan_id": "CP-1780774654176",
+      "date": "2026-06-06",
+      "actual_cut_pieces": 1000,
+      "reject_pieces": 10,
+      "style_no": "NK201",
+      "order_id": "46sHTTeghvI",
+      "cutting_master": "Masud Rana",
+      "id": "OvPQnOM5R0g"
     },
     {
-      "order_id": "qsD2M6t0i-8",
-      "style_no": "NC211",
-      "stage": "Cutting",
-      "date": "2026-05-29",
-      "shift": "Morning",
-      "target_quantity": 3900,
-      "actual_quantity": 3500,
-      "reject_quantity": 400,
-      "line_allocations": [
-        {
-          "line_id": "L-2",
-          "quantity": 1700
-        }
-      ],
-      "supervisor_name": "Sajin Ahmed",
-      "remarks": "Good Works",
-      "id": "PxNcWEeKNxo"
+      "cutting_plan_id": "CP-1780774654176",
+      "plan_id": "CP-1780774654176",
+      "date": "2026-06-07",
+      "actual_cut_pieces": 700,
+      "reject_pieces": 0,
+      "style_no": "NK201",
+      "order_id": "46sHTTeghvI",
+      "cutting_master": "Masud Rana",
+      "id": "u5AEQT71zGU"
+    }
+  ],
+  "dayWiseSewingProduction": [
+    {
+      "sewing_plan_id": "SP-1780778717346",
+      "plan_id": "SP-1780778717346",
+      "date": "2026-06-08",
+      "line_no": "L-1",
+      "achieved_quantity": 500,
+      "rejection_qty": 5,
+      "style_no": "NK201",
+      "order_no": "ORD-9626",
+      "id": "o9iHLhM6YJs"
+    },
+    {
+      "sewing_plan_id": "SP-1780778717346",
+      "plan_id": "SP-1780778717346",
+      "date": "2026-06-09",
+      "line_no": "L-1",
+      "achieved_quantity": 200,
+      "rejection_qty": 5,
+      "style_no": "NK201",
+      "order_no": "ORD-9626",
+      "id": "4XIaQq3DeHY"
+    },
+    {
+      "sewing_plan_id": "SP-1780778717346",
+      "plan_id": "SP-1780778717346",
+      "date": "2026-06-08",
+      "line_no": "L-2",
+      "achieved_quantity": 500,
+      "rejection_qty": 5,
+      "style_no": "NK201",
+      "order_no": "ORD-9626",
+      "id": "jMVZik_T6Oo"
+    },
+    {
+      "sewing_plan_id": "SP-1780778717346",
+      "plan_id": "SP-1780778717346",
+      "date": "2026-06-08",
+      "line_no": "L-3",
+      "achieved_quantity": 500,
+      "rejection_qty": 5,
+      "style_no": "NK201",
+      "order_no": "ORD-9626",
+      "id": "i9g6zVERO1E"
+    }
+  ],
+  "dayWiseFinishingProduction": [
+    {
+      "finishing_plan_id": "FP-1780809791460",
+      "plan_id": "FP-1780809791460",
+      "date": "2026-06-11",
+      "pass_qty": 1000,
+      "reject_qty": 20,
+      "remarks": "Good Work No Problem",
+      "style_no": "NK201",
+      "buyer_name": "Nakano International Ltd",
+      "id": "hMRnRCqN8K4"
+    },
+    {
+      "finishing_plan_id": "FP-1780809791460",
+      "plan_id": "FP-1780809791460",
+      "date": "2026-06-12",
+      "pass_qty": 700,
+      "reject_qty": 10,
+      "remarks": "No Problem",
+      "style_no": "NK201",
+      "buyer_name": "Nakano International Ltd",
+      "id": "BTTKPpg4i54"
+    }
+  ],
+  "dayWisePackingProduction": [
+    {
+      "packing_plan_id": "PKG-1780811449078",
+      "plan_id": "PKG-1780811449078",
+      "date": "2026-06-13",
+      "today_packed_qty": 1000,
+      "today_packed_cartons": 100,
+      "today_reject_qty": 5,
+      "style_no": "NK201",
+      "buyer_name": "Nakano International Ltd",
+      "order_no": "ORD-9626",
+      "id": "MYrKrpa5AAY"
+    },
+    {
+      "packing_plan_id": "PKG-1780811449078",
+      "plan_id": "PKG-1780811449078",
+      "date": "2026-06-14",
+      "today_packed_qty": 700,
+      "today_packed_cartons": 70,
+      "today_reject_qty": 0,
+      "style_no": "NK201",
+      "buyer_name": "Nakano International Ltd",
+      "order_no": "ORD-9626",
+      "id": "om4sZ415PL4"
+    }
+  ],
+  "fgStock": [
+    {
+      "packing_plan_id": "PKG-1780811449078",
+      "buyer_name": "Nakano International Ltd",
+      "order_no": "ORD-9626",
+      "style_no": "NK201",
+      "color": "Purple",
+      "quantity": 1700,
+      "cartons": 170,
+      "date": "2026-06-14",
+      "status": "Ready to Ship",
+      "id": "_bclrDFPBmY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
