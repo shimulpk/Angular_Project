@@ -15,6 +15,8 @@ export const authGuard: CanActivateFn = (route, state) => {
         return false;
       }
     } else if (expectedRole && !authService.hasRole(expectedRole)) {
+
+      console.log(expectedRole+'-------------------------------------')
       router.navigate(['/access-denied']);
       return false;
     }
