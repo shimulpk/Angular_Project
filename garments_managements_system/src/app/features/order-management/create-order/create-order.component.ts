@@ -88,8 +88,16 @@ export class CreateOrderComponent implements OnInit {
 
       this.orderForm.get('subtotal')?.setValue(subtotal, { emitEvent: false });
 
-      const vat = this.orderForm.get('vat')?.value || 0;
-      const grandTotal = subtotal + vat;
+      // const vat = this.orderForm.get('vat')?.value || 0;
+      // const grandTotal = subtotal + vat;
+      // 1. Ekhon 'vat' bolte amra percentage bujhbo (Jemon: 5, 10, ba 15)
+const vatPercentage = parseFloat(this.orderForm.get('vat')?.value) || 0;
+
+// 2. Subtotal-er upor percentage calculate kore VAT amount ber korbo
+const vatAmount = subtotal * (vatPercentage / 100);
+
+// 3. Grand total hobe: subtotal + calculated VAT amount
+const grandTotal = subtotal + vatAmount;
       this.orderForm.get('grandTotal')?.setValue(grandTotal, { emitEvent: false });
     };
 

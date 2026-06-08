@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShipmentService } from '../shipment-service/shipment.service';
 import { OrderService } from '../../../core/services/order.service';
-import { QAService } from '../../qa/qa-service/qa.service';
 import { Order } from '../../../models/order/order.model';
 import { Shipment } from '../../../models/shipment/shipment.model';
 import { NotificationService } from '../../../core/services/notification/notification.service';
@@ -21,7 +20,6 @@ export class ShipmentEntryComponent implements OnInit {
   private fb = inject(FormBuilder);
   private shipmentService = inject(ShipmentService);
   private orderService = inject(OrderService);
-  private qaService = inject(QAService);
   private notify = inject(NotificationService);
   private router = inject(Router);
 
@@ -49,20 +47,12 @@ export class ShipmentEntryComponent implements OnInit {
   }
 
   loadData() {
-    forkJoin({
-      orders: this.orderService.getOrders(),
-      inspections: this.qaService.getInspections()
-    }).subscribe({
-      next: ({ orders, inspections }) => {
-        const passedOrderIds = new Set(
-          inspections
-            .filter(insp => insp.passQty > 0)
-            .map(insp => insp.orderId)
-        );
-        this.readyOrders = orders.filter(o => o.id && passedOrderIds.has(o.id));
+    this.orderService.getOrders().subscribe({
+      next: (orders) => {
+        this.readyOrders = orders;
       },
       error: () => {
-        this.notify.error('Failed to load orders or inspection data');
+        this.notify.error('Failed to load orders');
       }
     });
   }

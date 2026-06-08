@@ -83,7 +83,7 @@ export class AdminComponent implements OnInit {
       username: '',
       password: '',
       fullName: '',
-      role: 'VIEWER',
+      role: 'MERCHANDISER',
       email: ''
     };
   }

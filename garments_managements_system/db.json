@@ -33,22 +33,6 @@
       "email": "store@garments.com"
     },
     {
-      "id": "6",
-      "username": "supervisor",
-      "password": "password123",
-      "fullName": "Robert Supervisor",
-      "role": "SUPERVISOR",
-      "email": "supervisor@garments.com"
-    },
-    {
-      "id": "7",
-      "username": "viewer",
-      "password": "password123",
-      "fullName": "Vanessa Viewer",
-      "role": "VIEWER",
-      "email": "viewer@garments.com"
-    },
-    {
       "id": "8",
       "password": "password123",
       "username": "purchase",
@@ -62,8 +46,8 @@
       "buyerCode": "101",
       "companyName": "Inditex (Zara)",
       "country": "Spain",
-      "address": "",
-      "website": "",
+      "address": "3/A Madrid",
+      "website": "www.zara.com",
       "currency": "EUR",
       "paymentTerms": "LC at Sight",
       "status": "Active",
@@ -81,7 +65,7 @@
       "buyerCode": "102",
       "companyName": "Hamim group",
       "country": "Bangladesh",
-      "address": "Gulsan Corporate Office,Dhaka",
+      "address": "19/C Gulsan Badda Link Road,\nGulsan Corporate Office,Dhaka",
       "website": "www.hamim.com",
       "currency": "USD",
       "paymentTerms": "60 days",
@@ -100,8 +84,8 @@
       "buyerCode": "103",
       "companyName": "Nakano International Ltd",
       "country": "Japan",
-      "address": "",
-      "website": "",
+      "address": "3-29,Okayama City302",
+      "website": "www.nakano.com",
       "currency": "USD",
       "paymentTerms": "Lc",
       "status": "Active",
@@ -119,8 +103,8 @@
       "buyerCode": "104",
       "companyName": "Vintage Denim Studio Ltd",
       "country": "Zarmany",
-      "address": "",
-      "website": "",
+      "address": "Alexanderstrate-40,Berlin",
+      "website": "www.vintage.com",
       "currency": "EUR",
       "paymentTerms": "Lc",
       "status": "Active",
@@ -138,7 +122,7 @@
       "buyerCode": "105",
       "companyName": "Norban Comtex Ltd",
       "country": "America",
-      "address": "Newyork,USA",
+      "address": "John Smith Street,Kingston Newyork",
       "website": "www.norban.com",
       "currency": "USD",
       "paymentTerms": "",
@@ -190,24 +174,6 @@
         "XL"
       ],
       "id": "6gMo60zO8LU"
-    },
-    {
-      "styleCode": "IZ203",
-      "styleName": "Short Sleeve Shirt",
-      "styleType": "Casual",
-      "description": "Short Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Casual",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "_OUymJJ8fRU"
     },
     {
       "styleCode": "IZ204",
@@ -352,6 +318,42 @@
         "XL"
       ],
       "id": "dwdiPAUjSoQ"
+    },
+    {
+      "styleCode": "IZ-203",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Casual",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "KJ_fdTz_Lxo"
+    },
+    {
+      "styleCode": "VD-220",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "buyerId": "",
+      "season": "",
+      "garmentType": "Casual",
+      "gender": "Unisex",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "id": "MK9nkMt6liE"
     }
   ],
   "purchaseOrders": [
@@ -610,6 +612,216 @@
       "unitPrice": 10,
       "totalCost": 200,
       "id": "ze0LA2EwniA"
+    },
+    {
+      "materialName": "Fabric",
+      "unit": "meter",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 1,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK202",
+      "quantity": 220,
+      "unitPrice": 10,
+      "totalCost": 2200,
+      "id": "zQxXtpt0QH4"
+    },
+    {
+      "materialName": "Button",
+      "unit": "Piece",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 2,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK202",
+      "quantity": 2000,
+      "unitPrice": 0.45,
+      "totalCost": 900,
+      "id": "vnaNI7sFkEA"
+    },
+    {
+      "materialName": "Care Label",
+      "unit": "Pieces",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 3,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK202",
+      "quantity": 2000,
+      "unitPrice": 0.3,
+      "totalCost": 600,
+      "id": "z4EWuc7-QjM"
+    },
+    {
+      "materialName": "Hang Tag",
+      "unit": "Pieces",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 4,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK201",
+      "quantity": 2000,
+      "unitPrice": 0.4,
+      "totalCost": 800,
+      "id": "P4vkTvRu5ks"
+    },
+    {
+      "materialName": "Hang Tag",
+      "unit": "Piece",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 4,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK202",
+      "quantity": 2000,
+      "unitPrice": 0.38,
+      "totalCost": 760,
+      "id": "Eqgze-oVqDM"
+    },
+    {
+      "materialName": "Fabric",
+      "unit": "meter",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 1,
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "IZ-203",
+      "quantity": 20000,
+      "unitPrice": 4.99,
+      "totalCost": 99800,
+      "id": "j64NN5P9Fyo"
+    },
+    {
+      "materialName": "Button",
+      "unit": "Piece",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 2,
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "IZ-203",
+      "quantity": 6000,
+      "unitPrice": 0.35,
+      "totalCost": 2100,
+      "id": "cOaa_m-grr8"
+    },
+    {
+      "materialName": "Care Label",
+      "unit": "Pieces",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 3,
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "IZ-203",
+      "quantity": 6000,
+      "unitPrice": 0.4,
+      "totalCost": 2400,
+      "id": "7R08kR3fgwg"
+    },
+    {
+      "materialName": "Hang Tag",
+      "unit": "Piece",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 4,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "IZ-203",
+      "quantity": 6000,
+      "unitPrice": 0.48,
+      "totalCost": 2880,
+      "id": "RPJgbwLOKhI"
+    },
+    {
+      "materialName": "Fabric",
+      "unit": "meter",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 1,
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 200000,
+      "unitPrice": 0.45,
+      "totalCost": 90000,
+      "id": "2RLzDcPsFMY"
+    },
+    {
+      "materialName": "Button",
+      "unit": "Piece",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 2,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 20000,
+      "unitPrice": 0.2,
+      "totalCost": 4000,
+      "id": "FjeZfzSobm0"
+    },
+    {
+      "materialName": "Care Label",
+      "unit": "Piece",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 3,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 20000,
+      "unitPrice": 0.33,
+      "totalCost": 6600,
+      "id": "-ALCUASlFxY"
+    },
+    {
+      "materialName": "Hang Tag",
+      "unit": "Piece",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 4,
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 20000,
+      "unitPrice": 0.38,
+      "totalCost": 7600,
+      "id": "CscDtUZC2Do"
+    },
+    {
+      "materialName": "Heat Seal",
+      "unit": "Piece",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 5,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 20000,
+      "unitPrice": 0.65,
+      "totalCost": 13000,
+      "id": "aCEO_cGjxxk"
+    },
+    {
+      "materialName": "Elastic",
+      "unit": "meter",
+      "consumption": 0,
+      "wastagePercent": 0,
+      "totalRequirement": 0,
+      "serial": 6,
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 5000,
+      "unitPrice": 0.19,
+      "totalCost": 950,
+      "id": "-mmrTfzgyj8"
     }
   ],
   "productionOrders": [
@@ -645,31 +857,6 @@
       "startDate": "2026-05-20",
       "status": "In Progress",
       "id": "vcGsENQ3U6o"
-    }
-  ],
-  "qaInspections": [
-    {
-      "id": "1",
-      "orderId": "1",
-      "poNumber": "PO-99201",
-      "lineId": "L1",
-      "inspectionType": "Inline",
-      "checkQty": 500,
-      "passQty": 485,
-      "failQty": 15,
-      "defects": [
-        {
-          "type": "Broken Stitch",
-          "count": 10
-        },
-        {
-          "type": "Oil Stain",
-          "count": 5
-        }
-      ],
-      "dhu": 3,
-      "inspector": "Sarah QA",
-      "date": "2024-06-10"
     }
   ],
   "inventory": [
@@ -933,12 +1120,59 @@
       "id": "vfg7p5Y88BM"
     },
     {
-      "styleId": "dwdiPAUjSoQ",
+      "styleId": "6gMo60zO8LU",
       "orderId": "OR-302",
-      "orderDbId": "qsD2M6t0i-8",
-      "orderNumber": "ORD-8594",
-      "date": "2026-05-28T09:17:34.877Z",
-      "totalFabricRequired": 6620.75,
+      "orderDbId": "szOKnC4gjRs",
+      "orderNumber": "ORD-8484",
+      "date": "2026-06-08T05:24:55.937Z",
+      "totalFabricRequired": 34991,
+      "details": [
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "S",
+          "type": "FULL",
+          "baseFabric": 1.6886,
+          "qty": 5000,
+          "calculatedFabric": 8443,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "M",
+          "type": "FULL",
+          "baseFabric": 1.7396,
+          "qty": 5000,
+          "calculatedFabric": 8698,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "L",
+          "type": "FULL",
+          "baseFabric": 1.774,
+          "qty": 5000,
+          "calculatedFabric": 8870,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "XL",
+          "type": "FULL",
+          "baseFabric": 1.796,
+          "qty": 5000,
+          "calculatedFabric": 8980,
+          "hasUom": true
+        }
+      ],
+      "id": "meDNUtKzpPE"
+    },
+    {
+      "styleId": "KJ_fdTz_Lxo",
+      "orderId": "OR-305",
+      "orderDbId": "J69Fo4yCEMk",
+      "orderNumber": "ORD-4932",
+      "date": "2026-06-08T05:38:48.898Z",
+      "totalFabricRequired": 10210.400000000001,
       "details": [
         {
           "productName": "Short Sleeve Shirt",
@@ -954,8 +1188,8 @@
           "size": "M",
           "type": "SHORT",
           "baseFabric": 1.6375,
-          "qty": 500,
-          "calculatedFabric": 818.75,
+          "qty": 1000,
+          "calculatedFabric": 1637.5,
           "hasUom": true
         },
         {
@@ -963,8 +1197,8 @@
           "size": "L",
           "type": "SHORT",
           "baseFabric": 1.669,
-          "qty": 500,
-          "calculatedFabric": 834.5,
+          "qty": 1000,
+          "calculatedFabric": 1669,
           "hasUom": true
         },
         {
@@ -990,8 +1224,8 @@
           "size": "M",
           "type": "FULL",
           "baseFabric": 1.7396,
-          "qty": 500,
-          "calculatedFabric": 869.8000000000001,
+          "qty": 1000,
+          "calculatedFabric": 1739.6000000000001,
           "hasUom": true
         },
         {
@@ -999,8 +1233,8 @@
           "size": "L",
           "type": "FULL",
           "baseFabric": 1.774,
-          "qty": 500,
-          "calculatedFabric": 887,
+          "qty": 1000,
+          "calculatedFabric": 1774,
           "hasUom": true
         },
         {
@@ -1008,12 +1242,95 @@
           "size": "XL",
           "type": "FULL",
           "baseFabric": 1.796,
-          "qty": 400,
-          "calculatedFabric": 718.4,
+          "qty": 500,
+          "calculatedFabric": 898,
           "hasUom": true
         }
       ],
-      "id": "t4MtBgIOJDk"
+      "id": "kYaRtuib5xk"
+    },
+    {
+      "styleId": "MK9nkMt6liE",
+      "orderId": "ORD-320",
+      "orderDbId": "qCVKMuWyp00",
+      "orderNumber": "ORD-1994",
+      "date": "2026-06-08T06:15:55.764Z",
+      "totalFabricRequired": 27201.4,
+      "details": [
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "S",
+          "type": "SHORT",
+          "baseFabric": 1.606,
+          "qty": 2000,
+          "calculatedFabric": 3212,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "M",
+          "type": "SHORT",
+          "baseFabric": 1.6375,
+          "qty": 2000,
+          "calculatedFabric": 3275,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "L",
+          "type": "SHORT",
+          "baseFabric": 1.669,
+          "qty": 2000,
+          "calculatedFabric": 3338,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "XL",
+          "type": "SHORT",
+          "baseFabric": 1.69,
+          "qty": 2000,
+          "calculatedFabric": 3380,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "S",
+          "type": "FULL",
+          "baseFabric": 1.6886,
+          "qty": 2000,
+          "calculatedFabric": 3377.2000000000003,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "M",
+          "type": "FULL",
+          "baseFabric": 1.7396,
+          "qty": 2000,
+          "calculatedFabric": 3479.2000000000003,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "L",
+          "type": "FULL",
+          "baseFabric": 1.774,
+          "qty": 2000,
+          "calculatedFabric": 3548,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "XL",
+          "type": "FULL",
+          "baseFabric": 1.796,
+          "qty": 2000,
+          "calculatedFabric": 3592,
+          "hasUom": true
+        }
+      ],
+      "id": "p67y5jQa5Ng"
     }
   ],
   "vendors": [
@@ -1315,6 +1632,26 @@
       "status": "Completed",
       "cutting_plan_id": "CP-1780774654176",
       "id": "RyTtMaa5zTU"
+    },
+    {
+      "buyer_id": "1",
+      "order_id": "J69Fo4yCEMk",
+      "style_no": "IZ-203",
+      "fabric_type": "Cotton-Polyester Blend",
+      "color": "Orange",
+      "total_fabric_required": 10210.400000000001,
+      "marker_length": 120,
+      "marker_width": 60,
+      "number_of_plies": 50,
+      "marker_efficiency": 85,
+      "planned_pieces": 6000,
+      "cutting_table_number": "Table 1",
+      "cutting_master": "Masud Rana",
+      "start_date": "2026-06-09",
+      "end_date": "2026-06-11",
+      "status": "Completed",
+      "cutting_plan_id": "CP-1780898074387",
+      "id": "lWuzSdDMX_Y"
     }
   ],
   "sewingPlans": [
@@ -1346,6 +1683,37 @@
       "id": "rKBr30DlRLM",
       "output_qty": 1700,
       "rejection_qty": 20
+    },
+    {
+      "cutting_plan_id": "CP-1780898074387",
+      "order_id": "J69Fo4yCEMk",
+      "buyer_id": "1",
+      "buyer_name": "Inditex (Zara)",
+      "order_no": "ORD-4932",
+      "style_no": "IZ-203",
+      "color": "Orange",
+      "input_received_qty": 6000,
+      "start_date": "2026-06-12",
+      "end_date": "2026-06-13",
+      "targets": [
+        {
+          "line_no": "L-1",
+          "target_quantity": 2000
+        },
+        {
+          "line_no": "L-2",
+          "target_quantity": 2000
+        },
+        {
+          "line_no": "L-3",
+          "target_quantity": 2000
+        }
+      ],
+      "status": "In Sewing",
+      "sewing_plan_id": "SP-1780898395427",
+      "id": "9PN3WNOFjvY",
+      "output_qty": 2000,
+      "rejection_qty": 10
     }
   ],
   "finishingPlans": [
@@ -1554,6 +1922,200 @@
       "vat": 20000,
       "grandTotal": 70900,
       "id": "qsD2M6t0i-8"
+    },
+    {
+      "orderId": "OR-302",
+      "poNumber": "ORD-8484",
+      "buyerId": "z4hcXZOoC1E",
+      "styleId": "6gMo60zO8LU",
+      "orderDate": "2026-06-08",
+      "shipDate": "2026-08-14",
+      "status": "Confirmed",
+      "items": [
+        {
+          "type": "Full Sleeve",
+          "size": "S",
+          "color": "Default",
+          "quantity": 5000,
+          "unitPrice": 20
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "M",
+          "color": "Default",
+          "quantity": 5000,
+          "unitPrice": 25
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "L",
+          "color": "Default",
+          "quantity": 5000,
+          "unitPrice": 30
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "XL",
+          "color": "Default",
+          "quantity": 5000,
+          "unitPrice": 35
+        }
+      ],
+      "totalQuantity": 20000,
+      "totalAmount": 550100,
+      "shippingAddress": "3-29,Okayama City302, Japan",
+      "subtotal": 550000,
+      "vat": 100,
+      "grandTotal": 550100,
+      "id": "szOKnC4gjRs"
+    },
+    {
+      "orderId": "OR-305",
+      "poNumber": "ORD-4932",
+      "buyerId": "1",
+      "styleId": "KJ_fdTz_Lxo",
+      "orderDate": "2026-06-10",
+      "shipDate": "2026-08-20",
+      "status": "Confirmed",
+      "items": [
+        {
+          "type": "Short Sleeve",
+          "size": "S",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 20
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "M",
+          "color": "Default",
+          "quantity": 1000,
+          "unitPrice": 25
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "L",
+          "color": "Default",
+          "quantity": 1000,
+          "unitPrice": 30
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "XL",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 35
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "S",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 25
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "M",
+          "color": "Default",
+          "quantity": 1000,
+          "unitPrice": 30
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "L",
+          "color": "Default",
+          "quantity": 1000,
+          "unitPrice": 35
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "XL",
+          "color": "Default",
+          "quantity": 500,
+          "unitPrice": 40
+        }
+      ],
+      "totalQuantity": 6000,
+      "totalAmount": 180100,
+      "shippingAddress": "3/A Madrid, Spain",
+      "subtotal": 180000,
+      "vat": 100,
+      "grandTotal": 180100,
+      "id": "J69Fo4yCEMk"
+    },
+    {
+      "orderId": "ORD-320",
+      "poNumber": "ORD-1994",
+      "buyerId": "sFXWdOLVCYo",
+      "styleId": "MK9nkMt6liE",
+      "orderDate": "2026-06-10",
+      "shipDate": "2026-08-12",
+      "status": "Confirmed",
+      "items": [
+        {
+          "type": "Short Sleeve",
+          "size": "S",
+          "color": "Default",
+          "quantity": 2000,
+          "unitPrice": 30
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "M",
+          "color": "Default",
+          "quantity": 2000,
+          "unitPrice": 40
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "L",
+          "color": "Default",
+          "quantity": 2000,
+          "unitPrice": 50
+        },
+        {
+          "type": "Short Sleeve",
+          "size": "XL",
+          "color": "Default",
+          "quantity": 2000,
+          "unitPrice": 60
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "S",
+          "color": "Default",
+          "quantity": 2000,
+          "unitPrice": 40
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "M",
+          "color": "Default",
+          "quantity": 2000,
+          "unitPrice": 50
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "L",
+          "color": "Default",
+          "quantity": 2000,
+          "unitPrice": 60
+        },
+        {
+          "type": "Full Sleeve",
+          "size": "XL",
+          "color": "Default",
+          "quantity": 2000,
+          "unitPrice": 65
+        }
+      ],
+      "totalQuantity": 16000,
+      "totalAmount": 790100,
+      "shippingAddress": "Alexanderstrate-40,Berlin, Zarmany",
+      "subtotal": 790000,
+      "vat": 100,
+      "grandTotal": 790100,
+      "id": "qCVKMuWyp00"
     }
   ],
   "dayWiseCuttingProduction": [
@@ -1578,6 +2140,28 @@
       "order_id": "46sHTTeghvI",
       "cutting_master": "Masud Rana",
       "id": "u5AEQT71zGU"
+    },
+    {
+      "cutting_plan_id": "CP-1780898074387",
+      "plan_id": "CP-1780898074387",
+      "date": "2026-06-09",
+      "actual_cut_pieces": 3000,
+      "reject_pieces": 10,
+      "style_no": "IZ-203",
+      "order_id": "J69Fo4yCEMk",
+      "cutting_master": "Masud Rana",
+      "id": "4Yx0xk6VDwQ"
+    },
+    {
+      "cutting_plan_id": "CP-1780898074387",
+      "plan_id": "CP-1780898074387",
+      "date": "2026-06-11",
+      "actual_cut_pieces": 3000,
+      "reject_pieces": 10,
+      "style_no": "IZ-203",
+      "order_id": "J69Fo4yCEMk",
+      "cutting_master": "Masud Rana",
+      "id": "3UlWD0hvzsM"
     }
   ],
   "dayWiseSewingProduction": [
@@ -1624,6 +2208,17 @@
       "style_no": "NK201",
       "order_no": "ORD-9626",
       "id": "i9g6zVERO1E"
+    },
+    {
+      "sewing_plan_id": "SP-1780898395427",
+      "plan_id": "SP-1780898395427",
+      "date": "2026-06-12",
+      "line_no": "L-1",
+      "achieved_quantity": 2000,
+      "rejection_qty": 10,
+      "style_no": "IZ-203",
+      "order_no": "ORD-4932",
+      "id": "8WMX6TY-0ws"
     }
   ],
   "dayWiseFinishingProduction": [

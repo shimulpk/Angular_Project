@@ -20,7 +20,7 @@ export const routes: Routes = [
         path: 'dashboard',
         loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'QA_OFFICER', 'STOREKEEPER', 'VIEWER'] }
+        data: { roles: ['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'STOREKEEPER', 'PURCHASE_MGR'] }
       },
       {
         path: 'buyer-management',
@@ -118,18 +118,6 @@ export const routes: Routes = [
       {
         path: 'production-planning/view-production-order',
         loadComponent: () => import('./features/production-planning/view-production-order/view-production-order.component').then(m => m.ViewProductionOrderComponent),
-        canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
-      },
-      {
-        path: 'production-planning/add-daywise-production',
-        loadComponent: () => import('./features/production-planning/add-daywise-production/add-daywise-production.component').then(m => m.AddDaywiseProductionComponent),
-        canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
-      },
-      {
-        path: 'production-planning/view-daywise-production',
-        loadComponent: () => import('./features/production-planning/view-daywise-production/view-daywise-production.component').then(m => m.ViewDaywiseProductionComponent),
         canActivate: [authGuard],
         data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
@@ -248,18 +236,6 @@ export const routes: Routes = [
         data: { roles: ['ADMIN', 'PRODUCTION_MGR'] }
       },
       {
-        path: 'qa',
-        loadComponent: () => import('./features/qa/qa-dashboard/qa-dashboard.component').then(m => m.QADashboardComponent),
-        canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'QA_OFFICER'] }
-      },
-      {
-        path: 'qa/inspect',
-        loadComponent: () => import('./features/qa/qa-inspection-form/qa-inspection-form.component').then(m => m.QAInspectionFormComponent),
-        canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'QA_OFFICER'] }
-      },
-      {
         path: 'procurement/add-vendor',
         loadComponent: () => import('./features/procurement/add-vendor/add-vendor.component').then(m => m.AddVendorComponent),
         canActivate: [authGuard],
@@ -347,7 +323,7 @@ export const routes: Routes = [
         path: 'reports',
         loadComponent: () => import('./features/reports/analytics-dashboard/analytics-dashboard.component').then(m => m.AnalyticsDashboardComponent),
         canActivate: [authGuard],
-        data: { roles: ['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'QA_OFFICER', 'STOREKEEPER', 'VIEWER'] }
+        data: { roles: ['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'STOREKEEPER'] }
       },
       {
         path: 'admin',

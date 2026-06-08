@@ -49,12 +49,6 @@
         <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-production-order" routerLinkActive="active" class="menu-item">
           <i class="bi bi-list-check"></i> View Production Order
         </a>
-        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/add-daywise-production" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-calendar-plus"></i> Add Day-wise Production
-        </a>
-        <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/view-daywise-production" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-calendar3"></i> View Day-wise Production
-        </a>
         <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/production-planning/production-summary-report" routerLinkActive="active" class="menu-item">
           <i class="bi bi-bar-chart-steps"></i> Production Summary
         </a>
@@ -121,7 +115,7 @@
           <i class="bi bi-calendar3-week"></i> View Day Wise Packing Production
         </a>
 
-        <div *ngIf="hasRole(['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'PURCHASE_MGR'])" class="menu-section-label mt-4">Procurement & Inventory</div>
+        <div *ngIf="hasRole(['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'PURCHASE_MGR'])" class="menu-section-label mt-4">Procurement & Inventory</div>
         <a *ngIf="hasRole(['ADMIN', 'PURCHASE_MGR'])" routerLink="/procurement/add-vendor" routerLinkActive="active" class="menu-item">
           <i class="bi bi-person-plus"></i> Add Vendor
         </a>
@@ -156,14 +150,11 @@
           <i class="bi bi-cart"></i> View PO
         </a>
 
-        <div class="menu-section-label mt-4">Quality & Logistics</div>
-        <a *ngIf="hasRole(['ADMIN', 'QA_OFFICER'])" routerLink="/qa" routerLinkActive="active" class="menu-item">
-          <i class="bi bi-shield-check"></i> Quality Assurance
-        </a>
+        <div class="menu-section-label mt-4">Logistics &amp; Analytics</div>
         <a *ngIf="hasRole(['ADMIN', 'PRODUCTION_MGR'])" routerLink="/shipment" routerLinkActive="active" class="menu-item">
           <i class="bi bi-truck"></i> Export & Logistics
         </a>
-        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'SUPERVISOR', 'QA_OFFICER', 'STOREKEEPER', 'VIEWER'])" routerLink="/reports" routerLinkActive="active" class="menu-item">
+        <a *ngIf="hasRole(['ADMIN', 'MERCHANDISER', 'PRODUCTION_MGR', 'STOREKEEPER'])" routerLink="/reports" routerLinkActive="active" class="menu-item">
           <i class="bi bi-bar-chart-line"></i> Analytics
         </a>
 

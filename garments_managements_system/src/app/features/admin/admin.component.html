@@ -82,20 +82,15 @@
                       'bg-danger-subtle text-danger border border-danger': user.role === 'ADMIN',
                       'bg-primary-subtle text-primary border border-primary': user.role === 'MERCHANDISER',
                       'bg-success-subtle text-success border border-success': user.role === 'PRODUCTION_MGR',
-                      'bg-warning-subtle text-warning border border-warning': user.role === 'SUPERVISOR',
-                      'bg-info-subtle text-info border border-info': user.role === 'QA_OFFICER',
                       'bg-dark-subtle text-dark border border-dark': user.role === 'STOREKEEPER',
-                      'bg-orange-subtle text-dark border border-warning': user.role === 'PURCHASE_MGR',
-                      'bg-light text-secondary border border-secondary': user.role === 'VIEWER'
+                      'bg-orange-subtle text-dark border border-warning': user.role === 'PURCHASE_MGR'
                     }">
                     <i class="bi bi-circle-fill me-1 small animate-pulse" [ngClass]="{
                       'text-danger': user.role === 'ADMIN',
                       'text-primary': user.role === 'MERCHANDISER',
                       'text-success': user.role === 'PRODUCTION_MGR',
-                      'text-warning': user.role === 'SUPERVISOR' || user.role === 'PURCHASE_MGR',
-                      'text-info': user.role === 'QA_OFFICER',
-                      'text-dark': user.role === 'STOREKEEPER',
-                      'text-secondary': user.role === 'VIEWER'
+                      'text-warning': user.role === 'PURCHASE_MGR',
+                      'text-dark': user.role === 'STOREKEEPER'
                     }"></i>
                     {{ user.role }}
                   </span>
@@ -332,19 +327,13 @@
                   <th class="py-3 text-danger fw-bold">ADMIN</th>
                   <th class="py-3 text-primary fw-bold">MERCH.</th>
                   <th class="py-3 text-success fw-bold">PROD. MGR</th>
-                  <th class="py-3 text-warning fw-bold">SUPERVISOR</th>
-                  <th class="py-3 text-info fw-bold">QA OFFICER</th>
                   <th class="py-3 text-dark fw-bold">STOREKEEPER</th>
                   <th class="py-3 fw-bold" style="color:#d97706;">PURCHASE MGR</th>
-                  <th class="py-3 text-secondary fw-bold">VIEWER</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="text-start ps-4 fw-semibold text-dark py-3"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Dashboard</td>
-                  <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
@@ -358,17 +347,11 @@
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                 </tr>
                 <tr>
                   <td class="text-start ps-4 fw-semibold text-dark py-3"><i class="bi bi-cart me-2 text-primary"></i>Orders &amp; BOM</td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
@@ -378,9 +361,6 @@
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                 </tr>
@@ -393,30 +373,13 @@
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><span class="badge bg-warning-subtle text-warning border border-warning px-2" style="font-size:0.7rem;"><i class="bi bi-eye me-1"></i>View Only</span></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                </tr>
-                <tr class="table-light">
-                  <td class="text-start ps-4 fw-semibold text-dark py-3"><i class="bi bi-shield-check me-2 text-info"></i>Quality Assurance</td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                 </tr>
                 <tr>
                   <td class="text-start ps-4 fw-semibold text-dark py-3"><i class="bi bi-truck me-2 text-success"></i>Shipment &amp; Logistics</td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                 </tr>
@@ -426,17 +389,11 @@
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-check-circle-fill text-success"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-check-circle-fill text-success"></i></td>
                 </tr>
                 <tr>
                   <td class="text-start ps-4 fw-semibold text-dark py-3"><i class="bi bi-shield-lock-fill me-2 text-danger"></i>System Administration</td>
                   <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                  <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
                   <td><i class="bi bi-x-circle-fill text-danger"></i></td>
@@ -487,17 +444,14 @@
             <option value="ADMIN">ADMIN — Full System Access</option>
             <option value="MERCHANDISER">MERCHANDISER — Commercial &amp; Purchase Orders</option>
             <option value="PRODUCTION_MGR">PRODUCTION_MGR — Factory &amp; Line Assignment</option>
-            <option value="SUPERVISOR">SUPERVISOR — Line Supervision</option>
-            <option value="QA_OFFICER">QA_OFFICER — Inspections &amp; DHU</option>
             <option value="STOREKEEPER">STOREKEEPER — Inventory Control</option>
-            <option value="PURCHASE_MGR">PURCHASE_MGR — Procurement &amp; </option>
-            <option value="VIEWER">VIEWER — Read-Only Dashboards &amp; KPIs</option>
+            <option value="PURCHASE_MGR">PURCHASE_MGR — Procurement &amp; Inventory (Full Access)</option>
           </select>
           <!-- Role hint -->
-          <div *ngIf="currentUser.role === 'PURCHASE_MGR'" class="mt-2 p-2 rounded-3 bg-warning-subtle border border-warning-subtle d-flex gap-2 align-items-start">
-            <i class="bi bi-info-circle-fill text-warning mt-1"></i>
+          <div *ngIf="currentUser.role === 'PURCHASE_MGR'" class="mt-2 p-2 rounded-3 bg-success-subtle border border-success-subtle d-flex gap-2 align-items-start">
+            <i class="bi bi-info-circle-fill text-success mt-1"></i>
             <div class="small text-dark">
-              <strong>Purchase Manager</strong> has view-only access to:
+              <strong>Purchase Manager</strong> has full access to:
               Vendors, Items, Stock-In/Out, Inventory List, Requisitions, and Purchase Orders.
               All other modules are restricted.
             </div>
