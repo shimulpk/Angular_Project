@@ -138,761 +138,6 @@
       "id": "8C4QuXwzTeM"
     }
   ],
-  "styles": [
-    {
-      "styleCode": "NK201",
-      "styleName": "Short Sleeve Shirt",
-      "styleType": "Casual",
-      "description": "Short Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Casual",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "Aw93c1FNrmc"
-    },
-    {
-      "styleCode": "NK202",
-      "styleName": "Full Sleeve Shirt",
-      "styleType": "Formal",
-      "description": "Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Formal",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "6gMo60zO8LU"
-    },
-    {
-      "styleCode": "IZ204",
-      "styleName": "Full Sleeve Shirt",
-      "styleType": "Formal",
-      "description": "Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Formal",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "gfACMl6d4qI"
-    },
-    {
-      "styleCode": "VD207",
-      "styleName": "Short Sleeve Shirt",
-      "styleType": "Casual",
-      "description": "Short Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Casual",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "ZopKndbKntg"
-    },
-    {
-      "styleCode": "VD208",
-      "styleName": "Full Sleeve Shirt",
-      "styleType": "Formal",
-      "description": "Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Formal",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "v7RTkl9C5-g"
-    },
-    {
-      "styleCode": "NC209",
-      "styleName": "Short Sleeve Shirt",
-      "styleType": "Casual",
-      "description": "Short Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Casual",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "IO8WLz92ifw"
-    },
-    {
-      "styleCode": "NC210",
-      "styleName": "Full Sleeve Shirt",
-      "styleType": "Formal",
-      "description": "Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Formal",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "Ybv2B8KjfNw"
-    },
-    {
-      "styleCode": "HG205",
-      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "styleType": "Formal",
-      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Formal",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "EzGuakbwWnk"
-    },
-    {
-      "styleCode": "HG212",
-      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "styleType": "Casual",
-      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Casual",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "Z9dYFkuNaiA"
-    },
-    {
-      "styleCode": "NC211",
-      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "styleType": "Casual",
-      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Casual",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "dwdiPAUjSoQ"
-    },
-    {
-      "styleCode": "IZ-203",
-      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "styleType": "Casual",
-      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Casual",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "KJ_fdTz_Lxo"
-    },
-    {
-      "styleCode": "VD-220",
-      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "styleType": "Casual",
-      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "buyerId": "",
-      "season": "",
-      "garmentType": "Casual",
-      "gender": "Unisex",
-      "approvalStatus": "Draft",
-      "sizeSet": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "id": "MK9nkMt6liE"
-    }
-  ],
-  "purchaseOrders": [
-    {
-      "id": "1",
-      "poNumber": "PO-99201",
-      "buyerId": "1",
-      "styleId": null,
-      "orderDate": "2024-05-01",
-      "shipDate": "2024-06-30",
-      "status": "IN_PRODUCTION",
-      "totalQuantity": 10000,
-      "totalAmount": 25000,
-      "items": [
-        {
-          "color": "Navy",
-          "size": "M",
-          "quantity": 5000,
-          "unitPrice": 2.5
-        },
-        {
-          "color": "Black",
-          "size": "L",
-          "quantity": 5000,
-          "unitPrice": 2.5
-        }
-      ]
-    },
-    {
-      "poNumber": "po-ss256",
-      "buyerId": "1",
-      "styleId": null,
-      "orderDate": "2026-05-17",
-      "shipDate": "2026-06-06",
-      "status": "DRAFT",
-      "totalQuantity": 500,
-      "totalAmount": 1000000,
-      "items": [
-        {
-          "color": "navy",
-          "size": "M",
-          "quantity": 500,
-          "unitPrice": 2000
-        }
-      ],
-      "id": "mRBQzOVoxXE"
-    },
-    {
-      "poNumber": "po404",
-      "buyerId": "kmc20oh0tuI",
-      "styleId": null,
-      "orderDate": "2026-05-19",
-      "shipDate": "2026-06-25",
-      "status": "DRAFT",
-      "totalQuantity": 1400,
-      "totalAmount": 1640000,
-      "items": [
-        {
-          "color": "navy",
-          "size": "S",
-          "quantity": 100,
-          "unitPrice": 1000
-        },
-        {
-          "color": "blue",
-          "size": "M",
-          "quantity": 500,
-          "unitPrice": 1200
-        },
-        {
-          "color": "white",
-          "size": "L",
-          "quantity": 400,
-          "unitPrice": 1200
-        },
-        {
-          "color": "antiqe navi",
-          "size": "XL",
-          "quantity": 300,
-          "unitPrice": 1200
-        },
-        {
-          "color": "black",
-          "size": "S",
-          "quantity": 100,
-          "unitPrice": 1000
-        }
-      ],
-      "id": "UmNY9LoY2Bs"
-    },
-    {
-      "poNumber": "po405",
-      "buyerId": "sFXWdOLVCYo",
-      "styleId": null,
-      "orderDate": "2026-05-20",
-      "shipDate": "2026-06-05",
-      "status": "DRAFT",
-      "totalQuantity": 1500,
-      "totalAmount": 1250000,
-      "items": [
-        {
-          "color": "blue",
-          "size": "M",
-          "quantity": 1000,
-          "unitPrice": 500
-        },
-        {
-          "color": "navy",
-          "size": "L",
-          "quantity": 500,
-          "unitPrice": 1500
-        }
-      ],
-      "id": "kFx9H_a-T70"
-    },
-    {
-      "poNumber": "po406",
-      "buyerId": "z4hcXZOoC1E",
-      "styleId": null,
-      "orderDate": "2026-05-23",
-      "shipDate": "2026-06-05",
-      "status": "DRAFT",
-      "totalQuantity": 500,
-      "totalAmount": 500000,
-      "items": [
-        {
-          "color": "blue",
-          "size": "M",
-          "quantity": 500,
-          "unitPrice": 1000
-        }
-      ],
-      "id": "juJGRnSdKaA"
-    }
-  ],
-  "bomHeaders": [
-    {
-      "id": "1",
-      "styleId": null,
-      "version": "V1.0",
-      "status": "Final",
-      "createdAt": "2024-05-05"
-    },
-    {
-      "styleId": null,
-      "version": "V1.0",
-      "status": "Final",
-      "items": [
-        {
-          "materialName": "fabric",
-          "category": "Fabric",
-          "unit": "Meters",
-          "consumption": 1.5,
-          "wastagePercent": 8,
-          "supplier": "Tanvir",
-          "totalRequirement": 1.62
-        },
-        {
-          "materialName": "Zipper",
-          "category": "Accessories",
-          "unit": "Pcs",
-          "consumption": 500,
-          "wastagePercent": 8,
-          "supplier": "tanvir",
-          "totalRequirement": 540
-        },
-        {
-          "materialName": "Drawstring",
-          "category": "Accessories",
-          "unit": "Meters",
-          "consumption": 1000,
-          "wastagePercent": 5,
-          "supplier": "",
-          "totalRequirement": 1050
-        }
-      ],
-      "createdAt": "2026-05-17",
-      "id": "2NsvPDNmd0A"
-    }
-  ],
-  "bomItems": [
-    {
-      "id": "1",
-      "bomId": "1",
-      "materialName": "Cotton Jersey 160 GSM",
-      "category": "Fabric",
-      "unit": "Kg",
-      "consumption": 0.22,
-      "wastagePercent": 5,
-      "supplier": "TextileMills",
-      "totalRequirement": 0.231
-    },
-    {
-      "id": "2",
-      "bomId": "1",
-      "materialName": "Polyester Thread",
-      "category": "Trims",
-      "unit": "Cone",
-      "consumption": 0.05,
-      "wastagePercent": 2,
-      "supplier": "ThreadCo",
-      "totalRequirement": 0.051
-    },
-    {
-      "materialName": "Woven Knit Fabric",
-      "unit": "Yard",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 1,
-      "baseFabric": "short sleve shirt",
-      "styleCode": "NK201",
-      "quantity": 1.72,
-      "unitPrice": 150,
-      "totalCost": 258,
-      "id": "zxMVvhk2z1s"
-    },
-    {
-      "materialName": "Button",
-      "unit": "Pieces",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 2,
-      "baseFabric": "short sleve shirt",
-      "styleCode": "NK201",
-      "quantity": 10,
-      "unitPrice": 0.1,
-      "totalCost": 1,
-      "id": "DgPfVpinoPc"
-    },
-    {
-      "materialName": "Woven Knit Fabric",
-      "unit": "yard",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 1,
-      "baseFabric": "Short Sleeve Shirt",
-      "styleCode": "HG205",
-      "quantity": 500,
-      "unitPrice": 50,
-      "totalCost": 25000,
-      "id": "Ei1EDSauVbA"
-    },
-    {
-      "materialName": "Sewing Thread",
-      "unit": "Cone",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 1,
-      "baseFabric": "Short Sleeve Shirt",
-      "styleCode": "NC211",
-      "quantity": 20,
-      "unitPrice": 10,
-      "totalCost": 200,
-      "id": "ze0LA2EwniA"
-    },
-    {
-      "materialName": "Fabric",
-      "unit": "meter",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 1,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "NK202",
-      "quantity": 220,
-      "unitPrice": 10,
-      "totalCost": 2200,
-      "id": "zQxXtpt0QH4"
-    },
-    {
-      "materialName": "Button",
-      "unit": "Piece",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 2,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "NK202",
-      "quantity": 2000,
-      "unitPrice": 0.45,
-      "totalCost": 900,
-      "id": "vnaNI7sFkEA"
-    },
-    {
-      "materialName": "Care Label",
-      "unit": "Pieces",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 3,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "NK202",
-      "quantity": 2000,
-      "unitPrice": 0.3,
-      "totalCost": 600,
-      "id": "z4EWuc7-QjM"
-    },
-    {
-      "materialName": "Hang Tag",
-      "unit": "Pieces",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 4,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "NK201",
-      "quantity": 2000,
-      "unitPrice": 0.4,
-      "totalCost": 800,
-      "id": "P4vkTvRu5ks"
-    },
-    {
-      "materialName": "Hang Tag",
-      "unit": "Piece",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 4,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "NK202",
-      "quantity": 2000,
-      "unitPrice": 0.38,
-      "totalCost": 760,
-      "id": "Eqgze-oVqDM"
-    },
-    {
-      "materialName": "Fabric",
-      "unit": "meter",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 1,
-      "baseFabric": "Short Sleeve Shirt",
-      "styleCode": "IZ-203",
-      "quantity": 20000,
-      "unitPrice": 4.99,
-      "totalCost": 99800,
-      "id": "j64NN5P9Fyo"
-    },
-    {
-      "materialName": "Button",
-      "unit": "Piece",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 2,
-      "baseFabric": "Short Sleeve Shirt",
-      "styleCode": "IZ-203",
-      "quantity": 6000,
-      "unitPrice": 0.35,
-      "totalCost": 2100,
-      "id": "cOaa_m-grr8"
-    },
-    {
-      "materialName": "Care Label",
-      "unit": "Pieces",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 3,
-      "baseFabric": "Short Sleeve Shirt",
-      "styleCode": "IZ-203",
-      "quantity": 6000,
-      "unitPrice": 0.4,
-      "totalCost": 2400,
-      "id": "7R08kR3fgwg"
-    },
-    {
-      "materialName": "Hang Tag",
-      "unit": "Piece",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 4,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "IZ-203",
-      "quantity": 6000,
-      "unitPrice": 0.48,
-      "totalCost": 2880,
-      "id": "RPJgbwLOKhI"
-    },
-    {
-      "materialName": "Fabric",
-      "unit": "meter",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 1,
-      "baseFabric": "Short Sleeve Shirt",
-      "styleCode": "VD-220",
-      "quantity": 200000,
-      "unitPrice": 0.45,
-      "totalCost": 90000,
-      "id": "2RLzDcPsFMY"
-    },
-    {
-      "materialName": "Button",
-      "unit": "Piece",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 2,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "VD-220",
-      "quantity": 20000,
-      "unitPrice": 0.2,
-      "totalCost": 4000,
-      "id": "FjeZfzSobm0"
-    },
-    {
-      "materialName": "Care Label",
-      "unit": "Piece",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 3,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "VD-220",
-      "quantity": 20000,
-      "unitPrice": 0.33,
-      "totalCost": 6600,
-      "id": "-ALCUASlFxY"
-    },
-    {
-      "materialName": "Hang Tag",
-      "unit": "Piece",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 4,
-      "baseFabric": "Short Sleeve Shirt",
-      "styleCode": "VD-220",
-      "quantity": 20000,
-      "unitPrice": 0.38,
-      "totalCost": 7600,
-      "id": "CscDtUZC2Do"
-    },
-    {
-      "materialName": "Heat Seal",
-      "unit": "Piece",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 5,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "VD-220",
-      "quantity": 20000,
-      "unitPrice": 0.65,
-      "totalCost": 13000,
-      "id": "aCEO_cGjxxk"
-    },
-    {
-      "materialName": "Elastic",
-      "unit": "meter",
-      "consumption": 0,
-      "wastagePercent": 0,
-      "totalRequirement": 0,
-      "serial": 6,
-      "baseFabric": "Full Sleeve Shirt",
-      "styleCode": "VD-220",
-      "quantity": 5000,
-      "unitPrice": 0.19,
-      "totalCost": 950,
-      "id": "-mmrTfzgyj8"
-    }
-  ],
-  "productionOrders": [
-    {
-      "id": "1",
-      "orderId": "1",
-      "poNumber": "PO-99201",
-      "lineId": "L1",
-      "stage": "SEWING",
-      "targetQty": 10000,
-      "actualQty": 4500,
-      "startDate": "2024-06-01",
-      "status": "In Progress"
-    },
-    {
-      "orderId": "mRBQzOVoxXE",
-      "poNumber": "po-ss256",
-      "lineId": "L1",
-      "stage": "CUTTING",
-      "targetQty": 1200,
-      "actualQty": 0,
-      "startDate": "2026-05-17",
-      "status": "In Progress",
-      "id": "yFbr_pROW9Y"
-    },
-    {
-      "orderId": "kFx9H_a-T70",
-      "poNumber": "po405",
-      "lineId": "L2",
-      "stage": "CUTTING",
-      "targetQty": 1200,
-      "actualQty": 0,
-      "startDate": "2026-05-20",
-      "status": "In Progress",
-      "id": "vcGsENQ3U6o"
-    }
-  ],
-  "inventory": [
-    {
-      "id": "1",
-      "item": "Cotton Jersey 160 GSM",
-      "unit": "Kg",
-      "qtyOnHand": 5000,
-      "qtyReserved": 2310,
-      "qtyAvailable": 2690,
-      "reorderLevel": 1000,
-      "category": "Fabric"
-    },
-    {
-      "id": "2",
-      "item": "Polyester Thread",
-      "unit": "Cone",
-      "qtyOnHand": 100,
-      "qtyReserved": 51,
-      "qtyAvailable": 49,
-      "reorderLevel": 20,
-      "category": "Trims"
-    }
-  ],
-  "inventoryTransactions": [
-    {
-      "id": "1",
-      "itemId": "1",
-      "itemName": "Cotton Jersey 160 GSM",
-      "type": "RECEIPT",
-      "quantity": 5000,
-      "referenceNo": "GRN-001",
-      "date": "2024-05-15",
-      "remarks": "Opening Stock"
-    }
-  ],
   "shipments": [
     {
       "id": "1",
@@ -906,23 +151,6 @@
       "status": "BOOKED",
       "totalCartons": 250,
       "grossWeight": 3500
-    }
-  ],
-  "productionLines": [
-    {
-      "id": "L1",
-      "name": "Line 01",
-      "capacity": 1200
-    },
-    {
-      "id": "L2",
-      "name": "Line 02",
-      "capacity": 1200
-    },
-    {
-      "id": "L3",
-      "name": "Line 03",
-      "capacity": 1000
     }
   ],
   "dashboardStats": {
@@ -959,28 +187,6 @@
       "color": "primary"
     }
   ],
-  "materials": [
-    {
-      "id": "m1",
-      "name": "Cotton Fabric",
-      "unit": "Yards",
-      "category": "Fabric"
-    },
-    {
-      "id": "m2",
-      "name": "Thread",
-      "unit": "Spools",
-      "category": "Accessories"
-    },
-    {
-      "id": "m3",
-      "name": "Buttons",
-      "unit": "Pieces",
-      "category": "Accessories"
-    }
-  ],
-  "supplierOrders": [],
-  "productionStages": [],
   "uoms": [
     {
       "productName": "Short Sleeve Shirt",
@@ -1420,36 +626,6 @@
       "id": "rS4XxrGqeHM"
     }
   ],
-  "inventoryItems": [
-    {
-      "itemName": "Woven Knit Fabric",
-      "category": "Fabric",
-      "unit": "Yards",
-      "quantity": 9600,
-      "id": "q1B7DtXamHk"
-    },
-    {
-      "itemName": "Plastic Button",
-      "category": "Accessories",
-      "unit": "Pieces",
-      "quantity": 1000,
-      "id": "kOP2WSEneL4"
-    },
-    {
-      "itemName": "Sweing Thread",
-      "category": "Accessories",
-      "unit": "Cones",
-      "quantity": 1000,
-      "id": "WTmPzCppCwg"
-    },
-    {
-      "itemName": "Poly Bag",
-      "category": "Accessories",
-      "unit": "Kg",
-      "quantity": 300,
-      "id": "ld1hZx9mFOg"
-    }
-  ],
   "requisitions": [
     {
       "prDate": "2026-05-28",
@@ -1534,48 +710,6 @@
       "id": "CFXmG1G1ins"
     }
   ],
-  "productionPlanOrders": [
-    {
-      "orderId": "qsD2M6t0i-8",
-      "styleCode": "NC211",
-      "planQty": 3900,
-      "startDate": "2026-05-28",
-      "endDate": "2026-06-05",
-      "status": "Planned",
-      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
-      "short_S": 500,
-      "short_M": 500,
-      "short_L": 500,
-      "short_XL": 500,
-      "full_S": 500,
-      "full_M": 500,
-      "full_L": 500,
-      "full_XL": 400,
-      "size": "Short-S, Short-M, Short-L, Short-XL, Full-S, Full-M, Full-L, Full-XL",
-      "id": "tojKqlx_v1M"
-    }
-  ],
-  "daywiseProduction": [],
-  "productionPlanLines": [
-    {
-      "lineId": "L-1",
-      "capacityPerDay": 5000,
-      "supervisor": "Masud Rana",
-      "id": "GsvVHNFJ4gY"
-    },
-    {
-      "lineId": "L-2",
-      "capacityPerDay": 3000,
-      "supervisor": "Miskatul Islam",
-      "id": "1Eh5fC1YZw8"
-    },
-    {
-      "lineId": "L-3",
-      "capacityPerDay": 2000,
-      "supervisor": "Anik",
-      "id": "1PiuYHFcHL8"
-    }
-  ],
   "machines": [
     {
       "machineId": "M-1",
@@ -1600,19 +734,6 @@
     }
   ],
   "cuttingPlans": [
-    {
-      "order_id": "qsD2M6t0i-8",
-      "style_no": "NC211",
-      "planned_pieces": 3900,
-      "actual_pieces": 3500,
-      "marker_efficiency": 89.7,
-      "cutting_date": "2026-05-29",
-      "assigned_to": "Sajin Ahmed",
-      "status": "Done",
-      "remarks": "good",
-      "cutting_plan_id": "CP-1780050546848",
-      "id": "9NqvhtDcU6Q"
-    },
     {
       "buyer_id": "z4hcXZOoC1E",
       "order_id": "46sHTTeghvI",
@@ -1717,27 +838,6 @@
     }
   ],
   "finishingPlans": [
-    {
-      "order_id": "qsD2M6t0i-8",
-      "sewing_plan_id": "SP-1780057112964",
-      "style_no": "NC211",
-      "input_qty": 3430,
-      "target_qty": 3430,
-      "pass_qty": 3300,
-      "rejection_qty": 130,
-      "ironing_type": "Dry Iron",
-      "quality_check": "QC Pass",
-      "thread_cutting": true,
-      "button_attach": true,
-      "label_attach": true,
-      "start_date": "2026-05-30",
-      "end_date": "2026-05-31",
-      "assigned_to": "Sumaiya Akter",
-      "status": "Done",
-      "finishing_plan_id": "FP-1780117805400",
-      "id": "Kw5hI5CfCCI",
-      "passQty": null
-    },
     {
       "sewing_plan_id": "SP-1780778717346",
       "buyer_name": "Nakano International Ltd",
@@ -2285,5 +1385,740 @@
       "id": "_bclrDFPBmY"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "bomStyles": [
+    {
+      "id": "Aw93c1FNrmc",
+      "styleCode": "NK201",
+      "styleName": "Short Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "6gMo60zO8LU",
+      "styleCode": "NK202",
+      "styleName": "Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "gfACMl6d4qI",
+      "styleCode": "IZ204",
+      "styleName": "Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "ZopKndbKntg",
+      "styleCode": "VD207",
+      "styleName": "Short Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "v7RTkl9C5-g",
+      "styleCode": "VD208",
+      "styleName": "Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "IO8WLz92ifw",
+      "styleCode": "NC209",
+      "styleName": "Short Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "Ybv2B8KjfNw",
+      "styleCode": "NC210",
+      "styleName": "Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "EzGuakbwWnk",
+      "styleCode": "HG205",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Formal",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "Z9dYFkuNaiA",
+      "styleCode": "HG212",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "dwdiPAUjSoQ",
+      "styleCode": "NC211",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "KJ_fdTz_Lxo",
+      "styleCode": "IZ-203",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": "MK9nkMt6liE",
+      "styleCode": "VD-220",
+      "styleName": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "styleType": "Casual",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "approvalStatus": "Draft",
+      "sizeSet": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    }
+  ],
+  "bomViews": [
+    {
+      "id": "1",
+      "serial": 1,
+      "materialName": "Cotton Jersey 160 GSM",
+      "unit": "Kg",
+      "baseFabric": "",
+      "styleCode": "",
+      "quantity": 0,
+      "unitPrice": 0,
+      "totalCost": 0
+    },
+    {
+      "id": "2",
+      "serial": 1,
+      "materialName": "Polyester Thread",
+      "unit": "Cone",
+      "baseFabric": "",
+      "styleCode": "",
+      "quantity": 0,
+      "unitPrice": 0,
+      "totalCost": 0
+    },
+    {
+      "id": "zxMVvhk2z1s",
+      "serial": 1,
+      "materialName": "Woven Knit Fabric",
+      "unit": "Yard",
+      "baseFabric": "short sleve shirt",
+      "styleCode": "NK201",
+      "quantity": 1.72,
+      "unitPrice": 150,
+      "totalCost": 258
+    },
+    {
+      "id": "DgPfVpinoPc",
+      "serial": 2,
+      "materialName": "Button",
+      "unit": "Pieces",
+      "baseFabric": "short sleve shirt",
+      "styleCode": "NK201",
+      "quantity": 10,
+      "unitPrice": 0.1,
+      "totalCost": 1
+    },
+    {
+      "id": "Ei1EDSauVbA",
+      "serial": 1,
+      "materialName": "Woven Knit Fabric",
+      "unit": "yard",
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "HG205",
+      "quantity": 500,
+      "unitPrice": 50,
+      "totalCost": 25000
+    },
+    {
+      "id": "ze0LA2EwniA",
+      "serial": 1,
+      "materialName": "Sewing Thread",
+      "unit": "Cone",
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "NC211",
+      "quantity": 20,
+      "unitPrice": 10,
+      "totalCost": 200
+    },
+    {
+      "id": "zQxXtpt0QH4",
+      "serial": 1,
+      "materialName": "Fabric",
+      "unit": "meter",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK202",
+      "quantity": 220,
+      "unitPrice": 10,
+      "totalCost": 2200
+    },
+    {
+      "id": "vnaNI7sFkEA",
+      "serial": 2,
+      "materialName": "Button",
+      "unit": "Piece",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK202",
+      "quantity": 2000,
+      "unitPrice": 0.45,
+      "totalCost": 900
+    },
+    {
+      "id": "z4EWuc7-QjM",
+      "serial": 3,
+      "materialName": "Care Label",
+      "unit": "Pieces",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK202",
+      "quantity": 2000,
+      "unitPrice": 0.3,
+      "totalCost": 600
+    },
+    {
+      "id": "P4vkTvRu5ks",
+      "serial": 4,
+      "materialName": "Hang Tag",
+      "unit": "Pieces",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK201",
+      "quantity": 2000,
+      "unitPrice": 0.4,
+      "totalCost": 800
+    },
+    {
+      "id": "Eqgze-oVqDM",
+      "serial": 4,
+      "materialName": "Hang Tag",
+      "unit": "Piece",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "NK202",
+      "quantity": 2000,
+      "unitPrice": 0.38,
+      "totalCost": 760
+    },
+    {
+      "id": "j64NN5P9Fyo",
+      "serial": 1,
+      "materialName": "Fabric",
+      "unit": "meter",
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "IZ-203",
+      "quantity": 20000,
+      "unitPrice": 4.99,
+      "totalCost": 99800
+    },
+    {
+      "id": "cOaa_m-grr8",
+      "serial": 2,
+      "materialName": "Button",
+      "unit": "Piece",
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "IZ-203",
+      "quantity": 6000,
+      "unitPrice": 0.35,
+      "totalCost": 2100
+    },
+    {
+      "id": "7R08kR3fgwg",
+      "serial": 3,
+      "materialName": "Care Label",
+      "unit": "Pieces",
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "IZ-203",
+      "quantity": 6000,
+      "unitPrice": 0.4,
+      "totalCost": 2400
+    },
+    {
+      "id": "RPJgbwLOKhI",
+      "serial": 4,
+      "materialName": "Hang Tag",
+      "unit": "Piece",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "IZ-203",
+      "quantity": 6000,
+      "unitPrice": 0.48,
+      "totalCost": 2880
+    },
+    {
+      "id": "2RLzDcPsFMY",
+      "serial": 1,
+      "materialName": "Fabric",
+      "unit": "meter",
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 200000,
+      "unitPrice": 0.45,
+      "totalCost": 90000
+    },
+    {
+      "id": "FjeZfzSobm0",
+      "serial": 2,
+      "materialName": "Button",
+      "unit": "Piece",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 20000,
+      "unitPrice": 0.2,
+      "totalCost": 4000
+    },
+    {
+      "id": "-ALCUASlFxY",
+      "serial": 3,
+      "materialName": "Care Label",
+      "unit": "Piece",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 20000,
+      "unitPrice": 0.33,
+      "totalCost": 6600
+    },
+    {
+      "id": "CscDtUZC2Do",
+      "serial": 4,
+      "materialName": "Hang Tag",
+      "unit": "Piece",
+      "baseFabric": "Short Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 20000,
+      "unitPrice": 0.38,
+      "totalCost": 7600
+    },
+    {
+      "id": "aCEO_cGjxxk",
+      "serial": 5,
+      "materialName": "Heat Seal",
+      "unit": "Piece",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 20000,
+      "unitPrice": 0.65,
+      "totalCost": 13000
+    },
+    {
+      "id": "-mmrTfzgyj8",
+      "serial": 6,
+      "materialName": "Elastic",
+      "unit": "meter",
+      "baseFabric": "Full Sleeve Shirt",
+      "styleCode": "VD-220",
+      "quantity": 5000,
+      "unitPrice": 0.19,
+      "totalCost": 950
+    }
+  ],
+  "fabricRecords": [
+    {
+      "styleId": "Aw93c1FNrmc",
+      "orderId": "OR301",
+      "orderDbId": "46sHTTeghvI",
+      "orderNumber": "ORD-9626",
+      "date": "2026-05-24T09:17:14.512Z",
+      "totalFabricRequired": 2799.5,
+      "details": [
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "S",
+          "type": "SHORT",
+          "baseFabric": 1.606,
+          "qty": 500,
+          "calculatedFabric": 803,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "M",
+          "type": "SHORT",
+          "baseFabric": 1.6375,
+          "qty": 400,
+          "calculatedFabric": 655,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "L",
+          "type": "SHORT",
+          "baseFabric": 1.669,
+          "qty": 500,
+          "calculatedFabric": 834.5,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "XL",
+          "type": "SHORT",
+          "baseFabric": 1.69,
+          "qty": 300,
+          "calculatedFabric": 507,
+          "hasUom": true
+        }
+      ],
+      "id": "vfg7p5Y88BM"
+    },
+    {
+      "styleId": "6gMo60zO8LU",
+      "orderId": "OR-302",
+      "orderDbId": "szOKnC4gjRs",
+      "orderNumber": "ORD-8484",
+      "date": "2026-06-08T05:24:55.937Z",
+      "totalFabricRequired": 34991,
+      "details": [
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "S",
+          "type": "FULL",
+          "baseFabric": 1.6886,
+          "qty": 5000,
+          "calculatedFabric": 8443,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "M",
+          "type": "FULL",
+          "baseFabric": 1.7396,
+          "qty": 5000,
+          "calculatedFabric": 8698,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "L",
+          "type": "FULL",
+          "baseFabric": 1.774,
+          "qty": 5000,
+          "calculatedFabric": 8870,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "XL",
+          "type": "FULL",
+          "baseFabric": 1.796,
+          "qty": 5000,
+          "calculatedFabric": 8980,
+          "hasUom": true
+        }
+      ],
+      "id": "meDNUtKzpPE"
+    },
+    {
+      "styleId": "KJ_fdTz_Lxo",
+      "orderId": "OR-305",
+      "orderDbId": "J69Fo4yCEMk",
+      "orderNumber": "ORD-4932",
+      "date": "2026-06-08T05:38:48.898Z",
+      "totalFabricRequired": 10210.400000000001,
+      "details": [
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "S",
+          "type": "SHORT",
+          "baseFabric": 1.606,
+          "qty": 500,
+          "calculatedFabric": 803,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "M",
+          "type": "SHORT",
+          "baseFabric": 1.6375,
+          "qty": 1000,
+          "calculatedFabric": 1637.5,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "L",
+          "type": "SHORT",
+          "baseFabric": 1.669,
+          "qty": 1000,
+          "calculatedFabric": 1669,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "XL",
+          "type": "SHORT",
+          "baseFabric": 1.69,
+          "qty": 500,
+          "calculatedFabric": 845,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "S",
+          "type": "FULL",
+          "baseFabric": 1.6886,
+          "qty": 500,
+          "calculatedFabric": 844.3000000000001,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "M",
+          "type": "FULL",
+          "baseFabric": 1.7396,
+          "qty": 1000,
+          "calculatedFabric": 1739.6000000000001,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "L",
+          "type": "FULL",
+          "baseFabric": 1.774,
+          "qty": 1000,
+          "calculatedFabric": 1774,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "XL",
+          "type": "FULL",
+          "baseFabric": 1.796,
+          "qty": 500,
+          "calculatedFabric": 898,
+          "hasUom": true
+        }
+      ],
+      "id": "kYaRtuib5xk"
+    },
+    {
+      "styleId": "MK9nkMt6liE",
+      "orderId": "ORD-320",
+      "orderDbId": "qCVKMuWyp00",
+      "orderNumber": "ORD-1994",
+      "date": "2026-06-08T06:15:55.764Z",
+      "totalFabricRequired": 27201.4,
+      "details": [
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "S",
+          "type": "SHORT",
+          "baseFabric": 1.606,
+          "qty": 2000,
+          "calculatedFabric": 3212,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "M",
+          "type": "SHORT",
+          "baseFabric": 1.6375,
+          "qty": 2000,
+          "calculatedFabric": 3275,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "L",
+          "type": "SHORT",
+          "baseFabric": 1.669,
+          "qty": 2000,
+          "calculatedFabric": 3338,
+          "hasUom": true
+        },
+        {
+          "productName": "Short Sleeve Shirt",
+          "size": "XL",
+          "type": "SHORT",
+          "baseFabric": 1.69,
+          "qty": 2000,
+          "calculatedFabric": 3380,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "S",
+          "type": "FULL",
+          "baseFabric": 1.6886,
+          "qty": 2000,
+          "calculatedFabric": 3377.2000000000003,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "M",
+          "type": "FULL",
+          "baseFabric": 1.7396,
+          "qty": 2000,
+          "calculatedFabric": 3479.2000000000003,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "L",
+          "type": "FULL",
+          "baseFabric": 1.774,
+          "qty": 2000,
+          "calculatedFabric": 3548,
+          "hasUom": true
+        },
+        {
+          "productName": "Full Sleeve Shirt",
+          "size": "XL",
+          "type": "FULL",
+          "baseFabric": 1.796,
+          "qty": 2000,
+          "calculatedFabric": 3592,
+          "hasUom": true
+        }
+      ],
+      "id": "p67y5jQa5Ng"
+    }
+  ],
+  "productionOrders": [
+    {
+      "orderId": "qsD2M6t0i-8",
+      "styleCode": "NC211",
+      "planQty": 3900,
+      "startDate": "2026-05-28",
+      "endDate": "2026-06-05",
+      "status": "Planned",
+      "description": "Short Sleeve Shirt And Full Sleeve Shirt",
+      "short_S": 500,
+      "short_M": 500,
+      "short_L": 500,
+      "short_XL": 500,
+      "full_S": 500,
+      "full_M": 500,
+      "full_L": 500,
+      "full_XL": 400,
+      "size": "Short-S, Short-M, Short-L, Short-XL, Full-S, Full-M, Full-L, Full-XL",
+      "id": "tojKqlx_v1M"
+    }
+  ],
+  "productionLines": [
+    {
+      "lineId": "L-1",
+      "capacityPerDay": 5000,
+      "supervisor": "Masud Rana",
+      "id": "GsvVHNFJ4gY"
+    },
+    {
+      "lineId": "L-2",
+      "capacityPerDay": 3000,
+      "supervisor": "Miskatul Islam",
+      "id": "1Eh5fC1YZw8"
+    },
+    {
+      "lineId": "L-3",
+      "capacityPerDay": 2000,
+      "supervisor": "Anik",
+      "id": "1PiuYHFcHL8"
+    }
+  ],
+  "inventory": [
+    {
+      "itemName": "Woven Knit Fabric",
+      "category": "Fabric",
+      "unit": "Yards",
+      "quantity": 9600,
+      "id": "q1B7DtXamHk"
+    },
+    {
+      "itemName": "Plastic Button",
+      "category": "Accessories",
+      "unit": "Pieces",
+      "quantity": 1000,
+      "id": "kOP2WSEneL4"
+    },
+    {
+      "itemName": "Sweing Thread",
+      "category": "Accessories",
+      "unit": "Cones",
+      "quantity": 1000,
+      "id": "WTmPzCppCwg"
+    },
+    {
+      "itemName": "Poly Bag",
+      "category": "Accessories",
+      "unit": "Kg",
+      "quantity": 300,
+      "id": "ld1hZx9mFOg"
+    }
+  ]
 }

@@ -56,7 +56,6 @@ export class LoginComponent {
       admin: 'admin@garments.com',
       merch: 'merch@garments.com',
       prod: 'prod@garments.com',
-      qa: 'qa@garments.com',
       purchase:'purchase@garments.com'
 
     };

@@ -1,4 +1,4 @@
-export interface UOM {
+export interface Uom {
   id?: string;
   productName: string;
   size: 'S' | 'M' | 'L' | 'XL';

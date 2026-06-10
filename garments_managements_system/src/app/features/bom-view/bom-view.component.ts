@@ -5,9 +5,9 @@ import { RouterModule } from '@angular/router';
 import { MerchandisingService } from '../../features/merchandising-service/merchandising.service';
 import { StyleService } from '../../core/services/style.service';
 import { NotificationService } from '../../core/services/notification/notification.service';
-import { BOMItem } from '../../models/bom/bom.model';
-import { Style } from '../../models/style/style.model';
-import { UOM } from '../../models/uom/uom.model';
+import { BomView } from '../../models/bom-view/bom-view.model';
+import { BomStyle } from '../../models/bom-style/bom-style.model';
+import { Uom } from '../../models/uom/uom.model';
 
 @Component({
   selector: 'app-bom-view',
@@ -23,8 +23,8 @@ export class BomViewComponent implements OnInit {
   private notify = inject(NotificationService);
 
   bomForm!: FormGroup;
-  styles: Style[] = [];
-  uoms: UOM[] = [];
+  styles: BomStyle[] = [];
+  uoms: Uom[] = [];
 
   ngOnInit() {
     this.initForm();
@@ -62,13 +62,10 @@ export class BomViewComponent implements OnInit {
   onSubmit() {
     if (this.bomForm.valid) {
       const formData = this.bomForm.getRawValue();
-      const bomItem: BOMItem = {
+      const bomView: BomView = {
+        serial: formData.serial,
         materialName: formData.materialName,
         unit: formData.unit,
-        consumption: 0,
-        wastagePercent: 0,
-        totalRequirement: 0,
-        serial: formData.serial,
         baseFabric: formData.baseFabric,
         styleCode: formData.styleCode,
         quantity: formData.quantity,
@@ -76,7 +73,7 @@ export class BomViewComponent implements OnInit {
         totalCost: formData.totalCost
       };
 
-      this.merchService.createBOMItem(bomItem).subscribe(() => {
+      this.merchService.createBOMItem(bomView).subscribe(() => {
         this.notify.success('BOM item added successfully');
         this.bomForm.reset({ unit: 'Kg', quantity: 0, unitPrice: 0 });
       });

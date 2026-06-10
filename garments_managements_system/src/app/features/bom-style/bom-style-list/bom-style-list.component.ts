@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { StyleService } from '../../../core/services/style.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
+import { BomStyle } from '../../../models/bom-style/bom-style.model';
 
 @Component({
   selector: 'app-bom-style-list',
@@ -14,7 +15,7 @@ export class BomStyleListComponent implements OnInit {
   private styleService = inject(StyleService);
   private notify = inject(NotificationService);
 
-  styles: any[] = [];
+  styles: BomStyle[] = [];
 
   ngOnInit() {
     this.loadStyles();

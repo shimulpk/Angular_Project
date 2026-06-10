@@ -1,28 +1,29 @@
 import { Injectable, inject } from '@angular/core';
 import { ApiService } from './api/api.service';
 import { Observable } from 'rxjs';
+import { BomStyle } from '../../models/bom-style/bom-style.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StyleService {
   private api = inject(ApiService);
-  private endpoint = 'styles';
+  private endpoint = 'bomStyles';
 
-  getStyles(): Observable<any[]> {
-    return this.api.getAll<any>(this.endpoint);
+  getStyles(): Observable<BomStyle[]> {
+    return this.api.getAll<BomStyle>(this.endpoint);
   }
 
-  getStyleById(id: string): Observable<any> {
-    return this.api.getById<any>(this.endpoint, id);
+  getStyleById(id: string): Observable<BomStyle> {
+    return this.api.getById<BomStyle>(this.endpoint, id);
   }
 
-  createStyle(style: any): Observable<any> {
-    return this.api.create<any>(this.endpoint, style);
+  createStyle(style: BomStyle): Observable<BomStyle> {
+    return this.api.create<BomStyle>(this.endpoint, style);
   }
 
-  updateStyle(id: string, style: any): Observable<any> {
-    return this.api.update<any>(this.endpoint, id, style);
+  updateStyle(id: string, style: BomStyle): Observable<BomStyle> {
+    return this.api.update<BomStyle>(this.endpoint, id, style);
   }
 
   deleteStyle(id: string): Observable<any> {

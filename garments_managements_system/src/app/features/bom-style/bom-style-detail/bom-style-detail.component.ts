@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MerchandisingService } from '../../merchandising-service/merchandising.service';
-import { BOMItem } from '../../../models/bom/bom.model';
+import { BomView } from '../../../models/bom-view/bom-view.model';
 
 @Component({
   selector: 'app-bom-style-detail',
@@ -15,7 +15,7 @@ export class BomStyleDetailComponent implements OnInit {
   private merchService = inject(MerchandisingService);
 
   styleCode: string = '';
-  bomItems: BOMItem[] = [];
+  bomItems: BomView[] = [];
   isLoading = true;
 
   get totalCost(): number {

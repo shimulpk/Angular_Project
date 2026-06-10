@@ -8,7 +8,7 @@ import { StyleService } from '../../../core/services/style.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
 import { Order, OrderItem } from '../../../models/order/order.model';
 import { Buyer } from '../../../models/buyer/buyer.model';
-import { Style } from '../../../models/style/style.model';
+import { BomStyle } from '../../../models/bom-style/bom-style.model';
 
 @Component({
   selector: 'app-create-order',
@@ -26,7 +26,7 @@ export class CreateOrderComponent implements OnInit {
 
   orderForm!: FormGroup;
   buyers: Buyer[] = [];
-  styles: Style[] = [];
+  styles: BomStyle[] = [];
 
   readonly SIZES = ['S', 'M', 'L', 'XL'];
 

@@ -38,15 +38,15 @@ export class ProcurementService {
   // --- Inventory List (Aggregated from items + transactions) ---
   // In a real app, backend would provide this. For json-server, we might do it client-side or use a specific endpoint.
   getInventory(): Observable<any[]> {
-    return this.api.getAll<any>('inventoryItems');
+    return this.api.getAll<any>('inventory');
   }
   
   createInventoryItem(item: any): Observable<any> {
-    return this.api.create<any>('inventoryItems', item);
+    return this.api.create<any>('inventory', item);
   }
 
   updateInventoryItem(id: string, item: any): Observable<any> {
-    return this.api.update<any>('inventoryItems', id, item);
+    return this.api.update<any>('inventory', id, item);
   }
 
   // --- Requisitions ---

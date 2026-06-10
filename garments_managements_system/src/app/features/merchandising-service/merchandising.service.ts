@@ -1,86 +1,82 @@
 import { Injectable, inject } from '@angular/core';
 import { ApiService } from '../../core/services/api/api.service';
-import { BOM, BOMItem } from '../../models/bom/bom.model';
-import { Observable, map } from 'rxjs';
+import { BomView } from '../../models/bom-view/bom-view.model';
+import { Uom } from '../../models/uom/uom.model';
+import { RawMaterialCheck } from '../../models/raw-material-check/raw-material-check.model';
+import { FabricRecord } from '../../models/fabric-record/fabric-record.model';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class MerchandisingService {
   private api = inject(ApiService);
-  private endpoint = 'bomHeaders';
 
-  getBOMs(params?: any): Observable<BOM[]> {
-    return this.api.getAll<BOM>(this.endpoint, params);
-  }
-
-  getBOMById(id: string): Observable<BOM> {
-    return this.api.getById<BOM>(this.endpoint, id);
+  // --- Uom Methods ---
+  getUOMs(): Observable<Uom[]> {
+    return this.api.getAll<Uom>('uoms');
   }
 
-  /** Fetch the BOM header for a given style (returns the first matching BOM) */
-  getBOMByStyleId(styleId: string): Observable<BOM | null> {
-    return this.api.getAll<BOM>(this.endpoint, { styleId }).pipe(
-      map(boms => boms.length > 0 ? boms[0] : null)
-    );
+  createUOM(uom: Uom): Observable<Uom> {
+    return this.api.create<Uom>('uoms', uom);
   }
 
-  /** Fetch standalone bomItems that reference a bomHeader by bomId */
-  getBOMItems(bomId: string): Observable<BOMItem[]> {
-    return this.api.getAll<BOMItem>('bomItems', { bomId });
-  }
-
-  /** Fetch all standalone bomItems */
-  getAllBOMItems(): Observable<BOMItem[]> {
-    return this.api.getAll<BOMItem>('bomItems');
-  }
-
-  createBOM(bom: BOM): Observable<BOM> {
-    return this.api.create<BOM>(this.endpoint, bom);
-  }
-  
-  createBOMItem(bomItem: BOMItem): Observable<BOMItem> {
-    return this.api.create<BOMItem>('bomItems', bomItem);
-  }
-
-  updateBOM(id: string, bom: BOM): Observable<BOM> {
-    return this.api.update<BOM>(this.endpoint, id, bom);
-  }
-
-  deleteBOM(id: string): Observable<any> {
-    return this.api.delete(this.endpoint, id);
-  }
-  
-  // --- UOM Methods ---
-  getUOMs(): Observable<any[]> {
-    return this.api.getAll<any>('uoms');
-  }
-
-  createUOM(uom: any): Observable<any> {
-    return this.api.create<any>('uoms', uom);
-  }
-
-  updateUOM(id: string, uom: any): Observable<any> {
-    return this.api.update<any>('uoms', id, uom);
+  updateUOM(id: string, uom: Uom): Observable<Uom> {
+    return this.api.update<Uom>('uoms', id, uom);
   }
 
   deleteUOM(id: string): Observable<any> {
     return this.api.delete('uoms', id);
   }
 
-  // --- Raw Materials Check Methods ---
-  saveRawMaterialCheck(data: any): Observable<any> {
-    return this.api.create<any>('rawMaterialChecks', data);
+  // --- BomView Methods ---
+  getAllBOMItems(): Observable<BomView[]> {
+    return this.api.getAll<BomView>('bomViews');
   }
 
-  getRawMaterialChecks(): Observable<any[]> {
-    return this.api.getAll<any>('rawMaterialChecks');
+  createBOMItem(bomView: BomView): Observable<BomView> {
+    return this.api.create<BomView>('bomViews', bomView);
   }
 
-  updateRawMaterialCheck(id: string, data: any): Observable<any> {
-    return this.api.update<any>('rawMaterialChecks', id, data);
+  updateBOMItem(id: string, bomView: BomView): Observable<BomView> {
+    return this.api.update<BomView>('bomViews', id, bomView);
+  }
+
+  deleteBOMItem(id: string): Observable<any> {
+    return this.api.delete('bomViews', id);
+  }
+
+  // --- RawMaterialCheck Methods ---
+  saveRawMaterialCheck(data: RawMaterialCheck): Observable<RawMaterialCheck> {
+    return this.api.create<RawMaterialCheck>('rawMaterialChecks', data);
+  }
+
+  getRawMaterialChecks(): Observable<RawMaterialCheck[]> {
+    return this.api.getAll<RawMaterialCheck>('rawMaterialChecks');
+  }
+
+  updateRawMaterialCheck(id: string, data: RawMaterialCheck): Observable<RawMaterialCheck> {
+    return this.api.update<RawMaterialCheck>('rawMaterialChecks', id, data);
   }
 
   deleteRawMaterialCheck(id: string): Observable<any> {
     return this.api.delete('rawMaterialChecks', id);
+  }
+
+  // --- FabricRecord Methods ---
+  getFabricRecords(): Observable<FabricRecord[]> {
+    return this.api.getAll<FabricRecord>('fabricRecords');
+  }
+
+  createFabricRecord(data: FabricRecord): Observable<FabricRecord> {
+    return this.api.create<FabricRecord>('fabricRecords', data);
+  }
+
+  updateFabricRecord(id: string, data: FabricRecord): Observable<FabricRecord> {
+    return this.api.update<FabricRecord>('fabricRecords', id, data);
+  }
+
+  deleteFabricRecord(id: string): Observable<any> {
+    return this.api.delete('fabricRecords', id);
   }
 }

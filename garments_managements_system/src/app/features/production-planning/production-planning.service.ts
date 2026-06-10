@@ -7,8 +7,8 @@ export class ProductionPlanningService {
   private api = inject(ApiService);
 
   // Production Orders
-  getProductionOrders(): Observable<any[]> { return this.api.getAll<any>('productionPlanOrders'); }
-  createProductionOrder(d: any): Observable<any> { return this.api.create<any>('productionPlanOrders', d); }
+  getProductionOrders(): Observable<any[]> { return this.api.getAll<any>('productionOrders'); }
+  createProductionOrder(d: any): Observable<any> { return this.api.create<any>('productionOrders', d); }
 
   // Day-wise Production
   getDaywiseProduction(): Observable<any[]> { return this.api.getAll<any>('daywiseProduction'); }
@@ -40,8 +40,8 @@ export class ProductionPlanningService {
   }
 
   // Lines
-  getLines(): Observable<any[]> { return this.api.getAll<any>('productionPlanLines'); }
-  createLine(d: any): Observable<any> { return this.api.create<any>('productionPlanLines', d); }
+  getLines(): Observable<any[]> { return this.api.getAll<any>('productionLines'); }
+  createLine(d: any): Observable<any> { return this.api.create<any>('productionLines', d); }
 
   // Machines
   getMachines(): Observable<any[]> { return this.api.getAll<any>('machines'); }

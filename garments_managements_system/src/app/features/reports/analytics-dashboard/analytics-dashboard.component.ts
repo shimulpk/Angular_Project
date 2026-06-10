@@ -15,7 +15,7 @@ export class AnalyticsDashboardComponent implements OnInit {
   kpis = [
     { label: 'Total Revenue', value: '$428,500', trend: 12, color: 'text-primary' },
     { label: 'Avg. Efficiency', value: '88.4%', trend: 4, color: 'text-success' },
-    { label: 'QA Rejection', value: '3.2%', trend: -2, color: 'text-danger' },
+    { label: 'On-Time Delivery', value: '96.2%', trend: 1.5, color: 'text-info' },
     { label: 'Inventory Value', value: '$63,400', trend: 8, color: 'text-warning' }
   ];
 

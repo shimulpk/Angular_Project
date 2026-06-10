@@ -5,7 +5,7 @@ import { OrderService } from '../../../core/services/order.service';
 import { BuyerService } from '../../../core/services/buyer.service';
 import { StyleService } from '../../../core/services/style.service';
 import { Buyer } from '../../../models/buyer/buyer.model';
-import { Style } from '../../../models/style/style.model';
+import { BomStyle } from '../../../models/bom-style/bom-style.model';
 import { Order } from '../../../models/order/order.model';
 
 @Component({
@@ -21,7 +21,7 @@ export class OrderListComponent implements OnInit {
 
   orders: Order[] = [];
   buyers: Buyer[] = [];
-  styles: Style[] = [];
+  styles: BomStyle[] = [];
 
   ngOnInit() {
     this.loadData();

@@ -6,35 +6,16 @@ import { MerchandisingService } from '../../merchandising-service/merchandising.
 import { StyleService } from '../../../core/services/style.service';
 import { OrderService } from '../../../core/services/order.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
+import { FabricRecord, FabricRecordDetail } from '../../../models/fabric-record/fabric-record.model';
+import { BomStyle } from '../../../models/bom-style/bom-style.model';
 import { forkJoin } from 'rxjs';
-
-export interface FabricDetail {
-  productName: string;
-  size: string;
-  type: string;
-  baseFabric: number;
-  qty: number;
-  calculatedFabric: number;
-  hasUom: boolean;
-}
-
-export interface RawMaterialRecord {
-  id: string;
-  styleId: string;
-  orderId: string;
-  orderDbId: string;
-  orderNumber: string;
-  date: string;
-  totalFabricRequired: number;
-  details: FabricDetail[];
-}
 
 export interface OrderGroup {
   orderId: string;
   orderNumber: string;
   styleName: string;
   styleCode: string;
-  records: RawMaterialRecord[];
+  records: FabricRecord[];
   totalFabric: number;
   latestDate: string;
 }
@@ -53,11 +34,11 @@ export class ViewRawMaterialCheckComponent implements OnInit {
   private notify = inject(NotificationService);
   private router = inject(Router);
 
-  allRecords: RawMaterialRecord[] = [];
+  allRecords: FabricRecord[] = [];
   orderGroups: OrderGroup[] = [];
   filteredGroups: OrderGroup[] = [];
 
-  styles: any[] = [];
+  styles: BomStyle[] = [];
   orders: any[] = [];
 
   searchOrderId: string = '';
@@ -65,12 +46,12 @@ export class ViewRawMaterialCheckComponent implements OnInit {
 
   // Edit modal state
   editModalOpen = false;
-  editingRecord: RawMaterialRecord | null = null;
+  editingRecord: FabricRecord | null = null;
   editTotalFabric: number = 0;
 
   // Delete confirm state
   deleteConfirmOpen = false;
-  deletingRecord: RawMaterialRecord | null = null;
+  deletingRecord: FabricRecord | null = null;
   deletingGroupId: string = '';
 
   ngOnInit(): void {
@@ -99,7 +80,6 @@ export class ViewRawMaterialCheckComponent implements OnInit {
     const groupMap = new Map<string, OrderGroup>();
 
     for (const record of this.allRecords) {
-      // Resolve the human-readable orderId from actual orders if missing
       const resolvedOrderId = record.orderId || this.resolveOrderId(record.styleId);
       const resolvedOrderNumber = record.orderNumber || this.resolvePoNumber(record.styleId);
       const key = resolvedOrderId || 'unlinked';
@@ -121,7 +101,6 @@ export class ViewRawMaterialCheckComponent implements OnInit {
       group.records.push({ ...record, orderId: resolvedOrderId, orderNumber: resolvedOrderNumber });
       group.totalFabric += record.totalFabricRequired ?? 0;
 
-      // Keep latest date
       if (new Date(record.date) > new Date(group.latestDate)) {
         group.latestDate = record.date;
       }
@@ -131,7 +110,6 @@ export class ViewRawMaterialCheckComponent implements OnInit {
     this.applyFilter();
   }
 
-  /** Resolve human-readable orderId by looking up matching order via styleId */
   resolveOrderId(styleId: string): string {
     const order = this.orders.find(o => o.styleId === styleId);
     return order ? (order.orderId || order.id) : '';
@@ -174,7 +152,7 @@ export class ViewRawMaterialCheckComponent implements OnInit {
   }
 
   // ── Delete ──────────────────────────────────────────────
-  openDeleteConfirm(record: RawMaterialRecord, groupOrderId: string): void {
+  openDeleteConfirm(record: FabricRecord, groupOrderId: string): void {
     this.deletingRecord = record;
     this.deletingGroupId = groupOrderId;
     this.deleteConfirmOpen = true;
@@ -188,7 +166,7 @@ export class ViewRawMaterialCheckComponent implements OnInit {
 
   confirmDelete(): void {
     if (!this.deletingRecord) return;
-    this.merchService.deleteRawMaterialCheck(this.deletingRecord.id).subscribe({
+    this.merchService.deleteRawMaterialCheck(this.deletingRecord.id!).subscribe({
       next: () => {
         this.notify.success('Record deleted successfully.');
         this.deleteConfirmOpen = false;
@@ -203,7 +181,7 @@ export class ViewRawMaterialCheckComponent implements OnInit {
   }
 
   // ── Edit ─────────────────────────────────────────────────
-  openEditModal(record: RawMaterialRecord): void {
+  openEditModal(record: FabricRecord): void {
     this.editingRecord = { ...record, details: record.details ? [...record.details] : [] };
     this.editTotalFabric = record.totalFabricRequired;
     this.editModalOpen = true;
@@ -214,7 +192,7 @@ export class ViewRawMaterialCheckComponent implements OnInit {
     this.editingRecord = null;
   }
 
-  updateDetailQty(detail: FabricDetail, event: Event): void {
+  updateDetailQty(detail: FabricRecordDetail, event: Event): void {
     const val = +(event.target as HTMLInputElement).value;
     detail.qty = val >= 0 ? val : 0;
     detail.calculatedFabric = detail.baseFabric * detail.qty;
@@ -232,7 +210,7 @@ export class ViewRawMaterialCheckComponent implements OnInit {
   saveEdit(): void {
     if (!this.editingRecord) return;
     const payload = { ...this.editingRecord, totalFabricRequired: this.editTotalFabric };
-    this.merchService.updateRawMaterialCheck(this.editingRecord.id, payload).subscribe({
+    this.merchService.updateRawMaterialCheck(this.editingRecord.id!, payload).subscribe({
       next: () => {
         this.notify.success('Record updated successfully.');
         this.editModalOpen = false;

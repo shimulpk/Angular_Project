@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { StyleService } from '../../../core/services/style.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
-import { Style } from '../../../models/style/style.model';
+import { BomStyle } from '../../../models/bom-style/bom-style.model';
 
 @Component({
   selector: 'app-add-bom-style',
@@ -35,15 +35,11 @@ export class AddBomStyleComponent implements OnInit {
   onSubmit() {
     if (this.styleForm.valid) {
       const formValue = this.styleForm.value;
-      const styleData: Style = {
+      const styleData: BomStyle = {
         styleCode: formValue.styleCode,
         styleName: formValue.description || formValue.styleCode,
         styleType: formValue.styleType,
         description: formValue.description,
-        buyerId: '',
-        season: '',
-        garmentType: formValue.styleType,
-        gender: 'Unisex',
         approvalStatus: 'Draft',
         sizeSet: ['S', 'M', 'L', 'XL']
       };

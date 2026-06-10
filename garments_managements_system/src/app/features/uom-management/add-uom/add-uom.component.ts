@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterModule, Router } from '@angular/router';
 import { MerchandisingService } from '../../../features/merchandising-service/merchandising.service';
 import { NotificationService } from '../../../core/services/notification/notification.service';
-import { UOM } from '../../../models/uom/uom.model';
+import { Uom } from '../../../models/uom/uom.model';
 
 @Component({
   selector: 'app-add-uom',
@@ -53,7 +53,7 @@ export class AddUomComponent implements OnInit {
 
   onSubmit() {
     if (this.uomForm.valid) {
-      const uomData: UOM = {
+      const uomData: Uom = {
         ...this.uomForm.getRawValue()
       };
       this.merchService.createUOM(uomData).subscribe(() => {

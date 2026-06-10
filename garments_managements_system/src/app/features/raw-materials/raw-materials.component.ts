@@ -6,8 +6,8 @@ import { MerchandisingService } from '../../features/merchandising-service/merch
 import { StyleService } from '../../core/services/style.service';
 import { OrderService } from '../../core/services/order.service';
 import { NotificationService } from '../../core/services/notification/notification.service';
-import { Style } from '../../models/style/style.model';
-import { UOM } from '../../models/uom/uom.model';
+import { BomStyle } from '../../models/bom-style/bom-style.model';
+import { Uom } from '../../models/uom/uom.model';
 
 @Component({
   selector: 'app-raw-materials',
@@ -25,8 +25,8 @@ export class RawMaterialsComponent implements OnInit {
   private notify = inject(NotificationService);
 
   rawForm!: FormGroup;
-  styles: Style[] = [];
-  uoms: UOM[] = [];
+  styles: BomStyle[] = [];
+  uoms: Uom[] = [];
   orders: any[] = [];
 
   readonly SIZES = ['S', 'M', 'L', 'XL'];
@@ -62,7 +62,7 @@ export class RawMaterialsComponent implements OnInit {
     this.orderService.getOrders().subscribe(data => this.orders = data);
   }
 
-  getUOM(productName: string, size: string): UOM | null {
+  getUOM(productName: string, size: string): Uom | null {
     const found = this.uoms.find(u => 
       u.productName.toLowerCase().includes(productName.toLowerCase()) && 
       u.size === size
